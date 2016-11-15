@@ -5,6 +5,8 @@ http://kubstu.ru/data/fdlist/FDD0445.pdf
 GITHUB-LINKS:
 https://github.com/zhangry868?tab=repositories
 
+Capture Screen and save to AVI (Borland C++)
+http://www.cyberforum.ru/cpp-builder/thread140321.html
 
 
 ONLINE-BOOCKS:
