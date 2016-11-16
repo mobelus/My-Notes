@@ -1,6 +1,16 @@
 NEURONETZE:
 http://kubstu.ru/data/fdlist/FDD0445.pdf
 
+ARTICLES:
+http://www.ipol.im/pub/art/2015/137/article_lr.pdf
+http://neuroph.sourceforge.net/image_recognition.html
+
+Pattern Recognition and Image Processing in C++
+http://www.springer.com/gp/book/9783528054915
+
+Programms:
+https://sourceforge.net/directory/os:windows/?q=image%20pattern%20recognition
+
 
 GITHUB-LINKS:
 https://github.com/zhangry868?tab=repositories
