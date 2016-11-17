@@ -31,6 +31,10 @@ Visual C++ / FAQ Index
 
 C++ в хадачах и примерах (Borland C++)
 
+50 КНИГ ПО С++
+http://www.ph4s.ru/bookprogramir_1.html  
+
+  
 /////////////////////////////////////////// DEUTSCH:
 http://www.highscore.de/cpp/aufbau/
 
