@@ -29,6 +29,8 @@ ONLINE-BOOCKS:
 Справочное руководство по C++
 Visual C++ / FAQ Index
 
+C++ в хадачах и примерах (Borland C++)
+
 /////////////////////////////////////////// DEUTSCH:
 http://www.highscore.de/cpp/aufbau/
 
