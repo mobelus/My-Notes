@@ -34,7 +34,10 @@ C++ в хадачах и примерах (Borland C++)
 50 КНИГ ПО С++
 http://www.ph4s.ru/bookprogramir_1.html  
 
-  
+BORLAND C++ TOOLS
+http://www.cnpack.org/showlist.php?id=39&lang=en
+
+
 /////////////////////////////////////////// DEUTSCH:
 http://www.highscore.de/cpp/aufbau/
 
