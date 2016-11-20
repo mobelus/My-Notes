@@ -1,3 +1,29 @@
+НЕЙРОННЫЕ СЕТИ:
+СОВЕТЫ: https://geektimes.ru/post/211610/
+http://masandilov.ru/ai/neural_networks
+http://evloevoleg.narod.ru/Neural/Par_4.pdf
+РАЗРАБОТКА И ТЕОРИЯ:
+http://algolist.manual.ru/ai/neuro/index.php
+
+СПИСОК БИБЛИОТЕК:
+http://bookflow.ru/nejrosetevoe-programmnoe-obespechenie/
+1) БиблиотекаCaffe
+http://mechanoid.kiev.ua/ml-lenet.html
+2) Библиотека FANN. Создание простой нейронной сети на C++
+http://leenissen.dk/fann/wp/language-bindings/
+http://1q5p6.blogspot.ru/2015/11/fann.html
+Скачать ALGLIB
+http://alglib.sources.ru/dataanalysis/neuralnetworks.php
+
+ПРИМЕР:
+https://software.intel.com/ru-ru/blogs/2011/12/22/finereader-2
+http://netcode.ru/cpp/?skatID=105&artID=3994
+// NEURALNET.ZIP
+
+ПОСЛЕДНИЕ НОВОСТИ О НЕЙРОННЫХ СЕТЯХ:
+https://tproger.ru/tag/neural-network/
+
+
 NEURONETZE:
 http://kubstu.ru/data/fdlist/FDD0445.pdf
 
