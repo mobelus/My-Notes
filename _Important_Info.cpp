@@ -34,6 +34,7 @@ http://1q5p6.blogspot.ru/2015/11/fann.html
 http://alglib.sources.ru/dataanalysis/neuralnetworks.php
 
 ПРИМЕР:
+http://www.codeproject.com/Articles/19323/Image-Recognition-with-Neural-Networks
 https://software.intel.com/ru-ru/blogs/2011/12/22/finereader-2
 http://netcode.ru/cpp/?skatID=105&artID=3994
 // NEURALNET.ZIP
