@@ -14,14 +14,66 @@
   - по нахождению плохих паттернов можно
 
 
+РАСПОЗНАВАНИЕ ОБРАЗОВ:
+Минимальная доступная теория:
+http://ict.informika.ru/ft/005972/m08-204.pdf
 
 
+Библиотеки:
+1) OpenCV
+- Распознавание образов с OpenCV: Контуры против Haartraining
+  Установив среду я приступил, наконец, к созданию своих первых HelloWord`ов. 
+  Советую пробежаться по OpenCV шаг за шагом - http://robocraft.ru/page/opencv/
+  Я перепробовал массу англоязычных и русскоязычых статей и форумов. Этот сборник статей наиболее понятно описывает функционал библиотеки OpenCV. 
+  В первых статьях этого мануала описывается довольно простой алгоритм захвата видео с web-камеры, http://robocraft.ru/blog/computervision/275.html
+  а в кульминации этих статей я нашел, наконец, как выделять и сравнивать контуры.
+http://www.pvsm.ru/algoritmy/30704
+
+КОНТУРЫ - Нахождение, Выделение, Сравнение:
+http://blog.vidikon.com/?cat=1
+
+- Распознавание образов для программистов с использованием библиотеки OpenCV -- Детектирование объектов с помощью особенностей в OpenCV: FREAK. Детектирование множества объектов.
+http://recog.ru/blog/opencv/
+http://recog.ru/blog/opencv/200.html (with code)
+
+YOUTUBE:
+Face recognition and training in opencv - https://www.youtube.com/watch?v=WfrHM24aFIE
+Распознавание номеров авто - http://recog.ru/blog/applied/202.html
+
+GITHUB:
+Распознавание номеров авто - OpenCV 3 License Plate Recognition C++ full source code
+https://www.youtube.com/watch?v=euG7-o9oPKg
+https://github.com/MicrocontrollersAndMore/OpenCV_3_License_Plate_Recognition_Cpp
+Распознавание Автомобилей - OpenCV 3 Car Counting C++ full source code
+https://www.youtube.com/watch?v=Y3ac5rFMNZ0
+https://github.com/MicrocontrollersAndMore/OpenCV_3_Car_Counting_Cpp
+
+COURSE.ZIP
+Разработка приложения для распознавания графических образов.
+http://www.zoonman.ru/projects/kw/
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
 НЕЙРОННЫЕ СЕТИ:
 СОВЕТЫ: https://geektimes.ru/post/211610/
 http://masandilov.ru/ai/neural_networks
 http://evloevoleg.narod.ru/Neural/Par_4.pdf
+
 РАЗРАБОТКА И ТЕОРИЯ:
 http://algolist.manual.ru/ai/neuro/index.php
+ЛУЧШИЙ ПРИМЕР С ОБЪЯСНЕНИЕМ И КОДОМ НА СИ++
+https://www.youtube.com/watch?v=KkwX7FkLfug
+
+ВАРИАНТЫ НЕЙРОННЫХ СЕТЕЙ:
+Многослойные ПЕРЦЕПТРОНЫ - http://forum.pascal.net.ru/index.php?showtopic=25644 (МЕТОДИЧКА с описанием +ошибка в формуле последний пост)
+Нейронная сеть Коххана - 
+Нейронная сеть Хопфилда 
+  text recognition
+  https://software.intel.com/ru-ru/blogs/2011/12/22/finereader-2 (with code)
 
 СПИСОК БИБЛИОТЕК:
 http://bookflow.ru/nejrosetevoe-programmnoe-obespechenie/
