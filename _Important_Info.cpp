@@ -70,6 +70,13 @@ http://www.zoonman.ru/projects/kw/
 
 
 
+//
+РАСПОЗНАВАНИЕ + НЕЙРОСЕТИ:
+https://geektimes.ru/post/90867/
+https://geektimes.ru/post/74326/
+http://eblearn.sourceforge.net
+https://www.codeproject.com/kb/library/neuralnetrecognition.aspx
+http://yann.lecun.com/exdb/mnist/index.html
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
