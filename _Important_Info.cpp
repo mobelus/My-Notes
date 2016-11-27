@@ -14,12 +14,21 @@
   - по нахождению плохих паттернов можно
 
 
+
+////////////////////////////////////////////////////////////////////////
 РАСПОЗНАВАНИЕ ОБРАЗОВ:
 Минимальная доступная теория:
 http://ict.informika.ru/ft/005972/m08-204.pdf
+http://evloevoleg.narod.ru/Neural/Par_4.pdf
 
+Подходы к распознаванию различных объектов:
+http://matlab.exponenta.ru/imageprocess/book3/14/imfeature.php
 
-Библиотеки:
+КТО МОЖЕТ ПОМОЧЬ:
+http://forum.sources.ru/index.php?showtopic=318162
+http://www.ampersant.ru/raspoznavanie_obrazov/
+
+Библиотеки:1
 1) OpenCV
 - Распознавание образов с OpenCV: Контуры против Haartraining
   Установив среду я приступил, наконец, к созданию своих первых HelloWord`ов. 
@@ -30,7 +39,7 @@ http://ict.informika.ru/ft/005972/m08-204.pdf
 http://www.pvsm.ru/algoritmy/30704
 
 КОНТУРЫ - Нахождение, Выделение, Сравнение:
-http://blog.vidikon.com/?cat=1
+http://blog.vidikon.com/?cat=1 (with code)
 
 - Распознавание образов для программистов с использованием библиотеки OpenCV -- Детектирование объектов с помощью особенностей в OpenCV: FREAK. Детектирование множества объектов.
 http://recog.ru/blog/opencv/
@@ -39,6 +48,12 @@ http://recog.ru/blog/opencv/200.html (with code)
 YOUTUBE:
 Face recognition and training in opencv - https://www.youtube.com/watch?v=WfrHM24aFIE
 Распознавание номеров авто - http://recog.ru/blog/applied/202.html
+OpenCV 3 KNN Character Recognition C++ - https://www.youtube.com/watch?v=CK0OCeCN9zg
+
+РАСПОЗНАВАНИЕ АВТО С НУЖНЫМИ ПРИЗНАКАМИ ДЛЯ НЕЙРОННОЙ СЕТИ - БЕЗ КОДА:
+Car detection and counting
+https://www.youtube.com/watch?v=TNgvUq4EaSc
+
 
 GITHUB:
 Распознавание номеров авто - OpenCV 3 License Plate Recognition C++ full source code
