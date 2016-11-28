@@ -13,6 +13,10 @@
   - anti prod - огромные массивы данных. Распознавание плохих и хороших паттернов.
   - по нахождению плохих паттернов можно
 
+DOWNLOAD AT HOME:
+http://www.codeforge.com/read/44206/MainForm.cpp__html
+http://www.cyberforum.ru/post3963198.html
+http://read.pudn.com/downloads140/sourcecode/multimedia/streaming/602172/demo.cpp/MainForm.cpp__.htm
 
 
 
