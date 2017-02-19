@@ -9,6 +9,9 @@ XING
 
 https://www.xing.com/profile/Obrosov_Pavel?sc_o=mxb_p
 
+MONSTER.DE
+
+https://www.monster.de/profile/profile/
 
 
 
