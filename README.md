@@ -1,6 +1,17 @@
 # HelloWorld
 My first Project on Github
 
+LINKEDIN
+
+https://ru.linkedin.com/in/pavel-obrosov-416481130
+
+XING
+
+https://www.xing.com/profile/Obrosov_Pavel?sc_o=mxb_p
+
+
+
+
 Website with an example of how the Text in MD-File here on Git will look like:
 
 http://dillinger.io
