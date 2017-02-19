@@ -3,6 +3,27 @@ My first Project on Github
 
 http://stellenanzeige.monster.de/softwareentwickler-c-m-w-job-nürnberg-bayern-deutschland-180510068.aspx?mescoid=1500127001001&jobPosition=1
 
+
+https://www.monster.de/karriereberatung/artikel/anschreiben-bewerbung-softwareingenieur
+
+Moskau, den 20. Februar 2017
+ 
+Bewerbung als Softwareentwickler C++
+Anzeige /www.monster.de vom 10. November 2011
+
+Sehr geehrter Herr Göpfert
+
+
+
+Ich freue mich, Sie in einem persönlichen Gespräch überzeugen zu können. Mit freundlichen Grüßen
+
+Klaus-Peter Magenau (als Unterschrift)
+
+Anlagen
+
+
+
+
 LINKEDIN
 
 https://ru.linkedin.com/in/pavel-obrosov-416481130
