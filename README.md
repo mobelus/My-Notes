@@ -1,6 +1,10 @@
 # HelloWorld
 My first Project on Github
 
+100% Threadsafe code
+http://www.bogotobogo.com/cplusplus/C11/8_C11_Race_Conditions.php
+
+
 http://stellenanzeige.monster.de/softwareentwickler-c-m-w-job-nürnberg-bayern-deutschland-180510068.aspx?mescoid=1500127001001&jobPosition=1
 
 
