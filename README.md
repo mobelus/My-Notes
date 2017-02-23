@@ -1,6 +1,11 @@
 # HelloWorld
 My first Project on Github
 
+BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW
+https://www.slideshare.net/olvemaudal/deep-c/16-What_will_happen_if_you
+BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW
+
+
 100% Threadsafe code
 http://www.bogotobogo.com/cplusplus/C11/8_C11_Race_Conditions.php
 
