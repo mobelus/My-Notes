@@ -61,6 +61,10 @@ http://wm-help.net/books-online/book/59464/59464.html
 http://www.e-reading.club/bookreader.php/135055/Rihter_-_Windows_dlya_professionalov__sozdanie_effektivnyh_Win32-prilozheniii_s_uchetom_specifiki_64-razryadnoii--oe_izd.pdf
 
 
+МиниРихтер
+
+http://bsuir-helper.ru/sites/default/files/2011/01/24/met/spo_lectures.doc
+
 
 _beginthread vs _beginthreadex vs CreateThread C++
 http://stackoverflow.com/questions/331536/windows-threading-beginthread-vs-beginthreadex-vs-createthread-c
