@@ -3,6 +3,7 @@ My first Project on Github
 
 BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW
 https://www.slideshare.net/olvemaudal/deep-c/16-What_will_happen_if_you
+
 BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW | BEFORE EVERY INTERVIEW
 
 
@@ -56,6 +57,9 @@ http://dillinger.io
 Джеффри РИХТЕР - WINDOWS для Профессионалов (C++) [Вся книга Онлайн]
 
 http://wm-help.net/books-online/book/59464/59464.html
+
+http://www.e-reading.club/bookreader.php/135055/Rihter_-_Windows_dlya_professionalov__sozdanie_effektivnyh_Win32-prilozheniii_s_uchetom_specifiki_64-razryadnoii--oe_izd.pdf
+
 
 
 _beginthread vs _beginthreadex vs CreateThread C++
