@@ -2,33 +2,44 @@
 
 Wir bieten Ihnen interessante fachliche Herausforderungen und ein angenehmes Betriebsklima. Ihre gründliche Einarbeitung erachten wir als wesentlichen Baustein für unseren gemeinsamen Erfolg. Wir freuen uns auf Ihre aussagekräftige Bewerbung, die Sie uns idealerweise 
 per E-Mail in einer 
+
 PDF-Datei, unter Angabe Ihrer 
+
 Gehaltsvorstellungen und des frühestmöglichen 
+
 Ihrer Gehaltsvorstellungen (Bruttojahreszielgehalt)
+
 sowie ggf. Reise- und Umzugsbereitschaft
+
 Eintrittstermins zukommen lassen.
 
-MFC // Standort: Nürnberg
+    //Standort: Nürnberg
+MFC - 
 http://stellenanzeige.monster.de/softwareentwickler-c-weiterentwicklung-eines-branchenspezifischen-erp-systems-inhouse-m-w-job-nürnberg-bayern-deutschland-175698832.aspx?mescoid=1500127001001&jobPosition=1
 
     //Standort: Rosenheim
+MFC - 
 http://stellenanzeige.monster.de/softwareentwickler-c-entwicklung-von-anwendungen-bei-einem-produkthersteller-inhouse-m-w-job-rosenheim-bayern-deutschland-180244220.aspx?mescoid=1500127001001&jobPosition=1
 
-QT
-bis-65-000-€ //Standort: Rosenheim
+
+    //Standort: Rosenheim
+QT - bis-65-000-€ -  
 http://stellenanzeige.monster.de/softwareentwickler-c-qt-guis-für-messtechnik-bis-65-000-€-inhouse-m-w-job-rosenheim-bayern-deutschland-167878006.aspx?mescoid=1500127001001&jobPosition=1
 
-bis-70-000-€ //Standort: Rosenheim
+    //Standort: Rosenheim
+QT - bis-70-000-€ -  
 http://stellenanzeige.monster.de/software-achitekt-c-qt-monitoring-systeme-bis-70-000-€-inhouse-m-w-job-rosenheim-bayern-deutschland-172107908.aspx?mescoid=9901111000004&jobPosition=1
 
     //Standort: Hannover
+QT -     
 http://stellenanzeige.monster.de/softwareentwickler-c-qt-ms-visual-studio-oracle-mit-pl-sql-inhouse-m-w-job-hannover-niedersachsen-deutschland-167876875.aspx?mescoid=1500127001001&jobPosition=1
 
     // Standort: Kiel
+QT - 
 http://stellenanzeige.monster.de/softwareentwickler-c-qt-m-w-job-kiel-schleswig-holstein-deutschland-178564604.aspx?mescoid=1500127001001&jobPosition=1
 
     // Standort: Braunschweig //GOM GmbH Schmitzstraße 2 Deutschland Tel.: 0531 390290 E-Mail: jobs@gom.com 
-3D-Bildbearbeitung / CAD-/CAM-Umfeld
+QT - 3D-Bildbearbeitung / CAD-/CAM-Umfeld - 
 http://stellenanzeige.monster.de/softwareentwickler-c-m-w-bildverarbeitung-robotik-gui-job-braunschweig-niedersachsen-deutschland-180784810.aspx?mescoid=1500127001001&jobPosition=1
 
 
