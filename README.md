@@ -148,8 +148,11 @@ QT - 3D-Bildbearbeitung / CAD-/CAM-Umfeld - http://stellenanzeige.monster.de/sof
 
 http://www.techfetch.com/
 
+
 http://www.techfetch.com/JS/JS_view_job.aspx?js=3131574
+
 http://www.techfetch.com/JS/JS_view_job.aspx?js=3119668
+
 http://www.techfetch.com/JS/JS_view_job.aspx?js=3126725
 
     //Standort: Nürnberg
