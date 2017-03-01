@@ -158,3 +158,11 @@ http://www.techfetch.com/JS/JS_view_job.aspx?js=3126725
     //Standort: Nürnberg
 MFC - http://stellenanzeige.monster.de/softwareentwickler-c-weiterentwicklung-eines-branchenspezifischen-erp-systems-inhouse-m-w-job-nürnberg-bayern-deutschland-175698832.aspx?mescoid=1500127001001&jobPosition=1
 
+
+# UK JOB OFFERS
+
+    //WEBSITES // WITH H1B
+
+https://uk.jora.com/MFC-C++-Developer-jobs#email_alert_modal
+
+
