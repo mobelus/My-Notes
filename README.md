@@ -155,9 +155,20 @@ http://www.techfetch.com/JS/JS_view_job.aspx?js=3119668
 
 http://www.techfetch.com/JS/JS_view_job.aspx?js=3126725
 
-    //Standort: Nürnberg
-MFC - http://stellenanzeige.monster.de/softwareentwickler-c-weiterentwicklung-eines-branchenspezifischen-erp-systems-inhouse-m-w-job-nürnberg-bayern-deutschland-175698832.aspx?mescoid=1500127001001&jobPosition=1
 
+
+https://www.glassdoor.com/job-listing/senior-c-mfc-software-engineer-penrad-JV_IC1142551_KO0,30_KE31,37.htm?jl=2278574677
+
+https://duo.com/about/careers/job/46835?gh_jid=46835&gh_src=76gjcl
+
+http://chm.tbe.taleo.net/chm03/ats/careers/requisition.jsp?org=TRIMBLE&cws=1&rid=10097
+
+https://www.glassdoor.com/job-listing/software-developer-cc-in-windows-icl-georgia-tech-research-institute-JV_IC1155583_KO0,36_KE37,68.htm?jl=1861913514
+
+https://www.glassdoor.com/job-listing/sr-software-engineer-veritas-JV_IC1162334_KO0,20_KE21,28.htm?jl=1988795595
+
+    //Standort: Nürnberg
+MFC - 
 
 # UK JOB OFFERS
 
