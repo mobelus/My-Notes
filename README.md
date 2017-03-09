@@ -306,10 +306,19 @@ http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
+# Stadtsparkasse Düsseldorf
+
+Camphausenstraße 18, 40479 Düsseldorf, Германия
+sskduesseldorf.de
++49 211 8782211
+Открыто:  24 часа в сутки
+
+Предложить исправление
 
 
 
 # Быстрые пути в Проводнике
+
 https://www.sevenforums.com/tutorials/85487-common-file-dialog-box-customize-places-bar.html
 
 
