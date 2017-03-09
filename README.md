@@ -1,3 +1,11 @@
+
+# маркер edding 140s ЧЕРНЫЙ
+
+http://www.vseinstrumenti.ru/ruchnoy_instrument/dlya_shtukaturno-otdelochnyh_rabot/razmetochnyi/edding/4sht_0_3mm_e-140-4s/?gclid=CP6Cs4-bydICFV5lGQod4-cOcQ
+
+http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
+
+
 # DIRTY.RU
 
      if(EInsOGRN->Text.Trim().Length()>13) { EInsOGRN->Text = nextOGRN.SubString(0, 12); }
