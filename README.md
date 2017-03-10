@@ -6,6 +6,75 @@ http://www.vseinstrumenti.ru/ruchnoy_instrument/dlya_shtukaturno-otdelochnyh_rab
 http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 
 
+# SOME CODE FOR EXPERIMENTS
+
+//#include "stdio.h" // printf, scanf
+//#include <stdio.h> // printf, scanf
+//#include <iostream.h>
+#include <iostream> // cout, cin
+
+
+void pause()
+{
+	std::cin.sync();
+	std::cout << "\nPAUSED\n";
+	std::cin.ignore();
+}
+
+int main()
+{
+	printf("");
+
+/*
+	int **a__[2];
+	int *(*a_)[2] = 0;
+
+	int* ad1; // = 0;
+	int* ad2; // = 0;
+	//ad1 = **a__;
+	ad2 = **a_;
+
+	int elem1 = ad1[1];
+	int elem2 = ad2[1];
+*/
+
+//*
+	char buf[4] = "str"; //определение массива символов
+	char buf_[] = "str"; //определение массива символов // строковой константы
+
+	//Б. Страуструп, ЯП C++ [5.2.2. Строковые литералы]:
+	//Строковый литерал можно присвоить переменной типа char*. Это разрешается, потому что в предыдущих определениях C и C++ типом строкового литерала был char*/ Благодаря такому разрешению миллионы строк кода на C и C++ остаются синтаксически корректными.
+	
+	char* p_buf  = "str"; //это указатель на char (char* buf_), инициализированный константной строкой "str" = const std::string("str"). писать в константные строки нехорошо константная секция данных 
+	//char* bf[4] = "str\0"; //это массив из 4 указателей на char, нулевой элемент инициализирован указателем на константную строку, остальные 3 нулем
+	//char* bf[4] = "str\0"; // char *[4] = const char [5]; // can NOT convert;
+	char* p_bf[4] = { "str\0" }; //это массив из 4 указателей на char, нулевой элемент инициализирован указателем на константную строку, остальные 3 нулем
+	char* p_bf_[] = { "str\0" }; //это массив из 4 указателей на char, нулевой элемент инициализирован указателем на константную строку, остальные 3 нулем
+
+
+	buf_[0] = '1';
+	buf_[1] = '2';
+	buf_[2] = '3';
+	buf_[3] = '4';
+	buf_[4] = '5';
+
+	buf[0] = '1';
+	buf[1] = '2';
+	buf[2] = '3';
+	buf[3] = '4';
+	buf[4] = '5';
+
+	*p_buf = '1';
+
+	//*p_buf_ = 'z';
+	//*p_buf_ = (char)"sm";
+
+	//*p_bf[0] = '1';
+	//*p_bf[1] = '2';
+	//*p_bf[2] = '3';
+
+//*/
+
 # DIRTY.RU
 
      if(EInsOGRN->Text.Trim().Length()>13) { EInsOGRN->Text = nextOGRN.SubString(0, 12); }
