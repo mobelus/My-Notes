@@ -426,6 +426,46 @@ In C++ you should almost certainly use _beginthreadex() unless you won't be link
 Аналогичный объект в Linux называется фьютекс.
 
 
+
+# Перегружать можно следующие операторы:
+
+http://interviewinit.com/2015/03/какие-операторы-нельзя-перегружать-к/
+
++ — * / % ^ & | ~ ! = < >
+
++= -= *= /= %= ^= &= |=
+
+<< >> >>= <<= == != <= >=
+
+&& || ++ — ->* , -> [] ()
+
+new new[] delete delete[]
+
+# ПЕРЕГРУЖАТЬ НЕЛЬЗЯ
+
+     :: (разрешение области видимости)
+     . (выбор члена)
+     .* (выбор члена через указатель на член)
+     ?: тернарный оператор
+     sizeof, typeid
+У первых трех в правой части имя, а не значение.
+
+У тернарного оператора аж 3 параметра, к тому же его возвращаемое значение является l-value.
+
+Переопределять sizeof, typeid, думаю, просто нет смысла.
+
+
+    Для встроенных типов данных перегружать операции нельзя, потому что тип — это набор данных и операций над ними. Изменяя операции, выполняемые над данными типа, мы меняем само определение типа. Также, нельзя изменить приоритет операции и определить новую операцию.
+
+
+# Как работает REALLOC
+
+http://cppstudio.com/post/860/
+
+
+
+
+
 # DEUTSCHLAND ARBEITS ANGEBOTE
 
 Wir bieten Ihnen interessante fachliche Herausforderungen und ein angenehmes Betriebsklima. Ihre gründliche Einarbeitung erachten wir als wesentlichen Baustein für unseren gemeinsamen Erfolg. Wir freuen uns auf Ihre aussagekräftige Bewerbung, die Sie uns idealerweise 
