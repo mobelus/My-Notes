@@ -23,6 +23,7 @@ http://ru.stackoverflow.com/questions/381470/Перестановка-элеме
 
 http://www.sql.ru/forum/909926/ispolzovanie-sobstvennogo-klassa-strok
 
+https://www.linux.org.ru/forum/development/911016
 
 # SOME CODE FOR EXPERIMENTS
 
