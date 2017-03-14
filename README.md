@@ -6,6 +6,24 @@ http://www.vseinstrumenti.ru/ruchnoy_instrument/dlya_shtukaturno-otdelochnyh_rab
 http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 
 
+# STD некоторая информация про контейнеры
+
+std::list - двусвязный список, имеющий 2 указателя внутри каждого элемента на Предыдущ. и След. элемент
+std::forward_list - односвязный список, только один указатель на следующий элемент.
+
+Как написать СВОЙ Двусвязный список:
+http://ci-plus-plus-snachala.ru/?p=60
+
+
+Перестановка элементов в односвязном списке
+http://ru.stackoverflow.com/questions/381470/Перестановка-элементов-в-односвязном-списке
+
+
+# CLASS Mystring
+
+http://www.sql.ru/forum/909926/ispolzovanie-sobstvennogo-klassa-strok
+
+
 # SOME CODE FOR EXPERIMENTS
 
 //#include "stdio.h" // printf, scanf
