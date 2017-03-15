@@ -676,6 +676,18 @@ https://uk.jora.com/MFC-C++-Developer-jobs#email_alert_modal
 
 
 RUST Client-Server
+
 http://mariusbancila.ro/blog/2013/08/19/full-fledged-client-server-example-with-cpprest-sdk-110/
+
+http://stackoverflow.com/questions/20496231/jsoncpp-when-having-a-jsonvalue-object-how-can-i-know-its-key-name
+
+field_map
+http://stackoverflow.com/questions/38828463/c-rest-casablanca-webjsonvalue-has-no-member-named-field-map
+
+
+---
+http://stackoverflow.com/questions/39629008/getting-the-values-from-jsonvalue-using-rest-api-c
+
+http://stackoverflow.com/questions/31674575/c-rest-sdk-casablanca-webjson-iteration
 
 
