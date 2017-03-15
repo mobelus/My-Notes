@@ -687,6 +687,9 @@ http://stackoverflow.com/questions/38828463/c-rest-casablanca-webjsonvalue-has-n
 WebCamera - C++ - DirectShow 
 http://www.orgler.it/mfcdirectshow.htm
 
+Get Image DirectShow - 
+http://stackoverflow.com/questions/11398758/best-directshow-way-to-capture-image-from-web-cam-preview-samplegrabber-is-dep
+
 ---
 http://stackoverflow.com/questions/39629008/getting-the-values-from-jsonvalue-using-rest-api-c
 
