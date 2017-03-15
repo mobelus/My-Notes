@@ -684,6 +684,8 @@ http://stackoverflow.com/questions/20496231/jsoncpp-when-having-a-jsonvalue-obje
 field_map
 http://stackoverflow.com/questions/38828463/c-rest-casablanca-webjsonvalue-has-no-member-named-field-map
 
+WebCamera - C++ - DirectShow 
+http://www.orgler.it/mfcdirectshow.htm
 
 ---
 http://stackoverflow.com/questions/39629008/getting-the-values-from-jsonvalue-using-rest-api-c
