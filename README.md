@@ -674,3 +674,8 @@ https://uk.jora.com/MFC-C++-Developer-jobs#email_alert_modal
 - Добавьте недостающего функционала по необходимости, если вам покажется это правильным с логической и пользовательской точки зрения.
 - НАПИШИТЕ ЮНИТ-ТЕСТЫ !!!
 
+
+RUST Client-Server
+http://mariusbancila.ro/blog/2013/08/19/full-fledged-client-server-example-with-cpprest-sdk-110/
+
+
