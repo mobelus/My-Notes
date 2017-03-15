@@ -690,6 +690,28 @@ http://www.orgler.it/mfcdirectshow.htm
 Get Image DirectShow - 
 http://stackoverflow.com/questions/11398758/best-directshow-way-to-capture-image-from-web-cam-preview-samplegrabber-is-dep
 
+WEBCAM
+http://stackoverflow.com/questions/6912346/webcam-video-capture-using-visual-c-6-0
+
+https://www.codeproject.com/kb/audio-video/videoimagegrabber.aspx
+
+
+https://social.msdn.microsoft.com/Forums/windowsdesktop/en-US/fa7e41ed-107e-4f77-8154-62f22b0187a6/where-is-directshow-sdk-yes-yet-again-?forum=windowsdirectshowdevelopment
+
+Where is DirectShow SDK ?
+
+C:\Program Files\Microsoft Platform SDK for Windows Server 2003 R2\Samples\Multimedia\DirectShow\BaseClasses\streams.h
+C:\Program Files\Microsoft SDKs\Windows\v6.1\Samples\Multimedia\DirectShow\BaseClasses\streams.h
+C:\Program Files\Microsoft SDKs\Windows\v7.0\Samples\multimedia\directshow\baseclasses\streams.h
+
+
+FINAL
+
+https://www.codeproject.com/Articles/6712/Simultaneous-Previewing-Video-Capture-using-Direct
+
+https://www.codeproject.com/Articles/21048/Video-Preview-and-Frames-Capture-to-Memory-with-Sa
+
+
 ---
 http://stackoverflow.com/questions/39629008/getting-the-values-from-jsonvalue-using-rest-api-c
 
