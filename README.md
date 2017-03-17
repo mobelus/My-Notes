@@ -744,3 +744,9 @@ https://picoledelimao.github.io/blog/2015/10/13/building-a-restful-web-service-i
 Real RESTful Credentials and Register User on Server (log in / password based security):
 
 https://katyscode.wordpress.com/2014/04/02/lightswitch-for-games-part-4-odata-access-from-c-client-code-with-the-c-rest-sdk/
+
+------------------
+
+# DROPBOX API using  RESTful  Example: 
+
+https://msdn.microsoft.com/en-us/magazine/dn342869.aspx
