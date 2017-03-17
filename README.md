@@ -741,6 +741,6 @@ Real RESTful WebService Example:
 
 https://picoledelimao.github.io/blog/2015/10/13/building-a-restful-web-service-in-c-plus-plus/
 
-Real RESTful Credentials and Register User on Server:
+Real RESTful Credentials and Register User on Server (log in / password based security):
 
 https://katyscode.wordpress.com/2014/04/02/lightswitch-for-games-part-4-odata-access-from-c-client-code-with-the-c-rest-sdk/
