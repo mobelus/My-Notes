@@ -675,6 +675,24 @@ https://uk.jora.com/MFC-C++-Developer-jobs#email_alert_modal
 - НАПИШИТЕ ЮНИТ-ТЕСТЫ !!!
 
 
+DATABASE
+db_card_id
+db_card_pin
+db_client_name
+db_client_password
+db_client_money
+
+CONFIG
+conf_url
+conf_client_name
+conf_client_password
+
+CARD
+card_id
+card_pin
+
+
+
 RUST Client-Server
 
 http://mariusbancila.ro/blog/2013/08/19/full-fledged-client-server-example-with-cpprest-sdk-110/
