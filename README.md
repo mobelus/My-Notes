@@ -717,4 +717,12 @@ http://stackoverflow.com/questions/39629008/getting-the-values-from-jsonvalue-us
 
 http://stackoverflow.com/questions/31674575/c-rest-sdk-casablanca-webjson-iteration
 
+------------------
+
+Real RESTful WebService Example: 
+
+https://picoledelimao.github.io/blog/2015/10/13/building-a-restful-web-service-in-c-plus-plus/
+
+
+
 
