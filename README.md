@@ -745,6 +745,10 @@ Real RESTful Credentials and Register User on Server (log in / password based se
 
 https://katyscode.wordpress.com/2014/04/02/lightswitch-for-games-part-4-odata-access-from-c-client-code-with-the-c-rest-sdk/
 
+Real Connect to HTTP servers (C++ REST SDK) :
+
+https://msdn.microsoft.com/en-us/library/jj950081.aspx
+
 ------------------
 
 # DROPBOX API using  RESTful  Example: 
