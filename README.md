@@ -754,3 +754,13 @@ https://msdn.microsoft.com/en-us/library/jj950081.aspx
 # DROPBOX API using  RESTful  Example: 
 
 https://msdn.microsoft.com/en-us/magazine/dn342869.aspx
+
+
+# РЕПЕТИТОРЫ С++: 
+
+http://repetitors.info/predmet/c-plus-plus/
+
+http://profi.ru/repetitor/prog/
+
+http://www.repetit.ru/repetitors/informatika-i-programmirovanie/cpp/online/
+
