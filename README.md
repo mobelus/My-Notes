@@ -700,23 +700,6 @@ https://uk.jora.com/MFC-C++-Developer-jobs#email_alert_modal
 - НАПИШИТЕ ЮНИТ-ТЕСТЫ !!!
 
 
-DATABASE
-db_card_id
-db_card_pin
-db_client_name
-db_client_password
-db_client_money
-
-CONFIG
-conf_url
-conf_client_name
-conf_client_password
-
-CARD
-card_id
-card_pin
-
-
 
 RUST Client-Server
 
@@ -774,6 +757,12 @@ Real Connect to HTTP servers (C++ REST SDK) :
 
 https://msdn.microsoft.com/en-us/library/jj950081.aspx
 
+
+# LYAMBDA FUNCTIONS: 
+
+https://blog.feabhas.com/2014/03/demystifying-c-lambdas/
+
+
 ------------------
 
 # DROPBOX API using  RESTful  Example: 
@@ -788,6 +777,9 @@ http://repetitors.info/predmet/c-plus-plus/
 http://profi.ru/repetitor/prog/
 
 http://www.repetit.ru/repetitors/informatika-i-programmirovanie/cpp/online/
+
+
+
 
 
 
