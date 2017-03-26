@@ -6,6 +6,11 @@ http://www.vseinstrumenti.ru/ruchnoy_instrument/dlya_shtukaturno-otdelochnyh_rab
 http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 
 
+# C++ LECTURES:
+
+STACK AND HEAP IN C++ - https://www.youtube.com/watch?v=_8-ht2AKyH4
+
+
 # STD некоторая информация про контейнеры
 
 std::list - двусвязный список, имеющий 2 указателя внутри каждого элемента на Предыдущ. и След. элемент
