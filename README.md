@@ -10,6 +10,21 @@ http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 
 STACK AND HEAP IN C++ - https://www.youtube.com/watch?v=_8-ht2AKyH4
 
+Big O Notation - https://www.youtube.com/watch?v=v4cd1O4zkGw
+
+
+
+
+
+# GOOGLE INTERVIES EXAMPLES:
+
+https://www.youtube.com/watch?v=ko-KkSmp-Lk
+
+https://www.youtube.com/watch?v=XKu_SEDAykw
+
+
+
+
 
 # STD некоторая информация про контейнеры
 
