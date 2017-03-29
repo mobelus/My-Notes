@@ -24,6 +24,10 @@ https://www.youtube.com/watch?v=XKu_SEDAykw
 
 
 
+# PUBLIC PROTECTED PRIVATE
+
+https://cppforeach.wordpress.com/
+
 
 
 # STD некоторая информация про контейнеры
