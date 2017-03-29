@@ -13,6 +13,9 @@ STACK AND HEAP IN C++ - https://www.youtube.com/watch?v=_8-ht2AKyH4
 Big O Notation - https://www.youtube.com/watch?v=v4cd1O4zkGw
 
 
+# CYBERFORUM:
+
+http://www.cyberforum.ru/cpp-beginners/thread1949139.html#post10272753
 
 
 
