@@ -28,6 +28,10 @@ https://www.youtube.com/watch?v=XKu_SEDAykw
 
 https://cppforeach.wordpress.com/
 
+# EFFECTIVE FUNCTIONS
+
+http://www.cyberforum.ru/cpp-beginners/thread1948635.html
+
 
 
 # STD некоторая информация про контейнеры
