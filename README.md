@@ -783,7 +783,7 @@ http://stackoverflow.com/questions/31674575/c-rest-sdk-casablanca-webjson-iterat
 
 ------------------
 
-Real RESTful WebService Example: 
+Real REST RESTful WebService Example: 
 
 https://picoledelimao.github.io/blog/2015/10/13/building-a-restful-web-service-in-c-plus-plus/
 
@@ -794,6 +794,10 @@ https://katyscode.wordpress.com/2014/04/02/lightswitch-for-games-part-4-odata-ac
 Real Connect to HTTP servers (C++ REST SDK) :
 
 https://msdn.microsoft.com/en-us/library/jj950081.aspx
+
+REST Casablanca MFC App
+
+http://codexpert.ro/blog/2015/05/23/using-lambdas-in-mfc-applications-part-3-dealing-with-c-rest-sdk/
 
 
 # LYAMBDA FUNCTIONS: 
