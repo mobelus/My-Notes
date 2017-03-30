@@ -800,7 +800,7 @@ REST Casablanca MFC App
 http://codexpert.ro/blog/2015/05/23/using-lambdas-in-mfc-applications-part-3-dealing-with-c-rest-sdk/
 
 
-# LYAMBDA FUNCTIONS: 
+# LAMBDA FUNCTIONS: 
 
 https://blog.feabhas.com/2014/03/demystifying-c-lambdas/
 
