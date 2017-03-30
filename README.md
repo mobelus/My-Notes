@@ -26,6 +26,9 @@ https://www.youtube.com/watch?v=ko-KkSmp-Lk
 https://www.youtube.com/watch?v=XKu_SEDAykw
 
 
+# LAMBDA FUNCTIONS GUIDE TUTTORIAL ЛЯМБДА ФУНКЦИИ
+
+https://blog.feabhas.com/2014/03/demystifying-c-lambdas/
 
 # PUBLIC PROTECTED PRIVATE
 
