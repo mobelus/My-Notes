@@ -30,6 +30,22 @@ https://www.youtube.com/watch?v=ko-KkSmp-Lk
 https://www.youtube.com/watch?v=XKu_SEDAykw
 
 
+статическая переменная функции - сохраняет свое значение после выхода из функции 
+void foo()
+{
+    static int i = 0;
+    std::cout << i++ << '\n';
+}
+ 
+int  main()
+{
+    for (int i = 0; i < 4; ++i)
+       foo();
+}
+
+Output: 0,1,2,3
+
+
 # LAMBDA FUNCTIONS GUIDE TUTTORIAL ЛЯМБДА ФУНКЦИИ
 
 https://blog.feabhas.com/2014/03/demystifying-c-lambdas/
