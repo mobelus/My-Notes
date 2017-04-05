@@ -242,3 +242,383 @@ http://www.apmath.spbu.ru/ru/info/tuzov/onapr.html
 
 БИРЖА:
 вот мы делаем системы для создания технологических форсайтов (это что-то среднее между планами и прогнозами). Люди собирают т.н. сигналы — события, которые могут быть важными для отрасли, и на основе нескольких сигналов у них должны появляться идеи трендов. Сигналов много, поэтому хочется показывать пользователю небольшие группы сигналов, которые связаны между собой или как-либо похожи. Тут бы очень пригодился классификатор.
+  
+  
+  
+  
+  
+  
+/////////////////////////////////////////////////////////////
+// О ВИРТ. ФУНКЦИЯХ
+/////////////////////////////////////////////////////////////
+// http://www.cyberforum.ru/cpp-beginners/thread1391513.html#post7321173
+// 17.03.2015, 23:25  [ТС]
+
+    AA* pa; 
+// Указателю на базовый класс присваиваем адрес ПРОИЗВОДНОГО класса:
+    pa=&b;   
+    pa->f();// виртуальный вызов f() из B
+    pa->AA::f();// невиртуальный вызов f() из AA
+
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  УМНЫЙ УКАЗАТЕЛЬ
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  УМНЫЙ УКАЗАТЕЛЬ - UNIQUE_PTR
+/////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  УМНЫЙ УКАЗАТЕЛЬ - SHARED_PTR
+/////////////////////////////////////////////////////////////
+MY SHARED_PTR:
+http://www.cyberforum.ru/cpp-beginners/thread943866.html
+
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  LIST
+/////////////////////////////////////////////////////////////
+
+	http://www.cyberforum.ru/cpp-beginners/thread178335.html#post1039880
+
+NEED LIST WITH A    NODE
+struct node
+{
+	char some;
+	int key;
+};
+	
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  VECTOR
+/////////////////////////////////////////////////////////////
+	
+	http://www.cyberforum.ru/cpp-beginners/thread178335.html#post1693182
+
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  HASH TABLE
+/////////////////////////////////////////////////////////////
+
+http://www.programmersforum.ru/showthread.php?t=69994
+
+const int maxn=10000;
+struct node
+{
+	char znac[20];
+	int key;
+};
+
+int kolcol;
+int kolsl;
+int ObTable;
+
+node hashtable[maxn];
+
+
+
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЙ  MAP
+/////////////////////////////////////////////////////////////
+
+	
+/////////////////////////////////////////////////////////////
+// РЕАЛИЗОВАТЬ СВОЮ ФУНКЦИЮ  ATOI
+/////////////////////////////////////////////////////////////
+
+int atoi(char s[])
+{
+    int i, n;
+    n = 0;
+    for (i = 0; s[i] >= '0' && s[i] <= '9'; ++i)
+		n = (n * 10) + (s[i] - '0');
+    return n;
+}
+
+int atoi(char* s)
+{
+    int n = 0;
+    while( *s >= '0' && *s <= '9' ) {
+        n *= 10;
+        n += *s++;
+        n -= '0';
+    }
+    return n;
+}
+
+int my_atoi(const char*  src)
+{
+	int result = 0;
+	int digit = 1;
+	const int DIGIT_DIFFERENCE = 10;
+	const char ZERO_SYMBOL = '0';
+	for(int i = (strlen(str)-1); i >= 0; i--)
+	{
+		result = result + (digit * int(str[i]-ZERO_SYMBOL));
+		digit = digit * DIGIT_DIFFERENCE;
+	}
+	return result;
+	
+	// NO delimiters 
+	// NO trim string fuction for space-characters 
+	// NO negative numbers / multiple minus symbols in string
+	// NO check if there exist other symbols than numbers in string
+}
+
+
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+static const char MINUS = '-';
+char* my_trimLeft(const char* src);
+int my_atoi(const char*  src);
+int main()
+{
+	cout << my_atoi("bjk vvh-)(-20856--fbhcfr f");
+	cin.get();
+	return 0;
+}
+// Implement the function, that transforms string into integer.
+int my_atoi(const char*  src)
+{
+	bool isNegative = false;
+	char* str = my_trimLeft(src);
+	if(str == NULL)
+	{
+		return EXIT_FAILURE;			// input error, terminating
+	}
+	if(str[0] == MINUS)
+	{
+		isNegative = true;
+		str++;
+	}
+	int result = 0;
+	int digit = 1;
+	const int DIGIT_DIFFERENCE = 10;
+	const char ZERO_SYMBOL = '0';
+	for(int i = (strlen(str)-1); i >= 0; i--)
+	{
+		result = result + (digit * int(str[i]-ZERO_SYMBOL));
+		digit = digit * DIGIT_DIFFERENCE;
+	}
+	if(isNegative == false)
+	{
+		delete [] str;
+		return result;
+	}
+	else
+	{
+		str--;
+		delete [] str;
+		return -result;
+	}
+}
+char* my_trimLeft(const char* src)
+{
+	if(strlen(src) == 0)	// there's no string
+	{
+		return NULL;
+	}
+	char* resultStr = new char[strlen(src)];
+	int srcIndex = 0;
+	int resultIndex = 0;
+	while(	(0 == isdigit(src[srcIndex]))
+		&&
+			(srcIndex < strlen(src))
+		)
+	{
+		if ((src[srcIndex] == MINUS) && (0 != isdigit(src[srcIndex+1])))
+		{
+			resultStr[resultIndex] = MINUS;
+			resultIndex++;
+		}
+		srcIndex++;
+	}
+	// now srcIndex indexes the first numeric in the string
+	while(	(0 != isdigit(src[srcIndex]))
+		&&
+			(srcIndex < strlen(src))
+		)
+	{
+		resultStr[resultIndex] = src[srcIndex];
+		resultIndex++;
+		srcIndex++;
+	}
+	resultStr[resultIndex] = '\0';
+	if(resultIndex == 0)	// no numerics in the string
+	{
+		return NULL;
+	}
+	return resultStr;
+}
+
+
+int my_atoi(const char*  src)
+{
+  int result = 0;
+  const char*  tmp_src;
+  tmp_src = src;
+
+  if (*tmp_src=='-')
+	  tmp_src++;
+  for(;strlen(tmp_src)>0; result = (result*10) + ((char)*(tmp_src++)-'0'));
+  result *= (*src == '-') ? -1 : 1;
+  
+  return result;
+}
+
+
+#include <iostream.h>
+#include <string.h>
+#include <ctype.h>
+
+char *itoa (int n, char *s)
+{
+ char *t=s;
+ int z=0;
+ 
+ if (n<0) { z=1; n = -n; }
+ do *s++ = n%10 + '0';
+ while (n/=10);
+ if (z) *s++ = '-';
+ *s = '\0';
+ 
+ return strrev(t);
+}
+
+int atoi (char *s)
+{
+ int z=0, n=0;
+ while(isspace(*s)) s++;
+ 
+ if (*s=='-')
+ { z=1; s++; }
+ else if (*s=='+')
+	 s++;
+ while (isdigit(*s))
+	 n = (10*n) + *s++ - '0';
+ return (z?-n:n);
+}
+
+void main ()
+{
+ int n=-31289;
+ char buf[80];
+ cout << "\nitoa=" << itoa (n,buf);
+ cout << "\natoi=" << atoi (buf);
+ cin.get();
+}
+
+/////////////////////////////////////////////////////////////
+// РАЗВЕРНУТЬ СТРОКУ
+/////////////////////////////////////////////////////////////
+
+// STL РЕШЕНИЕ
+#include <iostream>
+#include<string>
+#include <algorithm>
+
+std::string goodbyeWorld="Hello World";
+std::reverse(goodbyeWorld.begin(), goodbyeWorld.end());
+std::cout<<goodbyeWorld<<std::endl;
+
+// ШАБЛОННОЕ РЕШЕНИЕ
+#include <iostream>
+#include <algorithm>
+
+template<typename T> void t_reverse(T* a, T* b) 
+{
+    T t;
+    for(b -= 1; a < b; ++a, --b) {
+        t  = *a;
+       *a = *b;
+       *b = t;
+   }
+}
+
+
+int main()
+{
+   char s[] = "123";
+   puts(s);  // исходная строка
+   t_reverse(s, s + strlen(s));
+   puts(s);  // вывод реверс-строки
+	
+   double arr[] = { 10.99, 34.66, 3.14567, 1.7 };
+   int size  = sizeof(arr)/sizeof(arr[0]);
+
+   // выведем исходный массив
+   std::copy(arr, arr + size, std::ostream_iterator<double>(std::cout, "\t"));
+   t_reverse(arr, arr + size);
+   std::cout << std::endl;
+   // выведем реверс массив
+   std::copy(arr, arr + size, std::ostream_iterator<double>(std::cout, "\t"));
+   return 0;
+}
+
+
+
+// РЕКУРСИВНОЕ РЕШЕНИЕ
+#include <iostream.h>
+ 
+void RevStr(char* S,int l)
+{
+    char c;
+    if (l > 1)
+    {
+      c=S[0];
+      S[0]=S[l-1];
+      S[l-1]=c;
+      RevStr(S+1,l-2);
+    }             
+}       
+ 
+int main(int argc, char* argv[])
+{
+    char S[12]="Test of pen";
+    RevStr(S,11);
+    cout << S << endl;
+    return 0;
+}
+
+
+// РЕШЕНИЕ НА УКАЗАТЕЛЯХ
+char* strrev(char* str)
+{
+    char* left = str;
+    char* rigth = str;
+    while (*str++)
+		str -= 2;
+    while (left < str)
+    {
+        char c = *left;
+        *left++ = *str;
+        *str-- = c;
+    }
+    return rigth;
+}
+
+int main()
+{
+    char x[100] = {"String reverse"};
+    std::cout << strrev(x);
+    return 0;
+}
+
+// ЧЕРЕЗ ПОЛОВИНУ С ЛЕВОЙ СТОРОНЫ
+{
+   char str[] = "12345678";
+   const size_t strLen = sizeof(str);
+   for (size_t i = (strLen/2)-1; i--;)
+      swap(str[i], str[strLen-i-2]);
+   cout << str << endl;
+}
+
+// ЧЕРЕЗ ПОЛОВИНУ С ПРАВОЙ СТОРОНЫ
+  l = strlen(s);
+  for (i = 0; i < l/2; i++)
+  {
+     s[l+1] = s[i];
+     s[i] = s[l-i];
+     s[l-i] = s[l+1];
+  } 
+  s[l+1]=0;
+
+  
