@@ -112,6 +112,10 @@ http://ci-plus-plus-snachala.ru/?p=60
 http://ru.stackoverflow.com/questions/381470/Перестановка-элементов-в-односвязном-списке
 
 
+# Some info about basic strings, char pointers and strings in a buffer
+
+http://www.math.spbu.ru/user/dlebedin/ncpp11.pdf
+
 # CLASS Mystring
 
 http://www.sql.ru/forum/909926/ispolzovanie-sobstvennogo-klassa-strok
