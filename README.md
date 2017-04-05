@@ -6,6 +6,24 @@ http://www.vseinstrumenti.ru/ruchnoy_instrument/dlya_shtukaturno-otdelochnyh_rab
 http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 
 
+
+
+# OFTEN USED CODE PARTS:
+
+double arr[] = { 10.99, 34.66, 3.14567, 1.7 };
+int size  = sizeof(arr)/sizeof(arr[0]);
+
+
+
+
+
+# C++ LECTURES:
+
+double arr[] = { 10.99, 34.66, 3.14567, 1.7 };
+int size  = sizeof(arr)/sizeof(arr[0]);
+   
+   
+
 # C++ LECTURES:
 
 STACK AND HEAP IN C++ - https://www.youtube.com/watch?v=_8-ht2AKyH4
