@@ -11,10 +11,13 @@ http://www.vseinstrumenti.ru/selfDelivery/shop/3.html
 # OFTEN USED CODE PARTS:
 
 double arr[] = { 10.99, 34.66, 3.14567, 1.7 };
+
 int size  = sizeof(arr)/sizeof(arr[0]);
 
 
+# MY SHARED_PTR:
 
+http://www.cyberforum.ru/cpp-beginners/thread943866.html
 
 
 # C++ LECTURES:
