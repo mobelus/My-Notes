@@ -1,3 +1,7 @@
+# DIRECTSHOW
+
+Try downloading SDK such as Windows SDK "http://www.microsoft.com/downloads/details.aspx?FamilyID=6b6c21d2-2006-4afa-9702-529fa782d63b&displaylang=en". There are usually a bunch of samples for directshow. But, mainly they either use commandline "nmake" (not make) or "cl" (not cc or gcc) to build. Sometimes they provide *.sln files to be used under VS. Your vcam package is only a dll and you still need to write an application to test this. Based on the samples from there, I believe you can be able to cook up one hello-world app for your vcam ;)
+
 
 # маркер edding 140s ЧЕРНЫЙ
 
