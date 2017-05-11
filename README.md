@@ -1,4 +1,7 @@
 
+http://knizhnik.org/dzhasper-fforde/polnyj-vpered-nazad-ili-ottenki-serogo/1?d=0
+
+
 /*
 ////////////////////////////////////
 ITERATOR:
