@@ -1243,6 +1243,13 @@ QT - 3D-Bildbearbeitung / CAD-/CAM-Umfeld - http://stellenanzeige.monster.de/sof
 
 
 
+# USA JOB SEARCH INSTRUCTIONS
+
+https://habrahabr.ru/post/285640/
+
+# USA JOB SEARCH INSTRUCTIONS
+
+
 
 # USA JOB OFFER
 
@@ -1465,3 +1472,18 @@ Tamara
 ключи от шлагбаума
 чистый подъед
 лифт заменен на новый 2017 год
+
+
+# DATABASE QUREIS IN YEARS: 
+
+458 549,16   -  21.01.18 
+
+306 559,15   -  07.07.17
+
+198 111,05   -  24.06.17
+
+473 740,98   -  05.01.18
+
+533 476,20   -  23.12.17
+
+496 353,01   -  02.12.17
