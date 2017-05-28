@@ -1,4 +1,46 @@
 
+# NIGHT SHIFTS:
+
+https://career.ru/vacancy/20487562?query=%D1%82%D0%B0%D0%BD%D1%86%D0%BE%D0%B2%D1%89%D0%B8%D0%BA
+	
+
+https://career.ru/vacancy/20558955?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+
+https://career.ru/vacancy/20593762?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+
+
+https://career.ru/vacancy/20038408?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+(2-3 месяца) дневной график: смены чередуются (8.00-14.00 / 14.00-20.00 или 8.00-20.00)
+
+http://rabotavmcdonalds.ru/vacancy/rabotnik_restorana/?utm_source=careerru&utm_medium=banner_760_60&utm_campaign=russia
+
+https://career.ru/vacancy/20413032?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+
+https://hh.ru/vacancy/19962324?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+1 неделя стажировки - 5 дней с 10 до 18 (!!!)
+
+
+https://career.ru/vacancy/20674968?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+
+https://career.ru/vacancy/20674899
+
+
+https://hh.ru/vacancy/18552430?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+https://career.ru/vacancy/18600556?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+https://hh.ru/vacancy/17654036?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+https://career.ru/vacancy/18481877?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+https://career.ru/vacancy/17309095?query=%D0%BD%D0%BE%D1%87%D0%BD%D0%BE%D0%B9
+
+# NIGHT SHIFTS
+
+
+
+
+
+
+
+
+
 http://knizhnik.org/dzhasper-fforde/polnyj-vpered-nazad-ili-ottenki-serogo/1?d=0
 
 
