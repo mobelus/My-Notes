@@ -1,5 +1,7 @@
 
 # NIGHT SHIFTS:
+https://hh.ru/vacancy/20388381?utm_source=gorodrabot.ru&utm_medium=referral&utm_campaign=gr
+
 
 https://career.ru/vacancy/20487562?query=%D1%82%D0%B0%D0%BD%D1%86%D0%BE%D0%B2%D1%89%D0%B8%D0%BA
 	
