@@ -1,4 +1,63 @@
 
+Т.к. В том чате уже идет взаимодействие с 3 людьми
+edited 
+В первую очередь надо ознакомиться с 
+http://getbootstrap.com/
+http://getbootstrap.com/css/#grid
+Это фреймворк для работы с css
+
+Потом фреймворк Angular2(он уже 4, но это не важно)
+https://angular.io/
+
+Для того чтобы быстро начать работу на нем, тебе поможет геренатор проекта:
+https://github.com/angular/angular-cli
+Getbootstrap
+Bootstrap · The world's most popular mobile-first and responsive front-end framework.
+Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
+ обещанная книга по второму ангуляру
+[ng-book2-angular-4-r60.pdf] 30.1 MB
+[ng-book2-angular-4-r60-code-samples.zip] 11.6 MB
+ https://career.luxoft.com/careers/150789/senior-regular-c-developer/
+https://career.luxoft.com/careers/143386/dsp-audio-embedded-developer/
+куда тебя лучше порекомендовать?
+
+Luxoft
+Senior/Regular C++ Developer - May 30, 2017 - Moscow, Russian Federation
+Luxoft is looking for Senior/Regular C++ Developer in Moscow, Russian Federation - May 30, 2017
+ Еще одна вакансия по шарпам
+https://career.luxoft.com/careers/145307/regular-senior-net-asp-developer/
+
+Luxoft
+Regular/Senior .NET ASP Developer - May 2, 2017 - Moscow, Russian Federation
+Luxoft is looking for Regular/Senior .NET ASP Developer in Moscow, Russian Federation - May 2, 2017
+ Ты кстати с гитхабом хорошо дружишь?
+
+Книги пришли пожалуйста вот сюда
+Я ж вроде уже прислал
+ или тебе на почту?
+
+mobelus@mail.ru
+
+Жень,  пока всё только просматриваю поверхностно, и в лёгкую гуглю. Исходя из инструкции на гитхабе вопрос такой, Ангулярный проект ставится на Винду нормально ?
+
+[12:38:47 PM] Евгений Миронов Джавист:
+Да, вполне себе ставится)
+ https://nodejs.org/en/
+ ставь 6.10 версию
+
+[12:49:09 PM] Pavel:
+Ок
+
+[12:50:06 PM] Евгений Миронов Джавист:
+Кстати, финансовые вопросы тебе придется решать с Сашей, рекомендую обсудить сразу время, финансы и т.д., чтобы вы хорошо понимали друг друга
+ Чтобы не получилось, что ты тратишь своё время впустую
+
+[12:53:09 PM] Pavel:
+Окей
+
+
+
+
 
 
 http://getbooststrap.com
