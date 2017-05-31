@@ -1,4 +1,15 @@
 
+
+
+http://getbooststrap.com
+http://getbooststrap.com/css/#grid
+
+https://angular.io
+
+https://github.com/angular/angular-cli
+
+
+
 # NIGHT SHIFTS:
 https://hh.ru/vacancy/20388381?utm_source=gorodrabot.ru&utm_medium=referral&utm_campaign=gr
 
