@@ -1,9 +1,9 @@
 # ANALITIK:
-https://habrahabr.ru/post/178475/
-https://habrahabr.ru/company/nordavind/blog/177571/
-http://jobfine.ru/rabota/analitik-chto-nuzhno-znat/
-http://buduguru.org/profession/23
 
+- https://habrahabr.ru/post/178475/
+- https://habrahabr.ru/company/nordavind/blog/177571/
+- http://jobfine.ru/rabota/analitik-chto-nuzhno-znat/
+- http://buduguru.org/profession/23
 
 # ANALITIK:
 
