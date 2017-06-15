@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="WINDOWS-1251" standalone="no"?>
+<root>
+    <region>Москва и область</region>
+    <ts>
+        <type_ts code="2">Легковые автомобили (ТС категории "В")</type_ts>
+        <marka code="181000000">Kia</marka>
+        <model code="181007204">RIO</model>
+        <VIN></VIN>
+        <year>2010</year>
+        <power>0</power>
+        <state_reg_sign></state_reg_sign>
+        <pts_ser>4444</pts_ser>
+        <pts_num>9999</pts_num>
+        <pts_date></pts_date>
+        <chassis></chassis>
+        <body></body>
+        <reg_sert_ser></reg_sert_ser>
+        <reg_sert_num></reg_sert_num>
+        <reg_sert_date></reg_sert_date>
+    </ts>
+    <persons>
+        <person code="4">
+            <first_name>Олег</first_name>
+            <second_name>Евгеньевич</second_name>
+            <last_name>Дмитриев</last_name>
+            <inn></inn>
+            <opf_id>0</opf_id>
+            <ogrn></ogrn>
+            <physical_bitrh_date>15.08.1979</physical_bitrh_date>
+            <physical_sex>0</physical_sex>
+            <exact_address>143986, Россия, Московская обл., г. Железнодорожный, ул. Автозаводская, д. 4, к. 4, кв. 2.</exact_address>
+            <code_kladr>5000000400001240002</code_kladr>
+            <country>Россия</country>
+            <region></region>
+            <place></place>
+            <zip></zip>
+            <street></street>
+            <house></house>
+            <building></building>
+            <flat></flat>
+            <documents>
+                <document code="12">Паспорт гражданина РФ</document>
+                <document_series>1502</document_series>
+                <document_number>797885</document_number>
+                <document_issue_date>24.09.2002</document_issue_date>
+                <document_issue_organization>ОВД Советского района г. Брянска</document_issue_organization>
+            </documents>
+            <contacts>
+                <contact contact_type_type_id="1" contact_data=""/>
+                <contact contact_type_type_id="3" contact_data=""/>
+            </contacts>
+        </person>
+        <person code="18">
+            <first_name></first_name>
+            <second_name></second_name>
+            <last_name>Русь Банк</last_name>
+            <inn></inn>
+            <opf_id>1010</opf_id>
+            <ogrn></ogrn>
+            <physical_bitrh_date></physical_bitrh_date>
+            <physical_sex>-1</physical_sex>
+            <exact_address></exact_address>
+            <code_kladr></code_kladr>
+            <country></country>
+            <region></region>
+            <place></place>
+            <zip></zip>
+            <street></street>
+            <house></house>
+            <building></building>
+            <flat></flat>
+            <documents>
+                <document code="21">Свидетельство о внесении записи в Единый государственный реестр юридических лиц</document>
+                <document_series></document_series>
+                <document_number></document_number>
+                <document_issue_date></document_issue_date>
+                <document_issue_organization></document_issue_organization>
+            </documents>
+            <contacts>
+                <contact contact_type_type_id="1" contact_data=""/>
+                <contact contact_type_type_id="3" contact_data=""/>
+            </contacts>
+        </person>
+        <person code="8">
+            <first_name>Олег</first_name>
+            <second_name>Евгеньевич</second_name>
+            <last_name>Дмитриев</last_name>
+            <inn></inn>
+            <opf_id>0</opf_id>
+            <ogrn></ogrn>
+            <physical_bitrh_date>15.08.1979</physical_bitrh_date>
+            <physical_sex>0</physical_sex>
+            <exact_address>143986, Россия, Московская обл., г. Железнодорожный, ул. Автозаводская, д. 4, к. 3, кв. 2.</exact_address>
+            <code_kladr></code_kladr>
+            <country></country>
+            <region></region>
+            <place></place>
+            <zip></zip>
+            <street></street>
+            <house></house>
+            <building></building>
+            <flat></flat>
+            <documents>
+                <document code="12">Паспорт гражданина РФ</document>
+                <document_series>1502</document_series>
+                <document_number>797885</document_number>
+                <document_issue_date>24.09.2002</document_issue_date>
+                <document_issue_organization>ОВД Советского района г. Брянска</document_issue_organization>
+            </documents>
+            <contacts>
+                <contact contact_type_type_id="1" contact_data=""/>
+                <contact contact_type_type_id="3" contact_data=""/>
+            </contacts>
+        </person>
+        <person code="32">
+            <first_name>Олег</first_name>
+            <second_name>Евгеньевич</second_name>
+            <last_name>Дмитриев</last_name>
+            <inn></inn>
+            <opf_id>0</opf_id>
+            <ogrn></ogrn>
+            <physical_bitrh_date>15.08.1974</physical_bitrh_date>
+            <physical_sex>0</physical_sex>
+            <exact_address></exact_address>
+            <code_kladr></code_kladr>
+            <country></country>
+            <region></region>
+            <place></place>
+            <zip></zip>
+            <street></street>
+            <house></house>
+            <building></building>
+            <flat></flat>
+            <documents>
+                <document code="17">Водительское удостоверение РФ</document>
+                <document_series>222</document_series>
+                <document_number>99999</document_number>
+                <document_issue_date>18.12.1999</document_issue_date>
+                <document_issue_organization></document_issue_organization>
+            </documents>
+            <contacts>
+                <contact contact_type_type_id="1" contact_data=""/>
+                <contact contact_type_type_id="3" contact_data=""/>
+            </contacts>
+        </person>
+    </persons>
+</root>
