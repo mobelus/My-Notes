@@ -1,3 +1,160 @@
+
+
+http://a4academics.com/interview-questions/57-c-plus-plus/419-cpp-interview-questions-answers
+
+http://www.arraynotfound.com/2016/07/cpp-interview-questions-and-answers-from-freshers-to-experienced.html#Q_7_1_1
+
+https://tests4geeks.com/cpp-interview-questions/
+
+https://stackoverflow.com/questions/9736833/new-intsize-vs-stdvector
+
+http://www.geeksforgeeks.org/commonly-asked-c-interview-questions-set-1/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+DROP VIEW APO.AUTODEALER_COMPANY;
+
+/* Formatted on 16.06.2017 14:22:56 (QP5 v5.149.1003.31008) */
+CREATE OR REPLACE FORCE VIEW APO.AUTODEALER_COMPANY
+(
+   ID,
+   SUBJECT_FEDERATION_CODE_FK,
+   AUTO_DEALER_ID_FK
+)
+AS
+   SELECT id, subject_federation_code_fk, auto_dealer_id_fk
+     FROM rgsscc.ref_autodealer_company1
+    WHERE     date_from <= SYSDATE
+          AND NVL (date_to, SYSDATE) >= SYSDATE
+          AND START_date <= SYSDATE
+          AND NVL (END_date, SYSDATE) >= SYSDATE;
+	  
+	  
+
+
+
+	  
+DROP VIEW APO.FRANSHIZE_7_3_53;
+
+/* Formatted on 16.06.2017 14:24:24 (QP5 v5.149.1003.31008) */
+CREATE OR REPLACE FORCE VIEW APO.FRANSHIZE_7_3_53
+(
+   K4_ID,
+   CODE_T_FR,
+   NAME_T_FR,
+   CODE_ED_IZM_FR,
+   NAME_ED_IZM_FR,
+   FRANCHISE_PERCENT,
+   VEHICLE_GROUP_ID,
+   VEHICLE_GROUP_NAME,
+   PRODUCT_ID,
+   PRODUCT_NAME,
+   CASCO_TERRITORY_ID,
+   CASCO_TERRITORY_NAME,
+   CODE,
+   BRAND_NAME,
+   MODEL_NAME,
+   PROJECT_ID,
+   PROJECT_NAME,
+   COEFF_VALUE,
+   START_DATE,
+   END_DATE
+)
+AS
+     SELECT ckk_7_3_53.k4_id,
+            ckk_4_2_34.code_t_fr,
+            ckk_4_2_34.name_t_fr,
+            ckk_4_2_35.code_ed_izm_fr,
+            ckk_4_2_35.name_ed_izm_fr,
+            ckk_7_3_53.franchise_percent,
+            ckk_7_2_9.vehicle_group_id,
+            ckk_7_2_9.vehicle_group_name,
+            ckk_7_3_2.product_id,
+            ckk_7_3_2.product_name,
+            ckk_7_2_8.casco_territory_id,
+            ckk_7_2_8.casco_territory_name,
+            ckk_5_1_3.code,
+            ckk_5_1_3.brand_name,
+            ckk_5_1_3.model_name,
+            ckk_7_4_8.project_id,
+            ckk_7_4_8.project_name,
+            ckk_7_3_53.coeff_value,
+            ckk_7_3_53.start_date,
+            ckk_7_3_53.end_date
+       FROM rgsscc.ref_cascodictk04 ckk_7_3_53
+            LEFT JOIN rgsscc.ref_autodictvehiclegroup ckk_7_2_9
+               ON (ckk_7_3_53.vehicle_group_id_lnk_fk_ = ckk_7_2_9.scc_id
+                   AND ckk_7_2_9.scc_status = 0)
+            LEFT JOIN rgsscc.ref_ed_izm_franshiza ckk_4_2_35
+               ON (ckk_7_3_53.to_4235_fk_ = ckk_4_2_35.scc_id
+                   AND ckk_4_2_35.scc_status = 0)
+            LEFT JOIN rgsscc.ref_product ckk_7_3_2
+               ON (ckk_7_3_53.to_732_fk_ = ckk_7_3_2.scc_id
+                   AND ckk_7_3_2.scc_status = 0)
+            LEFT JOIN rgsscc.ref_autodictcascoterritory ckk_7_2_8
+               ON (    ckk_7_3_53.link_7353_to_728_fk_ = ckk_7_2_8.scc_id
+                   AND ckk_7_2_8.scc_status = 0
+                   AND ckk_7_2_8.active_entry = 'Y')
+            LEFT JOIN apo.carrier_models ckk_5_1_3
+               ON ckk_7_3_53.vehicle_code_fk_ = ckk_5_1_3.scc_id
+            LEFT JOIN rgsscc.ref_dictproject ckk_7_4_8
+               ON (ckk_7_3_53.project_id_fk_ = ckk_7_4_8.scc_id
+                   AND ckk_7_4_8.scc_status = 0)
+            LEFT JOIN rgsscc.ref_t_franshiza ckk_4_2_34
+               ON (ckk_7_3_53.code_t_fr_lnk_fk_ = ckk_4_2_34.scc_id
+                   AND ckk_4_2_34.scc_status = 0)
+      WHERE ckk_7_3_53.scc_status = 0
+   ORDER BY TO_NUMBER (ckk_7_3_2.product_id),
+            TO_NUMBER (ckk_4_2_34.code_t_fr),
+            TO_NUMBER (ckk_7_3_53.franchise_percent),
+            TO_NUMBER (ckk_7_2_9.vehicle_group_id),
+            TO_NUMBER (ckk_4_2_35.code_ed_izm_fr);	  
+
+
+
+
+DROP VIEW APO.NSFA_DICT_PAY_DOCTYPE_7_4_33;
+
+/* Formatted on 16.06.2017 14:25:09 (QP5 v5.149.1003.31008) */
+CREATE OR REPLACE FORCE VIEW APO.NSFA_DICT_PAY_DOCTYPE_7_4_33
+(
+   ID,
+   IS_USE_PAY_VIRTU,
+   PAYMENT_DOC_ID,
+   PAYMENT_DOC_NAME
+)
+AS
+   SELECT skk_7_4_33.ID,
+          skk_7_4_33.IS_USE_PAY_VIRTU,
+          CAST (skk_7_4_33.PAYMENT_DOC_ID AS NUMBER) AS PAYMENT_DOC_ID,
+          skk_7_4_33.PAYMENT_DOC_NAME
+     FROM rgsscc.REF_DICTPAYMENTDOCUMENT skk_7_4_33
+    WHERE skk_7_4_33.scc_status = 0;
+    
+    
+    
+
 # ANALITIK:
 
 - https://habrahabr.ru/post/178475/
