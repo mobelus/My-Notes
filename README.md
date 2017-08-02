@@ -1,6 +1,46 @@
+
 # CURRENT WORK:
 
 https://trello.com/b/Fq1hkaXR/blackbird-web
+
+
+
+# DEUTSCHLAND WORK:
+
+Lead Software Engineer | Bildverarbeitung im Automotive-Umfeld | bis 80.000€ | Inhouse (m/w)
+
+http://stellenanzeige.monster.de/lead-software-engineer-bildverarbeitung-im-automotive-umfeld-bis-80-000%E2%82%AC-inhouse-m-w-job-stuttgart-baden-w%C3%BCrttemberg-deutschland-175698424.aspx?mescoid=1100011001001&jobPosition=2
+
+
+Leiter Softwareentwicklung C++ | Verantwortung für 15 Mitarbeiter | bis 100.000 € (m/w)
+
+http://stellenanzeige.monster.de/leiter-softwareentwicklung-c-verantwortung-f%C3%BCr-15-mitarbeiter-bis-100-000-%E2%82%AC-m-w-job-gro%C3%9Fraum-stuttgart-baden-w%C3%BCrttemberg-deutschland-185780809.aspx?mescoid=1100011001001&jobPosition=2
+
+
+Softwareentwickler C#/WPF und/oder C++/MFC (m/w)
+
+http://stellenanzeige.monster.de/softwareentwickler-c-wpf-und-oder-c-mfc-m-w-job-aachen-nordrhein-westfalen-deutschland-186267323.aspx?mescoid=1500127001001&jobPosition=2
+
+Softwareentwickler C++ / QT / QML | Bedienoberfläche / GUI / HMI für Medizintechnik | Inhouse (m/w)
+
+http://stellenanzeige.monster.de/softwareentwickler-c-qt-qml-bedienoberfl%C3%A4che-gui-hmi-f%C3%BCr-medizintechnik-inhouse-m-w-job-frankfurt-am-main-hessen-deutschland-181337266.aspx?mescoid=1500127001001&jobPosition=2
+
+Softwarearchitekt und Softwareentwickler C++ | Labortechnik | bis 90T € | Inhouse (m/w)
+
+http://stellenanzeige.monster.de/softwarearchitekt-und-softwareentwickler-c-labortechnik-bis-90t-%E2%82%AC-inhouse-m-w-job-m%C3%BCnchen-nord-bayern-deutschland-186544018.aspx?mescoid=1500127001001&jobPosition=2
+
+Senior C++ Architekt/ Technische Leitung (m/w) Standort Bremen
+
+http://stellenanzeige.monster.de/senior-c-architekt-technische-leitung-m-w-standort-bremen-job-bremen-bremen-deutschland-185000187.aspx?mescoid=9901111000004&jobPosition=2
+
+Softwareentwickler C++ | Software unter MS Visual Studio entwickeln | bis zu 80.000 € (m/w)
+
+http://stellenanzeige.monster.de/softwareentwickler-c-software-unter-ms-visual-studio-entwickeln-bis-zu-80-000-%E2%82%AC-m-w-job-m%C3%BCnchen-hamburg-stuttgart-deutschland-185780236.aspx?mescoid=1500127001001&jobPosition=2
+
+Softwareentwickler C++ / QT / QML | Bedienoberfläche / GUI / HMI für Medizintechnik | Inhouse (m/w)
+
+http://stellenanzeige.monster.de/softwareentwickler-c-qt-qml-bedienoberfl%C3%A4che-gui-hmi-f%C3%BCr-medizintechnik-inhouse-m-w-job-frankfurt-am-main-hessen-deutschland-181337266.aspx?mescoid=1500127001001&jobPosition=2
+
 
 ////////////////////////////////////////////////////////////////
 
