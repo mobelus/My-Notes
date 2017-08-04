@@ -5,6 +5,33 @@ https://trello.com/b/Fq1hkaXR/blackbird-web
 
 
 
+# MOUNTING BAR FILE:
+
+Rem отключаем вывод сообщений
+Rem задать метку здесь: HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MountPoints2
+@Echo Off
+
+Rem получаем доступ к ErrorLevel
+SetLocal EnableExtensions EnableDelayedExpansion
+
+Rem Удаляем существующие сетевые подключения
+Rem net use /delete * /yes
+net use /delete Z: /yes
+
+Rem пытаемся получить ответ от сервера - иначе сетевой диск недоступен
+Rem our_server_name заменить на имя компьютера или IP-адрес
+:Loop
+Ping -n 1 -l 1 -w 1000 oroos-serv.ss.rgs.ru
+If Not %ErrorLevel%==0 GoTo :Loop
+
+Rem собственно подключаем сетевой диск
+Rem следует указать верные данные!
+NET USE Z: \\oroos-serv.ss.rgs.ru\C$ /PERSISTENT:NO /User:RGSMAIN\oroos z80orionpc$
+
+Rem завершаем bat-файл, закрываем окно CMD
+Exit
+
+
 ////////////////////////////////////////////////////////////////
 
 
