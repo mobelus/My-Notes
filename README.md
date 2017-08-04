@@ -1665,13 +1665,6 @@ BEST HOME
 
 http://www.gotfreefax.com/Fax-to-Germany.aspx
 
-Pavel
-omnio2006@ya.ru
-+79263862556
-
-Tamara
-+492113613736
-
 
 4930568373288
 
