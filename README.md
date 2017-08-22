@@ -2,6 +2,61 @@
 My first Project on Github
 
 
+#include <cstring>
+#include <iostream>
+
+class Object
+{
+public:
+	char  mas[32];
+	char* arr;
+
+	Object()
+	{}
+
+	~Object()
+	{if(arr) delete arr;}
+
+	void operator=(const Object& _obj)
+	{
+		//memcpy(this, _obj, sizeof(_obj));
+
+		//this->mas = _obj.mas; // must be a modified lvalue
+		memcpy(this->mas, _obj.mas, sizeof(_obj.mas)); // must be a modified lvalue
+		if (_obj.arr)
+		{ this->arr = _obj.arr;} // Два объекта будут указывать на одну и ту же память
+		//когда вызовется  delete()  то 
+	}
+
+};
+
+
+
+
+
+/*
+	Мои фейлы:
+	1) 
+	arr[100];
+	ar[100];
+	ar = arr; // ТАК НЕЛЬЗЯ !!
+	memcpy(ar, arr);
+
+	2) есть 
+	char* a;
+
+	a = b; // НЕЛЬЗЯ
+	и a и b будут казывать на одну и ту же память.
+	и после если будет
+	delete a;
+	то и b будет невалидным указателем, как и а !!!
+
+*/
+
+
+
+
+
 https://stackoverflow.com/questions/39383936/correctly-overload-assignment-operator-for-classes-with-pointer-members
 
 
