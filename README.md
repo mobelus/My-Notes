@@ -2,6 +2,53 @@
 My first Project on Github
 
 
+https://stackoverflow.com/questions/39383936/correctly-overload-assignment-operator-for-classes-with-pointer-members
+
+
+class Array
+{
+public:
+    Array(int N)
+    {
+         size = N;
+         arr = new int[N];
+    }
+
+    //destructor
+    ~Array()
+    {
+        delete[] arr;
+    }
+
+    //copy constructor
+    Array(const Array& arr2)
+    {
+        size = arr2.size;
+        arr = new int[size];
+        std::memcpy(arr, arr2.arr, size);
+    }
+
+    //overload = operator
+    Array& operator=(const Array& arr2) 
+    {
+        if (this == &arr2)
+            return *this; //self assignment
+        if (arr != NULL)
+            delete[] arr; //clean up already allocated memory
+
+        size = arr2.size;
+        arr = new int[size];
+        std::memcpy(arr, arr2.arr, size);
+        return *this;
+    }
+
+private:
+    int size;    //array elements
+    int *arr;    //dynamic array pointer
+};
+
+
+
 
 О работе:
 Пришёл работать тестировщиком ПО в компанию Айсберг.
