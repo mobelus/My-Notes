@@ -1,9 +1,14 @@
+Алан Пол - ОБЪЕКТНО-ОРИЕНТИРОВАННОЕ ПРОГРАММИРОВАНИЕ НА C++ 
+http://fis.tntu.edu.ua/data/elibrary/3/oop_cpp.pdf
 
 
+С++ библиотеки ВСЕХ мастей и на ВСЕ случаи жизни
 https://github.com/fffaraz/awesome-cpp#bittorrent
 
 
+Е. В. Пышкин - Структуры данных и алгоритмы: реализация на С/С++
 http://kspt.icc.spbstu.ru/media/files/people/pyshkin/books/AlgDataStrA5_2009.pdf
+
 
 
 # My-Notes
