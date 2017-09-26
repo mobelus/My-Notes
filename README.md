@@ -1,4 +1,10 @@
-  Алан Пол - ОБЪЕКТНО-ОРИЕНТИРОВАННОЕ ПРОГРАММИРОВАНИЕ НА C++ 
+
+Все, что вы хотели знать о сексе, но боялись спросить
+
+http://gidonline.club/2016/02/vse-chto-vy-xoteli-znat-o-sekse-no-boyalis-sprosit/
+
+
+Алан Пол - ОБЪЕКТНО-ОРИЕНТИРОВАННОЕ ПРОГРАММИРОВАНИЕ НА C++ 
   
 http://fis.tntu.edu.ua/data/elibrary/3/oop_cpp.pdf
 
