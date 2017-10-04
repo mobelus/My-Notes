@@ -43,6 +43,7 @@ My first Project on Github
 Простой нагрузочный тест с Apache JMeter / Хабрахабр
 
 
+{
 
 #include <cstring>
 #include <iostream>
@@ -72,10 +73,10 @@ public:
 
 };
 
+}
 
 
-
-
+{
 /*
 	Мои фейлы:
 	1) 
@@ -92,15 +93,18 @@ public:
 	и после если будет
 	delete a;
 	то и b будет невалидным указателем, как и а !!!
+	
+	
 
 */
-
+}
 
 
 
 
 https://stackoverflow.com/questions/39383936/correctly-overload-assignment-operator-for-classes-with-pointer-members
 
+{
 
 class Array
 {
@@ -143,7 +147,7 @@ public:
     
 };
 
-
+}
 
 
 О работе:
