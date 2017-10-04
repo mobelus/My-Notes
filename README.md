@@ -43,7 +43,8 @@ My first Project on Github
 Простой нагрузочный тест с Apache JMeter / Хабрахабр
 
 
-{
+	Object()
+	{}
 
 #include <cstring>
 #include <iostream>
@@ -75,6 +76,16 @@ public:
 
 }
 
+	void operator=(const Object& _obj)
+	{
+		//memcpy(this, _obj, sizeof(_obj));
+
+		//this->mas = _obj.mas; // must be a modified lvalue
+		memcpy(this->mas, _obj.mas, sizeof(_obj.mas)); // must be a modified lvalue
+		if (_obj.arr)
+		{ this->arr = _obj.arr;} // Два объекта будут указывать на одну и ту же память
+		//когда вызовется  delete()  то 
+	}
 
 {
 /*
