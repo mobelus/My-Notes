@@ -46,20 +46,20 @@ My first Project on Github
 	#include <cstring>
 	#include <iostream>
 
-class Object
-{
-public:
-	char  mas[32];
-	char* arr;
-
-	Object()
-	{}
-
-	~Object()
-	{if(arr) delete arr;}
-
-	void operator=(const Object& _obj)
+	class Object
 	{
+	public:
+	  char  mas[32];
+	  char* arr;
+
+	  Object()
+	  {}
+
+	  ~Object()
+	  {if(arr) delete arr;}
+
+	  void operator=(const Object& _obj)
+	  {
 		//memcpy(this, _obj, sizeof(_obj));
 
 		//this->mas = _obj.mas; // must be a modified lvalue
@@ -67,25 +67,12 @@ public:
 		if (_obj.arr)
 		{ this->arr = _obj.arr;} // Два объекта будут указывать на одну и ту же память
 		//когда вызовется  delete()  то 
-	}
+	  }
 
-};
+	};
 
-}
 
-	void operator=(const Object& _obj)
-	{
-		//memcpy(this, _obj, sizeof(_obj));
-
-		//this->mas = _obj.mas; // must be a modified lvalue
-		memcpy(this->mas, _obj.mas, sizeof(_obj.mas)); // must be a modified lvalue
-		if (_obj.arr)
-		{ this->arr = _obj.arr;} // Два объекта будут указывать на одну и ту же память
-		//когда вызовется  delete()  то 
-	}
-
-{
-/*
+	/*
 	Мои фейлы:
 	1) 
 	arr[100];
@@ -102,61 +89,64 @@ public:
 	delete a;
 	то и b будет невалидным указателем, как и а !!!
 	
+	3) 
+	class A {};
 	
+	void main()
+	{
+	  A a = new A();
+	}
+	
+	// НЕ ХВАТАЕТ оператора   delete a;
 
-*/
-}
+	*/
 
 
 
 
 https://stackoverflow.com/questions/39383936/correctly-overload-assignment-operator-for-classes-with-pointer-members
 
-{
 
-class Array
-{
-
-private:
-    int size;    //array elements
-    int *arr;    //dynamic array pointer
-
-public:
-    Array(int N)
-    {
-         size = N;
-         arr = new int[N];
-    }
-   
-    ~Array()  //destructor
-    {
-        delete[] arr;
-    }
-    
-    Array(const Array& arr2) //copy constructor
-    {
-        size = arr2.size;
-        arr = new int[size];
-        std::memcpy(arr, arr2.arr, size);
-    }
-    
-    Array& operator=(const Array& arr2) //overload = operator
-    {
-        if (this == &arr2)
-            return *this; //self assignment
-        if (arr != NULL)
-            delete[] arr; //clean up already allocated memory
-
-        size = arr2.size;
-        arr = new int[size];
-        std::memcpy(arr, arr2.arr, size);
-        return *this;
-    }
-    
-};
-
-}
-
+	class Array
+	{
+	
+	private:
+		int size;    //array elements
+		int *arr;    //dynamic array pointer
+	
+	public:
+		Array(int N)
+		{
+			size = N;
+			arr = new int[N];
+		}
+	
+		~Array()  //destructor
+		{
+			delete[] arr;
+		}
+	
+		Array(const Array& arr2) //copy constructor
+		{
+			size = arr2.size;
+			arr = new int[size];
+			std::memcpy(arr, arr2.arr, size);
+		}
+	
+		Array& operator=(const Array& arr2) //overload = operator
+		{
+			if (this == &arr2)
+				return *this; //self assignment
+			if (arr != NULL)
+				delete[] arr; //clean up already allocated memory
+	
+			size = arr2.size;
+			arr = new int[size];
+			std::memcpy(arr, arr2.arr, size);
+			return *this;
+		}
+	
+	};
 
 
 
