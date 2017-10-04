@@ -51,6 +51,9 @@ My first Project on Github
 Простой нагрузочный тест с Apache JMeter / Хабрахабр
 
 
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 	#include <cstring>
 	#include <iostream>
 
@@ -111,6 +114,8 @@ My first Project on Github
 
 
 
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 https://stackoverflow.com/questions/39383936/correctly-overload-assignment-operator-for-classes-with-pointer-members
 
@@ -157,8 +162,52 @@ https://stackoverflow.com/questions/39383936/correctly-overload-assignment-opera
 	};
 
 
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 
+	#include <iostream>
+	
+	struct Base
+	{
+		virtual int f() { return 1; }
+	};
+	
+	struct Derived : Base
+	{
+		int f() { return 2; }
+	};
+	
+	/* // ORIGINAL
+	int main()
+	{
+		Derived d;
+		Base* b = &d;
+		std::cout << b->f() << std::endl;
+		return 0;
+	}
+	*/
+	
+	/* ERROR
+	int main()
+	{
+		Derived d;
+		Base* b = &d;
+		std::cout << b->f() << std::endl;
+		delete b;
+		return 0;
+	}
+	*/
+	
+	/*
+	int main()
+	{
+		Base* b = new Derived();
+		std::cout << b->f() << std::endl;
+		delete b;
+		return 0;
+	}
+	*/
 
 
 
