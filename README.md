@@ -1,4 +1,11 @@
 
+ГИТ: СТРАТЕГИИ СЛИЯНИЯ
+
+https://habrahabr.ru/post/195674/
+
+https://webhamster.ru/mytetrashare/index/mtb0/1403174393wno3ejl1g3
+
+
 МНОГОПОТОЧНОСТЬ В С++11:
 
 https://habrahabr.ru/post/182610/
