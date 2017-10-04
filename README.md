@@ -6,6 +6,12 @@ https://habrahabr.ru/post/195674/
 https://webhamster.ru/mytetrashare/index/mtb0/1403174393wno3ejl1g3
 
 
+BOOST:
+
+- SPLIT
+
+
+
 МНОГОПОТОЧНОСТЬ В С++11:
 
 BO KWAN -  https://www.youtube.com/watch?v=LL8wkskDlbs
