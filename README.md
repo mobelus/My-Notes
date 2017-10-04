@@ -43,11 +43,8 @@ My first Project on Github
 Простой нагрузочный тест с Apache JMeter / Хабрахабр
 
 
-	Object()
-	{}
-
-#include <cstring>
-#include <iostream>
+	#include <cstring>
+	#include <iostream>
 
 class Object
 {
