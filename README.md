@@ -104,29 +104,31 @@ https://stackoverflow.com/questions/39383936/correctly-overload-assignment-opera
 
 class Array
 {
+
+private:
+    int size;    //array elements
+    int *arr;    //dynamic array pointer
+
 public:
     Array(int N)
     {
          size = N;
          arr = new int[N];
     }
-
-    //destructor
-    ~Array()
+   
+    ~Array()  //destructor
     {
         delete[] arr;
     }
-
-    //copy constructor
-    Array(const Array& arr2)
+    
+    Array(const Array& arr2) //copy constructor
     {
         size = arr2.size;
         arr = new int[size];
         std::memcpy(arr, arr2.arr, size);
     }
-
-    //overload = operator
-    Array& operator=(const Array& arr2) 
+    
+    Array& operator=(const Array& arr2) //overload = operator
     {
         if (this == &arr2)
             return *this; //self assignment
@@ -138,10 +140,7 @@ public:
         std::memcpy(arr, arr2.arr, size);
         return *this;
     }
-
-private:
-    int size;    //array elements
-    int *arr;    //dynamic array pointer
+    
 };
 
 
