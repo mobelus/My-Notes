@@ -4,30 +4,33 @@ https://habrahabr.ru/post/147373/
 
 - DOUBLE-CHECK LOCKING. Microsoft советует записывать его вот так:
 
+
 	using System;
 	public sealed class Singleton
 	{
-	private static volatile Singleton instance;
-	private static object syncRoot = new Object();
+		private static volatile Singleton instance;
+		private static object syncRoot = new Object();
 	
-	private Singleton() {}
+		private Singleton() {}
 	
-	public static Singleton Instance
-	{
-		get 
+		public static Singleton Instance
 		{
-			if (instance == null) 
+			get
+		{
+			if (instance == null)
 			{
-				lock (syncRoot) 
+				lock(syncRoot)
 				{
-				if (instance == null) 
-					instance = new Singleton();
+					if (instance == null)
+						instance = new Singleton();
 				}
 			}
-			return instance;
+		return instance;
+		}
 		}
 	}
-	}
+
+
 
 
 # Процессы, Потоки, Приоритеты в Windows
