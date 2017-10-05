@@ -228,22 +228,19 @@ COM-позволяет делать 2 вещи / ответсвенности:
 
 
 
-ГИТ: СТРАТЕГИИ СЛИЯНИЯ
+# git / ГИТ: СТРАТЕГИИ СЛИЯНИЯ
 
 https://habrahabr.ru/post/195674/
 
 https://webhamster.ru/mytetrashare/index/mtb0/1403174393wno3ejl1g3
 
 
-BOOST:
-
-- SPLIT
 
 
 
-МНОГОПОТОЧНОСТЬ В С++11:
+# МНОГОПОТОЧНОСТЬ В С++11:
 
-BO KWAN -  https://www.youtube.com/watch?v=LL8wkskDlbs
+BO QuaN -  https://www.youtube.com/watch?v=LL8wkskDlbs
 
 https://habrahabr.ru/post/182610/
 
