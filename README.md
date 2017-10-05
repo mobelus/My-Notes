@@ -4,31 +4,30 @@ https://habrahabr.ru/post/147373/
 
 - DOUBLE-CHECK LOCKING. Microsoft советует записывать его вот так:
 
-using System;
-public sealed class Singleton
-{
-   private static volatile Singleton instance;
-   private static object syncRoot = new Object();
-
-   private Singleton() {}
-
-   public static Singleton Instance
-   {
-      get 
-      {
-         if (instance == null) 
-         {
-            lock (syncRoot) 
-            {
-               if (instance == null) 
-                  instance = new Singleton();
-            }
-         }
-         return instance;
-      }
-   }
-}
-
+	using System;
+	public sealed class Singleton
+	{
+	private static volatile Singleton instance;
+	private static object syncRoot = new Object();
+	
+	private Singleton() {}
+	
+	public static Singleton Instance
+	{
+		get 
+		{
+			if (instance == null) 
+			{
+				lock (syncRoot) 
+				{
+				if (instance == null) 
+					instance = new Singleton();
+				}
+			}
+			return instance;
+		}
+	}
+	}
 
 
 # Процессы, Потоки, Приоритеты в Windows
@@ -140,10 +139,91 @@ http://club.shelek.ru/viewart.php?id=71
 
 # Оконная функция
 
+- SendMessage	(синхр.)
+- PostMessage (асинхроння)
+- GetMessage (while ((iGetOk = GetMessage(&msg, NULL, 0, 0 )) != 0) //цикл сообщений)
+- TranslateMessage
+- DispatchMessage
+- PostQuitMessage
+
+- WndProc - Обработка сообщений
+
+СОВЕТ
+Сообщение можно отослать функцией SendMessage или ее асинхронным аналогом PostMessage.
+Для приема сообщений в программе должен находиться «цикл сообщений» («message loop») который обычно выглядит так:
+
+	//цикл сообщений приложения
+	MSG msg = {0};    //структура сообщения
+	int iGetOk = 0;   //переменная состояния
+	while ((iGetOk = GetMessage(&msg, NULL, 0, 0 )) != 0) //цикл сообщений
+	{
+		//если GetMessage вернул ошибку - выход
+		if (iGetOk == -1) return 3;
+		TranslateMessage(&msg);    
+		DispatchMessage(&msg);
+	}
+	
+Функция GetMessage принимает следующие параметры:
+
+LPMSG lpMsg – указатель на структуру сообщения, в которую GetMessage вернет результат.
+HWND hWnd – описатель окна, от которого GetMessage примет сообщение (NULL означает, что GetMessage принимает сообщения от всех окон, принадлежащих потоку).
+UINT wMsgFilterMin – наименьший идентификатор сообщения, которое примет GetMessage.
+UINT wMsgFilterMax – наибольший идентификатор сообщения, которое примет GetMessage (если в значениях параметров wMsgFilterMin и wMsgFilterMax передать 0, функция будет принимать ВСЕ сообщения).
+Функция GetMessage не отдает управление программе, пока не придет какое-либо сообщение. Если пришедшее сообщение – WM_QUIT, функция GetMessage вернет 0. Тогда цикл прервется, и программа завершит свою работу. При любом другом сообщении функция GetMessage возвращает значение больше нуля, и начинатся выполнение тела цикла. При ошибке GetMessage возвращает -1.
+
+СОВЕТ
+Сообщение WM_QUIT лучше посылать с помощью специальной функции PostQuitMessage(int iExitCode). Эта функция отошлет сообщение WM_QUIT, а в параметре wParam передаст код завершения программы, указанный в iExitCode.
+Функция DispatchMessage должна вызвать «функцию обработки сообщений». В простейшем варианте она выглядит так:
+
+	LRESULT CALLBACK WndProc(HWND hWnd, UINT message, 
+	WPARAM wParam, LPARAM lParam)
+	{
+	// выборка и обработка сообщений
+	switch (message)
+	{
+		case WM_LBUTTONUP:
+		//реакция на сообщение
+		MessageBox(hWnd,"Вы кликнули!","событие",0); 
+		break;
+		case WM_DESTROY:
+		//реакция на сообщение
+		PostQuitMessage(0);
+		break;
+		//все необработанные сообщения обработает сама Windows
+		default:
+		return DefWindowProc(hWnd, message, wParam, lParam);
+	// switch (message)
+	}
+	return 0;
+	} // конец функции обработчика сообщений
+
+
 
 # COM-объекты:
-
 https://rsdn.org/article/com/introcom.xml#EHCAC
+
+COM-позволяет делать 2 вещи / ответсвенности:
+
+- Запросить Интерфейс
+-- QueryInterface
+- Подсчёт ссылок (счётчик ссылок)
+-- AddRef, Release
+
+- IUnknown::QueryInterface
+- IUnknown::AddRef
+- IUnknown::Release
+
+Теперь вы поняли, что технология СОМ предусматривает наличие множества абстрактных классов, которые требуют реализации. При построении СОМ-компонента первым делом нужно реализовать интерфейс, который должны использовать все СОМ-компоненты: IUnknown. Компонент должен не только реализовать интерфейс IUnknown для себя самого, но и обеспечить его реализацию для каждого своего интерфейса. Вначале это может показаться вам слишком сложным, но именно так и обстоят дела. Большинство СОМ-компонентов предлагают несколько интерфейсов, и запомните: СОМ- интерфейс — это просто указатель на С++-интерфейс. Более подробно мы обсудим это чуть позже.
+
+Интерфейс IUnknown выполняет две функции. Первая состоит в том, чтобы обеспечить стандартный способ запроса определенного интерфейса данного компонента его пользователем (клиентом). Эту возможность предоставляет метод QueryInterface. Вторая функция состоит в обеспечении способа управления временем жизни компонента извне. Интерфейс IUnknown предоставляет два метода (AddRef и Release), обеспечивающих управление временем жизни экземпляра компонента. Приведем определение IUnknown.
+
+	class IUnknown
+	{
+	public:
+	   virtual HRESULT QueryInterface(REFID riid, void** ppv)=0;
+	   virtual ULONG AddRef () = 0;
+	   virtual ULONG Release() = 0;
+	};
 
 
 
