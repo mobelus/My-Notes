@@ -293,6 +293,7 @@ otvet.jpg - 2419 Bytes Windows допускает выполнение одно�
 
 
 # COM-объекты:
+https://www.youtube.com/watch?v=7yv3ue8kWBw
 https://rsdn.org/article/com/introcom.xml#EHCAC
 
 COM-позволяет делать 2 вещи / ответсвенности:
