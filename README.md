@@ -219,6 +219,7 @@ https://moodle.kstu.ru/mod/page/view.php?id=49
 
 
 # Оконная функция
+http://lavimidj.ru/860/
 
 - SendMessage	(синхр.)
 - PostMessage (асинхроння)
