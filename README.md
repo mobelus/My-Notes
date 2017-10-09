@@ -1,6 +1,14 @@
 
 
-#Books
+# Books
+
+ LARGE_INTEGER union
+
+Рихтер Дж., Назар К. - Windows via C C++. Программирование
+
+RUS - https://studfiles.net/preview/397644/
+
+ENG - https://ptgmedia.pearsoncmg.com/images/9780735663770/samplepages/9780735663770.pdf
 
 Windows Internals
 
