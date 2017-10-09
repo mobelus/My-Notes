@@ -1,3 +1,30 @@
+
+
+#Books
+
+Windows Internals
+
+http://materias.fi.uba.ar/7508/WI6/Windows%20Internals%20Part%201%20(6th%20Edition).pdf
+
+Application Programming - Interface for Windows
+
+https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-234-v3.pdf
+
+
+
+https://msdn.microsoft.com/en-us/library/windows/desktop/ff485848(v=vs.85).aspx
+
+- What Is a COM Interface?
+- Initializing the COM Library
+- Error Codes in COM
+- Creating an Object in COM
+- Example: The Open Dialog Box
+- Managing the Lifetime of an Object
+- Asking an Object for an Interface
+- Memory Allocation in COM
+- COM Coding Practices
+- Error Handling in COM
+
 # ПОЛИМОРФИЗМ - как реализован в Си++
 https://ru.stackoverflow.com/questions/192522/%D0%9F%D0%BE%D0%BB%D0%B8%D0%BC%D0%BE%D1%80%D1%84%D0%B8%D0%B7%D0%BC-%D0%B2-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B0%D1%85-c
 
