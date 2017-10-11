@@ -1,4 +1,6 @@
+# File MAPPING / Map View of File
 
+http://vsokovikov.narod.ru/New_MSDN_API/Menage_files/main_fl_map.htm
 
 # Books
 
