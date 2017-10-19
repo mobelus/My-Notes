@@ -4,9 +4,7 @@
 http://www.qtcentre.org/threads/38448-QT-related-interview-questions
 
 - How qt differs from other mobile development platforms like android?
-
 - If worked with GTK what is the difference between QT and GTK?
-
 - What are the striking futures of QT?
 
 - What is Qpointer?
