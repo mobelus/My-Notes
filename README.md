@@ -542,12 +542,31 @@ https://moodle.kstu.ru/mod/page/view.php?id=49
 - Другой поток данного или стороннего процесса вызывает TerminateThread.
 - Завершается процесс, содержащий данный поток.
 
-# Объекты ядра
+# Объекты ядра (17)
 
-17 штук
+- Module			Подгружаемый модуль(DLL)
+- Process			Процесс
+- Pipe				Канал
+- Socket			Сокет
+- Mailslot			Почтовый слот
+- File				Файл
+- File mapping			Проекция файла
+- Job				Задание
+- Thread			Поток
+- Event				Событие
+- Mutex				Мьютекс
+- Semaphore			Семафор
+- Access token			Маркер доступа
+- Heap				Куча
+- Change notification		Уведомление об изменениях на диске
+- I / O completion ports	Порт завершения ввода - вывода
+- Timer				Ожидаемый таймер
 
 
 # Wait функции
+
+- WaitForSingleObject
+- WaitForMultipleObjects
 
 # Синхронизация потоков
 
