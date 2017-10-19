@@ -19,6 +19,28 @@
 -  Memory management
 - Error handling, exception handling
 
+# C++ general
+
+- Classes and Objects
+- Constructors and Destructors
+- Template
+- References and pointer
+- STL
+- RTTI
+
+# SQL questions
+
+- RDBMS
+- Normalization - Different Normalization Forms(1NF, 2NF, 3NF, BCNF)
+- SQL Stament(DML, DDL, DCL, TCL)
+- Stored Procedure, Trigger and View
+- Join - Different Types of Join(Cross Join, Inner Join, Outer Join, Self Join)
+- Index - Clustered Index, Non Clustered Index
+- Linked Server
+- Cursor
+- Collation
+- Sub - query
+
 # QT related interview questions
 
 http://www.qtcentre.org/threads/38448-QT-related-interview-questions
