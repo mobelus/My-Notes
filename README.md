@@ -1,4 +1,24 @@
 
+# General questions
+
+- OOP concepts - encapsulation, data abstraction, inheritance, polymorphism
+- Data Types, Variables - const, static, readonly
+- access specifier - private, protected, public
+- Abstract class
+- interface
+- collection - hast table, map, vector, binary tree
+- Multi threading
+- Memory Management
+- Pointers - void, far, near, wild
+- virtual functions
+- Marshaling
+-  SDI, MDI
+- TCP / IP client server connection
+-  Message passing, delegation, IPC
+-  File handling
+-  Memory management
+- Error handling, exception handling
+
 # QT related interview questions
 
 http://www.qtcentre.org/threads/38448-QT-related-interview-questions
