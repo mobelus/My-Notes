@@ -546,7 +546,7 @@ https://moodle.kstu.ru/mod/page/view.php?id=49
 
 - Module			Подгружаемый модуль(DLL)
 - Process			Процесс
-- Pipe				Канал
+- Pipe (Named / Unnamed)	Канал (Именованые / Неименованые)
 - Socket			Сокет
 - Mailslot			Почтовый слот
 - File				Файл
