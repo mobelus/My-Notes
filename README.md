@@ -1,3 +1,245 @@
+# Reverse a linked list - Iterative method
+
+https://www.youtube.com/watch?v=sYcOK51hl-A
+https://vichargrave.github.io/articles/2013-01/reversing-a-singly-linked-list
+
+http://www.geeksforgeeks.org/reverse-a-linked-list/
+
+Given pointer to the head node of a linked list, the task is to reverse the linked list. We need to reverse the list by changing links between nodes.
+
+Examples:
+
+	Input: Head of following linked list
+	1->2->3->4->NULL
+	Output : Linked list should be changed to,
+	4->3->2->1->NULL
+
+	Input : Head of following linked list
+	1->2->3->4->5->NULL
+	Output : Linked list should be changed to,
+	5->4->3->2->1->NULL
+
+	Input : NULL
+	Output : NULL
+
+	Input : 1->NULL
+	Output : 1->NULL
+
+
+Iterative Method
+Iterate trough the linked list.In loop, change next to prev, prev to current and current to next.
+
+Implementation of Iterative Method
+
+
+	#include<stdio.h>
+	#include<stdlib.h>
+	
+	/* Link list node */
+	struct Node
+	{
+		int data;
+		struct Node* next;
+	};
+	
+	/* Function to reverse the linked list */
+	static void reverse(struct Node** head_ref)
+	{
+		struct Node* prev = NULL;
+		struct Node* current = *head_ref;
+		struct Node* next;
+		while (current != NULL)
+		{
+			next = current->next;
+			current->next = prev;
+			prev = current;
+			current = next;
+		}
+		*head_ref = prev;
+	}
+	
+	/* Function to push a node */
+	void push(struct Node** head_ref, int new_data)
+	{
+		/* allocate node */
+		struct Node* new_node =
+			(struct Node*) malloc(sizeof(struct Node));
+	
+		/* put in the data  */
+		new_node->data = new_data;
+	
+		/* link the old list off the new node */
+		new_node->next = (*head_ref);
+	
+		/* move the head to point to the new node */
+		(*head_ref) = new_node;
+	}
+	
+	/* Function to print linked list */
+	void printList(struct Node *head)
+	{
+		struct Node *temp = head;
+		while (temp != NULL)
+		{
+			printf("%d  ", temp->data);
+			temp = temp->next;
+		}
+	}
+	
+	/* Driver program to test above function*/
+	int main()
+	{
+		/* Start with the empty list */
+		struct Node* head = NULL;
+	
+		push(&head, 20);
+		push(&head, 4);
+		push(&head, 15);
+		push(&head, 85);
+	
+		printf("Given linked list\n");
+		printList(head);
+		reverse(&head);
+		printf("\nReversed Linked list \n");
+		printList(head);
+		getchar();
+	}
+	/ pre>
+
+		Given linked list
+		85 15 4 20
+		Reversed Linked list
+		20 4 15 85
+
+		Time Complexity : O(n)
+		Space Complexity : O(1)
+
+Recursive Method :
+
+- Divide the list in two parts - first node and rest of the linked list.
+- Call reverse for the rest of the linked list.
+- Link rest to first.
+- Fix head pointer
+
+	void recursiveReverse(struct Node** head_ref)
+	{
+	struct Node* first;
+	struct Node* rest;
+
+	/* empty list */
+	if (*head_ref == NULL)
+		return;
+
+	/* suppose first = {1, 2, 3}, rest = {2, 3} */
+	first = *head_ref;
+	rest = first->next;
+
+	/* List has only one node */
+	if (rest == NULL)
+		return;
+
+	/* reverse the rest list and put the first element at the end */
+	recursiveReverse(&rest);
+	first->next->next = first;
+
+	/* tricky step -- see the diagram */
+	first->next = NULL;
+
+	/* fix the head pointer */
+	*head_ref = rest;
+	}
+
+
+A Simpler and Tail Recursive Method
+
+	// A simple and tail recursive C++ program to reverse
+	// a linked list
+	#include<bits/stdc++.h>
+	using namespace std;
+	
+	struct Node
+	{
+		int data;
+		struct Node *next;
+	};
+	
+	void reverseUtil(Node *curr, Node *prev, Node **head);
+	
+	// This function mainly calls reverseUtil()
+	// with prev as NULL
+	void reverse(Node **head)
+	{
+		if (!head)
+			return;
+		reverseUtil(*head, NULL, head);
+	}
+	
+	// A simple and tail recursive function to reverse
+	// a linked list.  prev is passed as NULL initially.
+	void reverseUtil(Node *curr, Node *prev, Node **head)
+	{
+		/* If last node mark it head*/
+		if (!curr->next)
+		{
+			*head = curr;
+	
+			/* Update next to prev node */
+			curr->next = prev;
+			return;
+		}
+	
+		/* Save curr->next node for recursive call */
+		node *next = curr->next;
+	
+		/* and update next ..*/
+		curr->next = prev;
+	
+		reverseUtil(next, curr, head);
+	}
+	
+	// A utility function to create a new node
+	Node *newNode(int key)
+	{
+		Node *temp = new Node;
+		temp->data = key;
+		temp->next = NULL;
+		return temp;
+	}
+	
+	// A utility function to print a linked list
+	void printlist(Node *head)
+	{
+		while (head != NULL)
+		{
+			cout << head->data << " ";
+			head = head->next;
+		}
+		cout << endl;
+	}
+	
+	// Driver program to test above functions
+	int main()
+	{
+		Node *head1 = newNode(1);
+		head1->next = newNode(2);
+		head1->next->next = newNode(3);
+		head1->next->next->next = newNode(4);
+		head1->next->next->next->next = newNode(5);
+		head1->next->next->next->next->next = newNode(6);
+		head1->next->next->next->next->next->next = newNode(7);
+		head1->next->next->next->next->next->next->next = newNode(8);
+		cout << "Given linked list\n";
+		printlist(head1);
+		reverse(&head1);
+		cout << "\nReversed linked list\n";
+		printlist(head1);
+		return 0;
+	}
+
+
+
+
+
 # File MAPPING / Map View of File
 
 http://vsokovikov.narod.ru/New_MSDN_API/Menage_files/main_fl_map.htm
