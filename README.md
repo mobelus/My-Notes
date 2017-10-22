@@ -374,6 +374,11 @@ https://ru.stackoverflow.com/questions/192522/%D0%9F%D0%BE%D0%BB%D0%B8%D0%BC%D0%
 - привет 2. мессенджер типа миранда или квип. Есть куча различных сервисов (аська, жаббер, мейлру). У всех есть контакт лист. Сам мессенджер ничего не знает о сервисах, он просто вызывает функции, а за счет виртуальности и полиморфизма вызываются правильные функции. При этом, если был добавлен новый сервис, то не нужно переписывать весь код, что бы он был в курсе.
 
 
+# rvalue и lvalue ссылки
+
+https://www.youtube.com/watch?v=5AbTHsZl7LY
+
+
 # MALLOCK
 Возвращает указатель на выделенную память. или НОЛЬ, если память выделить не удалось.
 
@@ -787,7 +792,14 @@ https://habrahabr.ru/post/182610/
 Сигналы и слоты вместе составляют мощный механизм создания компонентов.
 
 
+# DUMP - DMP dump analysis
 
+-  Windows Debugging and Troubleshooting
+-  HOW TO ANALYSE MINIDUMP INFO BY DEBUGGING TOOL.avi
+	
+https://www.youtube.com/watch?v=2rGS5fYGtJ4&t=1003s
+
+https://www.youtube.com/watch?v=P1O9dg9CCS0
 
 
 # My-Notes
