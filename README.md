@@ -1,4 +1,10 @@
 
+# Createthread разница _beginthreadex
+
+Лучше использовать _beginthreadex, чем CreateThread().
+СУТЬ: 
+
+
 # General questions
 
 - OOP concepts - encapsulation, data abstraction, inheritance, polymorphism
