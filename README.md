@@ -65,6 +65,20 @@ http://www.qtcentre.org/threads/38448-QT-related-interview-questions
 platform (Maemo)? (Explain If you need to make any changes or you need to recompile)
 - What are all the platforms/OS currently QT supports?
 
+# CreateThread <-> _beginthreadex
+
+http://forum.vingrad.ru/forum/topic-47554.html
+
+CreateThread - чисто Win32Api'шная функция, а вот
+_beginthread - функция библиотеки CRT, НЕ кроссплатформенна, но приспособленна для работы с С, т.е. она делает дополнительные манипуляции, что бы стандартные библиотеки корректно работатли (+ вызывает CreateThread ) .
+В общем если пишешь на С, то лучше пользоваться вторым.
+Рихтер в статье CreateThread vs. _beginthread очень подробно описывает почему _beginthread предпочтительнее. Она создает Thread Local Storage (TLS), где переопределены, в частности, все глобальные константы, к-рые ф-ции CRT-библиотеки юзают. Например, такая как errno. 
+Именно TLS - гарантия, что ф-ции CRT-библиотеки будут работать корректно. 
+
+The C runtime library was delivered in a UNIX context, in which there is no distinction between processes and threads. In the Windows context, many threads can be executing in a single address space. 
+Microsoft has provided an alternative function to CreateThread, called _beginthreadex, to be used with the programs that use multiple threads at the same time they use the C runtime library. The problem occurs with any globally accessible variable used by this library ( there are several of them ). The Microsoft solution is to have the C runtime library provide a copy of each of these variables for each thread. Then, when a thread interacts with the runtime library, variables are shared only between the runtime code and the thread, not among all threads. The _beginthreadex function creates the copy for a thread in conjunction with an embedded call to CreateThread.
+
+
 # Reverse a linked list - Iterative method
 
 https://www.youtube.com/watch?v=sYcOK51hl-A
