@@ -25,62 +25,62 @@ vector<объектов> - что если деструкторы сработа
 
 # REFERENCE, NEW-DELETE, TEMPLATE, VIRTUALITY
 
-#include <iostream>
+	#include <iostream>
 
-class A
-{
-public:
-	virtual void Printer()
+	class A
 	{
-		std::cout << "A print" << std::endl;
-	}
-	virtual ~A()
-	{
-		std::cout << "~A" << std::endl;
-	}
-};
-
-class B : public A
-{
-public:
-	void Printer()
-	{
-		std::cout << "B" << std::endl;;
-	}
-	~B()
-	{
-		std::cout << "~B" << std::endl;
-	}
-};
-
-template <typename T>
-class Temp
-{
-public:
-	//void print(T t)	// ERROR - Incorrect by value
-	void print(T* t)	// OK - because original is pointer pointer
-	{
-		t->Printer();
+	public:
+		virtual void Printer()
+		{
+			std::cout << "A print" << std::endl;
+		}
+		virtual ~A()
+		{
+			std::cout << "~A" << std::endl;
+		}
 	};
-};
-
-int main()
-{
-	B b;
-	b.Printer();		// B
-
-	A* a = &b;
-	a->Printer();		// B
-
-	Temp<A> printer;
-	printer.print(a);	// B
 	
-	// ПАМЯТЬ НЕ ВЫДЕЛИЛИ ДИНАМИЧЕСКИ !!!
-	// НЕЛЬЗЯ DELETE-ТИТЬ !!!!!
-	delete a;	// DELETE WILL THROW EXEPTION !!!
-
-	return 0;
-}
+	class B : public A
+	{
+	public:
+		void Printer()
+		{
+			std::cout << "B" << std::endl;;
+		}
+		~B()
+		{
+			std::cout << "~B" << std::endl;
+		}
+	};
+	
+	template <typename T>
+	class Temp
+	{
+	public:
+		//void print(T t)	// ERROR - Incorrect by value
+		void print(T* t)	// OK - because original is pointer pointer
+		{
+			t->Printer();
+		};
+	};
+	
+	int main()
+	{
+		B b;
+		b.Printer();		// B
+	
+		A* a = &b;
+		a->Printer();		// B
+	
+		Temp<A> printer;
+		printer.print(a);	// B
+		
+		// ПАМЯТЬ НЕ ВЫДЕЛИЛИ ДИНАМИЧЕСКИ !!!
+		// НЕЛЬЗЯ DELETE-ТИТЬ !!!!!
+		delete a;	// DELETE WILL THROW EXEPTION !!!
+	
+		return 0;
+	}
 
 
 
