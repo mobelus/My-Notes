@@ -77,6 +77,16 @@ There is no delay in gaining the thread state after construction completes. And 
 
 There is the problem that if code throws above, you will fail to join or detatch, leading to bad news at program shutdown. Always wrap std::thread in a RAII wrapper to avoid that, or just use std::async that returns void and wrap the resulting std::future similarly (because the standard says it blocks in the dtor, but microsofts implementation does not, so you cannot trust if it will or not).
 
+--------------
+-- In VC std::futures from std::async don't block in dtor? – inf Nov 25 '13 at 12:14
+-- Yup, that's true. Tested it myself. 
+--------------
+
+- if  JOIN()  Fails
+
+libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: thread::join failed: No such process
+
+
 
 # CreateThread <-> _beginthreadex
 # Createthread разница _beginthreadex
