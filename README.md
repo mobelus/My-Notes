@@ -1,98 +1,3 @@
-# PATTERNS
-
-- Синглтон
-- Фассад
-- Ресивер
-- Листенер
-- Фабрика
-
-
-# SQL
-
-GroupBy HAVING
-
-# Исключение в деструкторах
-
-1) Утечки ресурсов / некнтролируемое поведение
-~B() {
-    delete this->resource;  // throws
-    close(this->socket);    // leaks
-}
-
-2) Предположим, что где-то в программе сгенерировано исключение. При этом начинается размотка стека и уничтожение автоматических объектов.
-Если новое исключение генерируется в деструкторе уничтожаемого в процессе раскрутки объекта, то вызывается функция terminate(), которая по умолчанию вызывает abort(), т.е. приложение завершается.
-Эту функцию можно подменить своей с помощью set_terminate(), но это уже другая история...
-+ При разрушении статических объектов исключение в деструкторе также приведет к terminate().
-
-3) vector<объектов> - если деструкторы сработали не в 1ом элеменете а множество раз, то вызовится ф-ция terminate(), которая по умолчанию вызывает abort(), т.е. приложение завершается.
-
-
-
-# Createthread разница _beginthreadex
-
-Лучше использовать _beginthreadex, чем CreateThread().
-СУТЬ: 
-
-
-# REFERENCE, NEW-DELETE, TEMPLATE, VIRTUALITY
-
-	#include <iostream>
-
-	class A
-	{
-	public:
-		virtual void Printer()
-		{
-			std::cout << "A print" << std::endl;
-		}
-		virtual ~A()
-		{
-			std::cout << "~A" << std::endl;
-		}
-	};
-	
-	class B : public A
-	{
-	public:
-		void Printer()
-		{
-			std::cout << "B" << std::endl;;
-		}
-		~B()
-		{
-			std::cout << "~B" << std::endl;
-		}
-	};
-	
-	template <typename T>
-	class Temp
-	{
-	public:
-		//void print(T t)	// ERROR - Incorrect by value
-		void print(T* t)	// OK - because original is pointer pointer
-		{
-			t->Printer();
-		};
-	};
-	
-	int main()
-	{
-		B b;
-		b.Printer();		// B
-	
-		A* a = &b;
-		a->Printer();		// B
-	
-		Temp<A> printer;
-		printer.print(a);	// B
-		
-		// ПАМЯТЬ НЕ ВЫДЕЛИЛИ ДИНАМИЧЕСКИ !!!
-		// НЕЛЬЗЯ DELETE-ТИТЬ !!!!!
-		delete a;	// DELETE WILL THROW EXEPTION !!!
-	
-		return 0;
-	}
-
 
 
 # General questions
@@ -161,8 +66,23 @@ http://www.qtcentre.org/threads/38448-QT-related-interview-questions
 platform (Maemo)? (Explain If you need to make any changes or you need to recompile)
 - What are all the platforms/OS currently QT supports?
 
-# CreateThread <-> _beginthreadex
 
+# What if std::thread fails BEFORE join - program will shutdown
+
+A std::thread is joinable if it contains a thread state that has not been joined or detatched.
+
+A std::thread gains a thread state by being non default constructed, or having one moveed into it from another std::thread. It loses it when moveed from.
+
+There is no delay in gaining the thread state after construction completes. And it does not go away when the threaded function finishes. So there is not that problem.
+
+There is the problem that if code throws above, you will fail to join or detatch, leading to bad news at program shutdown. Always wrap std::thread in a RAII wrapper to avoid that, or just use std::async that returns void and wrap the resulting std::future similarly (because the standard says it blocks in the dtor, but microsofts implementation does not, so you cannot trust if it will or not).
+
+
+# CreateThread <-> _beginthreadex
+# Createthread разница _beginthreadex
+
+Лучше использовать _beginthreadex, чем CreateThread().
+СУТЬ: 
 http://forum.vingrad.ru/forum/topic-47554.html
 
 CreateThread - чисто Win32Api'шная функция, а вот
@@ -173,6 +93,97 @@ _beginthread - функция библиотеки CRT, НЕ кроссплат�
 
 The C runtime library was delivered in a UNIX context, in which there is no distinction between processes and threads. In the Windows context, many threads can be executing in a single address space. 
 Microsoft has provided an alternative function to CreateThread, called _beginthreadex, to be used with the programs that use multiple threads at the same time they use the C runtime library. The problem occurs with any globally accessible variable used by this library ( there are several of them ). The Microsoft solution is to have the C runtime library provide a copy of each of these variables for each thread. Then, when a thread interacts with the runtime library, variables are shared only between the runtime code and the thread, not among all threads. The _beginthreadex function creates the copy for a thread in conjunction with an embedded call to CreateThread.
+
+
+# PATTERNS
+
+- Синглтон
+- Фассад
+- Ресивер
+- Листенер
+- Фабрика
+
+
+# SQL
+
+GroupBy HAVING
+
+# Исключение в деструкторах
+
+1) Утечки ресурсов / некнтролируемое поведение
+~B() {
+    delete this->resource;  // throws
+    close(this->socket);    // leaks
+}
+
+2) Предположим, что где-то в программе сгенерировано исключение. При этом начинается размотка стека и уничтожение автоматических объектов.
+Если новое исключение генерируется в деструкторе уничтожаемого в процессе раскрутки объекта, то вызывается функция terminate(), которая по умолчанию вызывает abort(), т.е. приложение завершается.
+Эту функцию можно подменить своей с помощью set_terminate(), но это уже другая история...
++ При разрушении статических объектов исключение в деструкторе также приведет к terminate().
+
+3) vector<объектов> - если деструкторы сработали не в 1ом элеменете а множество раз, то вызовится ф-ция terminate(), которая по умолчанию вызывает abort(), т.е. приложение завершается.
+
+
+
+# REFERENCE, NEW-DELETE, TEMPLATE, VIRTUALITY
+
+	#include <iostream>
+
+	class A
+	{
+	public:
+		virtual void Printer()
+		{
+			std::cout << "A print" << std::endl;
+		}
+		virtual ~A()
+		{
+			std::cout << "~A" << std::endl;
+		}
+	};
+	
+	class B : public A
+	{
+	public:
+		void Printer()
+		{
+			std::cout << "B" << std::endl;;
+		}
+		~B()
+		{
+			std::cout << "~B" << std::endl;
+		}
+	};
+	
+	template <typename T>
+	class Temp
+	{
+	public:
+		//void print(T t)	// ERROR - Incorrect by value
+		void print(T* t)	// OK - because original is pointer pointer
+		{
+			t->Printer();
+		};
+	};
+	
+	int main()
+	{
+		B b;
+		b.Printer();		// B
+	
+		A* a = &b;
+		a->Printer();		// B
+	
+		Temp<A> printer;
+		printer.print(a);	// B
+		
+		// ПАМЯТЬ НЕ ВЫДЕЛИЛИ ДИНАМИЧЕСКИ !!!
+		// НЕЛЬЗЯ DELETE-ТИТЬ !!!!!
+		delete a;	// DELETE WILL THROW EXEPTION !!!
+	
+		return 0;
+	}
+
 
 
 # Reverse a linked list - Iterative method
