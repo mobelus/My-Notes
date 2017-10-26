@@ -66,6 +66,9 @@ http://www.qtcentre.org/threads/38448-QT-related-interview-questions
 platform (Maemo)? (Explain If you need to make any changes or you need to recompile)
 - What are all the platforms/OS currently QT supports?
 
+# Threading stuff
+
+https://books.google.ru/books?id=MEZdDgAAQBAJ&pg=PA846&lpg=PA846&dq=std+thread+if+fails+before+join&source=bl&ots=LbhCsUltf3&sig=Sd5LjAg9Fcw8pmH3_oQVyL-gmOQ&hl=ru&sa=X&ved=0ahUKEwjJqNSh2o7XAhUiMZoKHZJ1ASwQ6AEIZzAI#v=onepage&q=std%20thread%20if%20fails%20before%20join&f=false
 
 # What if std::thread fails BEFORE join - program will shutdown
 
@@ -78,11 +81,11 @@ There is no delay in gaining the thread state after construction completes. And 
 There is the problem that if code throws above, you will fail to join or detatch, leading to bad news at program shutdown. Always wrap std::thread in a RAII wrapper to avoid that, or just use std::async that returns void and wrap the resulting std::future similarly (because the standard says it blocks in the dtor, but microsofts implementation does not, so you cannot trust if it will or not).
 
 --------------
--- In VC std::futures from std::async don't block in dtor? – inf Nov 25 '13 at 12:14
--- Yup, that's true. Tested it myself. 
+- In VC std::futures from std::async don't block in dtor? – inf Nov 25 '13 at 12:14
+- Yup, that's true. Tested it myself. 
 --------------
 
-- if  JOIN()  Fails
+-- if  JOIN()  Fails
 
 libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: thread::join failed: No such process
 
