@@ -1,55 +1,57 @@
 
-1) Align Technology
-To: Ekaterina Chumikova <echumikova@aligntech.com>
-Екатерина Чумикова
-Align Technology , Inc .
-9/1 B Варшавское шоссе , 117105
-электронная почта   echumikova@aligntech.com
-+ 7-495-995-88-54 (2309) | ячейка +7 915 829 99 29
+	
+	1) Align Technology
+	To : Ekaterina Chumikova <echumikova@aligntech.com>
+	Екатерина Чумикова
+	Align Technology, Inc .
+	9 / 1 B Варшавское шоссе, 117105
+	электронная почта   echumikova@aligntech.com
+	+ 7 - 495 - 995 - 88 - 54 (2309) | ячейка + 7 915 829 99 29
 
-2) ETHR
-Меня зовут Екатерина, я IT-рекрутер компании ETHR. Нашла Ваше резюме на HeadHunter. 
-разработчика C++ (виндовый кластер, highload). Зарплатная вилка 150-200 т.р. 
-С уважением,
-Екатерина Лавреха, агентство IT-рекрутмента ETHR
-skype: taiss.erinkite
+	2) ETHR
+	Меня зовут Екатерина, я IT - рекрутер компании ETHR.Нашла Ваше резюме на HeadHunter.
+	разработчика C++ (виндовый кластер, highload).Зарплатная вилка 150 - 200 т.р.
+	С уважением,
+	Екатерина Лавреха, агентство IT - рекрутмента ETHR
+	skype : taiss.erinkite
 
-3) http://www.nfware.com/ активно ищем "C++ разработчика" (возможно, это Вы!?). 
-Анастасия Белая!
-nastya0612@gmail.com
+	3) http://www.nfware.com/ активно ищем "C++ разработчика" (возможно, это Вы!?). 
+	Анастасия Белая!
+		nastya0612@gmail.com
 
-4) АББУ
-Рузаева Анастасия 
-Специалист по работе с персоналом
-ABBYY International HQ
-Тел: +7 495 783 37 00
-Факс: +7 495 783 26 63
-E-mail: Anastasiya_R@abbyy.com
-http://www.abbyy.ru
-
-
-5) Люксофт
-
-Elizaveta
-Deyneko
-
-Junior Recruitment Specialist
-
-T: +7(495)967 8030
-
-Ex.5042
+		4) АББУ
+		Рузаева Анастасия
+		Специалист по работе с персоналом
+		ABBYY International HQ
+		Тел : +7 495 783 37 00
+		Факс : +7 495 783 26 63
+		E - mail : Anastasiya_R@abbyy.com
+		http ://www.abbyy.ru
 
 
+	5) Люксофт
+
+	Elizaveta
+		Deyneko
+
+		Junior Recruitment Specialist
+
+		T : +7(495)967 8030
+
+		Ex.5042
 
 
 
---) -- ХЕЛЬСИНКИ
-Kind Regards,
-Ruslan Aktemirov
 
-+7 915 329 24 22
-skype: ruslan_aktemirov
-telegram: @aktemirov
+
+		--) --ХЕЛЬСИНКИ
+		Kind Regards,
+		Ruslan Aktemirov
+
+		+ 7 915 329 24 22
+		skype: ruslan_aktemirov
+		telegram : @aktemirov
+
 
 
 
