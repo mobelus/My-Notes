@@ -121,6 +121,43 @@ Microsoft has provided an alternative function to CreateThread, called _beginthr
 
 GroupBy HAVING
 
+
+# Вирт.функции в Конструкторах
+
+	// 1-ый случай и ПРОБЛЕМА 1 ...
+	class Transaction 
+	{ public: // транзакций
+	  Transaction() { logTransaction(); }
+	  virtual void logTransaction() const = 0; // выполняет зависящую от типа
+	};
+	class BuyTransaction: public Transaction
+	{ public: virtual void logTransaction() const = 0; };
+	class SellTransaction: public Transaction
+	{ public: virtual void logTransaction() const = 0; };
+
+	// 2-ой случай и ПРОБЛЕМА 2 ....
+	class Transaction
+	{ public: // транзакций
+	  Transaction() { logTransaction(); }
+	  virtual void logTransaction() const = 0; // выполняет зависящую от типа
+	};
+	class BuyTransaction: public Transaction
+	{ public: virtual void logTransaction() {print("Buy");} };
+	class SellTransaction: public Transaction
+	{ public: virtual void logTransaction() {print("Sell");} };
+
+	BuyTransaction b;
+
+Ясно, что будет вызван конструктор BuyTransaction, но сначала должен быть вызван конструктор Transaction, потому что части объекта, принадлежащие базовому классу, конструируются прежде, чем части, принадлежащие производному классу. В последней строке конструктора Transaction вызывается виртуальная функция logTransaction, тут-то и начинаются сюрпризы. Здесь вызывается та версия logTransaction, которая определена в классе Transaction, а не в BuyTransaction, несмотря на то что тип создаваемого объекта – BuyTransaction. Во время конструирования базового класса не вызываются виртуальные функции, определенные в производном классе. Объект ведет себя так, как будто он принадлежит базовому типу. Короче говоря, во время конструирования базового класса виртуальных функций не существует.
+
+
+# Вирт.функции в Деструкторах
+
+
+
+# Исключение в Конструкторах
+
+
 # Исключение в деструкторах
 
 1) Утечки ресурсов / некнтролируемое поведение
