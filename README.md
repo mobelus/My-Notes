@@ -8,19 +8,19 @@ https://habrahabr.ru/post/182920/
 В данной статье рассматривается ряд возможностей С++11, которые все разработчики должны знать и использовать. Существует много новых дополнений к языку и стандартной библиотеке, эта статья лишь поверхностно охватывает часть из них. Однако, я полагаю, что некоторые из этих новых функций должны стать обыденными для всех разработчиков С++. Подобных статей наверное существует много, в этой я предприму попытку составить список возможностей, которые должны войти в повседневное использование.
 
 Сегодня в программе: 
-•auto
-•nullptr
-•range-based циклы
-•override и final
-•строго-типизированный enum
-•интеллектуальные указатели
-•лямбды
-•non-member begin() и end()
-•static_assert и классы свойств
-•семантика перемещения
+- auto
+- nullptr
+- range-based циклы
+- override и final
+- строго-типизированный enum
+- интеллектуальные указатели
+- лямбды
+- non-member begin() и end()
+- static_assert и классы свойств
+- семантика перемещения
 
 
-#1 — auto
+# 1 — auto
 
 До С++11, ключевое слово auto использовалось как спецификатор хранения переменной (как, например, register, static, extern). В С++11 auto позволяет не указывать тип переменной явно, говоря компилятору, чтобы он сам определил фактический тип переменной, на основе типа инициализируемого значения. Это может использоваться при объявлении переменных в различных областях видимости, как, например, пространство имен, блоки, инициализация в цикле и т.п. 
 auto i = 42;        // i - int
@@ -29,128 +29,133 @@ auto p = new foo(); // p - foo*
 
 
 Использование auto позволяет сократить код (если, конечно, тип не int, который на одну букву меньше). Подумайте об итераторах STL, которые вы должны были всегда писать для прохода контейнеров. Таким образом, это делает устаревшим определение typedef только ради простоты.
-std::map<std::string, std::vector<int>> map;
-for(auto it = begin(map); it != end(map); ++it) 
-{
-   // do smth
-}
+	std::map<std::string, std::vector<int>> map;
+	for(auto it = begin(map); it != end(map); ++it) 
+	{
+   	// do smth
+	}
 
-// Или, сравним С++03 и С++11
-// C++03
-for (std::vector<std::map<int, std::string>>::const_iterator it = container.begin(); it != container.end(); ++it)
-{
-   // do smth
-}
-// C++11
-for (auto it = container.begin(); it != container.end(); ++it)
-{
-   // do smth
-}
+	// Или, сравним С++03 и С++11
+	// C++03
+	for (std::vector<std::map<int, std::string>>::const_iterator it = container.begin(); it != container.end(); ++it)
+	{
+	   // do smth
+	}
+	// C++11
+	for (auto it = container.begin(); it != container.end(); ++it)
+	{
+	   // do smth
+	}
 
 
 Стоить отметить, что возвращаемое значение не может быть auto. Однако, вы можете использовать auto вместо типа возвращаемого значения функции. В таком случае, auto не говорит компилятору, что он должен определить тип, он только дает ему команду искать возвращаемый тип в конце функции. В примере ниже, возвращаемый тип функции compose — это возвращаемый тип оператора +, который суммирует значения типа T и E.
-template <typename T, typename E>
-auto compose(T a, E b) -> decltype(a+b) // decltype - позволяет определить тип на основе входного параметра
-{
-   return a+b;
-}
-auto c = compose(2, 3.14); // c - double
+	template <typename T, typename E>
+	auto compose(T a, E b) -> decltype(a+b) // decltype - позволяет определить тип на основе входного параметра
+	{
+	   return a+b;
+	}
+	auto c = compose(2, 3.14); // c - double
 
 
 
 
-#2 — nullptr
+# 2 — nullptr
 
 Раньше, для обнуления указателей использовался макрос NULL, являющийся нулем — целым типом, что, естественно, вызывало проблемы (например, при перегрузке функций). Ключевое слово nullptr имеет свой собственный тип std::nullptr_t, что избавляет нас от бывших проблем. Существуют неявные преобразования nullptr к нулевому указателю любого типа и к bool (как false), но преобразования к целочисленных типам нет.
-void foo(int* p) {}
 
-void bar(std::shared_ptr<int> p) {}
+	void foo(int* p) {}
 
-int* p1 = NULL;
-int* p2 = nullptr;   
+	void bar(std::shared_ptr<int> p) {}
 
-if(p1 == p2)
-{}
+	int* p1 = NULL;
+	int* p2 = nullptr;   
 
-foo(nullptr);
-bar(nullptr);
+	if(p1 == p2)
+	{}
 
-bool f = nullptr;
-int i = nullptr; // ошибка: для преобразования в int надо использовать reinterpret_cast
+	foo(nullptr);
+	bar(nullptr);
+
+	bool f = nullptr;
+	int i = nullptr; // ошибка: для преобразования в int надо использовать reinterpret_cast
 
 
 
-#3 — range-based циклы
+# 3 — range-based циклы
 
  В С++11 была добавлена поддержка парадигмы foreach для итерации по набору. В новой форме возможно выполнять итерации в случае, если для объекта итерации перегружены методы begin() и end(). 
 
 Это полезно, когда вы просто хотите получить элементы массива/контейнера или сделать с ними что-то, не заботясь об индексах, итераторах или кол-ве элементов.
-std::map<std::string, std::vector<int>> map;
-std::vector<int> v;
-v.push_back(1);
-v.push_back(2);
-v.push_back(3);
-map["one"] = v;
 
-for(const auto &kvp: map) 
-{
-   std::cout << kvp.first << std::endl;
-   for(auto v: kvp.second)
-      std::cout << v << std::endl;
-}
+	std::map<std::string, std::vector<int>> map;
+	std::vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	map["one"] = v;
 
-int arr[] = {1,2,3,4,5};
+	for(const auto &kvp: map) 
+	{
+	   std::cout << kvp.first << std::endl;
+	   for(auto v: kvp.second)
+	      std::cout << v << std::endl;
+	}
 
-for(int &e: arr) 
-   e *= e;
+	int arr[] = {1,2,3,4,5};
+
+	for(int &e: arr) 
+	   e *= e;
 
 
 
-#4 — override и final
+# 4 — override и final
 
 Мне всегда не нравились виртуальные функции в С++. Ключевое слово virtual опционально и поэтому немного затрудняло чтение кода, заставляя вечно возвращаться в вершину иерархии наследования, чтобы посмотреть объявлен ли виртуальным тот или иной метод. Я всегда использовал этой ключевое слово так же и в производных классах (и поощрял людей, кто так делал), чтобы код был понятнее. Тем не менее, есть ошибки, которые могут все таки возникнуть. Возьмем следующий пример:
-class B 
-{
-public:
-   virtual void f(short) {std::cout << "B::f" << std::endl;}
-};
 
-class D : public B
-{
-public:
-   virtual void f(int) {std::cout << "D::f" << std::endl;}
-};
+	class B 
+	{
+	public:
+	   virtual void f(short) {std::cout << "B::f" << std::endl;}
+	};
+
+	class D : public B
+	{
+	public:
+	   virtual void f(int) {std::cout << "D::f" << std::endl;}
+	};
 
 
 D::f переопределяет B::f. Однако они имеют разную сигнатуру, один метод принимает short, другой — int, поэтому B::f — это просто другой метод с тем же именем, перегруженный, а не переопределенный. Таким образом, работая через указатель на базовый класс, Вы можете вызвать f() и ожидать вывода «переопределенного» вами метода: «D::f», однако вывод будет «B::f». 
 
 Вот другая возможная ошибка: параметры одни и те же, но в базовом классе метод константный, а в производном — нет.
-class B 
-{
-public:
-   virtual void f(int) const {std::cout << "B::f " << std::endl;}
-};
 
-class D : public B
-{
-public:
-   virtual void f(int) {std::cout << "D::f" << std::endl;}
-};
+	class B 
+	{
+	public:
+	   virtual void f(int) const {std::cout << "B::f " << std::endl;}
+	};
+
+	class D : public B
+	{
+	public:
+	   virtual void f(int) {std::cout << "D::f" << std::endl;}
+	};
 
 
 И снова это две перегруженные, а не переопределенные функции. 
 К счастью, теперь есть способ избавиться от этих ошибок. Были добавлены два новых идентификатора (не ключевые слова): override, для указания того, что метод является переопределением виртуального метода в базовом классе и final, указывающий что производный класс не должен переопределять виртуальный метод. Первый пример теперь выглядит так:
-class B 
-{
-public:
-   virtual void f(short) {std::cout << "B::f" << std::endl;}
-};
 
-class D : public B
-{
-public:
-   virtual void f(int) override {std::cout << "D::f" << std::endl;}
-};
+	class B 
+	{
+	public:
+	   virtual void f(short) {std::cout << "B::f" << std::endl;}
+	};
+
+	class D : public B
+	{
+	public:
+	   virtual void f(int) override {std::cout << "D::f" << std::endl;}
+	};
 
 
 Теперь это вызовет ошибку при компиляции (точно так же, если бы вы использовали override во втором примере):
@@ -158,29 +163,30 @@ public:
 
 
 С другой стороны, если вы хотите сделать метод, не предназначенный для переопределения (ниже в иерархии), его следует отметить как final. В производном классе можно использовать сразу оба идентификатора.
-class B 
-{
-public:
-   virtual void f(int) {std::cout << "B::f" << std::endl;}
-};
 
-class D : public B
-{
-public:
-   virtual void f(int) override final {std::cout << "D::f" << std::endl;}
-};
+	class B 
+	{
+	public:
+	   virtual void f(int) {std::cout << "B::f" << std::endl;}
+	};
 
-class F : public D
-{
-public:
-   virtual void f(int) override {std::cout << "F::f" << std::endl;}
-};
+	class D : public B
+	{
+	public:
+	   virtual void f(int) override final {std::cout << "D::f" << std::endl;}
+	};
+
+	class F : public D
+	{
+	public:
+	   virtual void f(int) override {std::cout << "F::f" << std::endl;}
+	};
 
 
 Функция, объявленная как final, не может быть переопределена функцией F::f() — в этом случае, она переопределяет метод базового класса (В) для класса D.
 
 
-#5 — строго-типизированный enum
+# 5 — строго-типизированный enum
 
 У «традиционных» перечислений в С++ есть некоторые недостатки: они экспортируют свои значения в окружающую область видимости (что может привести к конфликту имен), они неявно преобразовываются в целый тип и не могут иметь определенный пользователем тип.
 
@@ -191,236 +197,244 @@ Options o = Options::All;
 
 
 
-#6 — интеллектуальные указатели 
+# 6 — интеллектуальные указатели 
 
  Есть много статей, как на хабре, так и на других ресурсах, написанных на эту тему, поэтому я просто хочу упомянуть об интеллектуальных указателях с подсчетом ссылок и автоматическим освобождением памяти:
-1.unique_ptr: должен использоваться, когда ресурс памяти не должен был разделяемым (у него нет конструктора копирования), но он может быть передан другому unique_ptr
-2.shared_ptr: должен использоваться, когда ресурс памяти должен быть разделяемым
-3.weak_ptr: содержит ссылку на объект, которым управляет shared_ptr, но не осуществляет подсчет ссылок; позволяет избавиться от циклической зависимости
+- 1.unique_ptr: должен использоваться, когда ресурс памяти не должен был разделяемым (у него нет конструктора копирования), но он может быть передан другому unique_ptr
+- 2.shared_ptr: должен использоваться, когда ресурс памяти должен быть разделяемым
+- 3.weak_ptr: содержит ссылку на объект, которым управляет shared_ptr, но не осуществляет подсчет ссылок; позволяет избавиться от циклической зависимости
 
  Приведенный ниже пример демонстрирует unique_ptr. Для передачи владения объектом другому unique_ptr, используйте std::move (эта функция будет обсуждаться в последнем пункте). После передачи владения, интеллектуальный указатель, который передал владение, становится нулевым и get() вернет nullptr.
-void foo(int* p)
-{
-   std::cout << *p << std::endl;
-}
-std::unique_ptr<int> p1(new int(42));
-std::unique_ptr<int> p2 = std::move(p1); // transfer ownership
+ 
+	void foo(int* p)
+	{
+	   std::cout << *p << std::endl;
+	}
+	std::unique_ptr<int> p1(new int(42));
+	std::unique_ptr<int> p2 = std::move(p1); // transfer ownership
 
-if(p1)
-  foo(p1.get());
+	if(p1)
+	  foo(p1.get());
 
-(*p2)++;
+	(*p2)++;
 
-if(p2)
-  foo(p2.get());
+	if(p2)
+	  foo(p2.get());
 
 
 Второй пример демонстрирует shared_ptr. Использование похоже, хотя семантика отличается, поскольку теперь владение совместно используемое.
-void foo(int* p)
-{
-}
-void bar(std::shared_ptr<int> p)
-{
-   ++(*p);
-}
-std::shared_ptr<int> p1(new int(42));
-std::shared_ptr<int> p2 = p1;
+
+	void foo(int* p)
+	{
+	}
+	void bar(std::shared_ptr<int> p)
+	{
+	   ++(*p);
+	}
+	std::shared_ptr<int> p1(new int(42));
+	std::shared_ptr<int> p2 = p1;
    
-bar(p1);   
-foo(p2.get());
+	bar(p1);   
+	foo(p2.get());
 
 
 Первое объявление эквивалентно следующему:
-auto p3 = std::make_shared<int>(42);
+	auto p3 = std::make_shared<int>(42);
 
 
 make_shared — это функция, имеющая преимущество при выделении памяти для совместно используемого объекта и интеллектуального указателя с единственным выделением, в отличие от явного получения shared_ptr через конструктор, где требуется, по крайней мере, два выделения. Из-за этого может произойти утечка памяти. В следующем примере как раз это демонстрируется, утечка может произойти в случае, если seed() бросит исключение.
-void foo(std::shared_ptr<int> p, int init)
-{
-   *p = init;
-}
-foo(std::shared_ptr<int>(new int(42)), seed());
+
+	void foo(std::shared_ptr<int> p, int init)
+	{
+	   *p = init;
+	}
+	foo(std::shared_ptr<int>(new int(42)), seed());
 
 
 Эта проблема решается использованием make_shared.
 И, наконец, пример с weak_ptr. Заметьте, что вы должны получить shared_ptr для объекта, вызывая lock(), чтобы получить доступ к объекту. 
-auto p = std::make_shared<int>(42);
-std::weak_ptr<int> wp = p;
 
-{
-  auto sp = wp.lock();
-  std::cout << *sp << std::endl;
-}
+	auto p = std::make_shared<int>(42);
+	std::weak_ptr<int> wp = p;
+	
+	{
+	  auto sp = wp.lock();
+	  std::cout << *sp << std::endl;
+	}
+	
+	p.reset();
+	
+	if(wp.expired())
+	  std::cout << "expired" << std::endl;
 
-p.reset();
-
-if(wp.expired())
-  std::cout << "expired" << std::endl;
 
 
-
-#7 — лямбды
+# 7 — лямбды
 
  В новом стандарте наконец-то была добавлена поддержка лямбда-выражений. Мы можете использовать лямбды везде, где ожидается функтор или std::function. Лямбда, вообще говоря, представляет собой более короткую запись функтора, что-то вроде анонимного функтора. Подробнее можно почитать, например, на MSDN.
-std::vector<int> v;
-v.push_back(1);
-v.push_back(2);
-v.push_back(3);
 
-std::for_each(std::begin(v), std::end(v), [](int n) {std::cout << n << std::endl;});
+	std::vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	
+	std::for_each(std::begin(v), std::end(v), [](int n) {std::cout << n << std::endl;});
 
-auto is_odd = [](int n) {return n%2==1;};
-auto pos = std::find_if(std::begin(v), std::end(v), is_odd);
-if(pos != std::end(v))
-  std::cout << *pos << std::endl;
+	auto is_odd = [](int n) {return n%2==1;};
+	auto pos = std::find_if(std::begin(v), std::end(v), is_odd);
+	if(pos != std::end(v))
+	  std::cout << *pos << std::endl;
 
 
 Теперь немного более хитрые — рекурсивные лямбды. Представьте лямбду, представляющую функцию Фибоначчи. Если вы попытаетесь записать ее, используя auto, то получите ошибку компиляции:
 auto fib = [&fib](int n) {return n < 2 ? 1 : fib(n-1) + fib(n-2);};
 
 
-error C3533: 'auto &': a parameter cannot have a type that contains 'auto'
-error C3531: 'fib': a symbol whose type contains 'auto' must have an initializer
-error C3536: 'fib': cannot be used before it is initialized
-error C2064: term does not evaluate to a function taking 1 arguments
+	error C3533: 'auto &': a parameter cannot have a type that contains 'auto'
+	error C3531: 'fib': a symbol whose type contains 'auto' must have an initializer
+	error C3536: 'fib': cannot be used before it is initialized
+	error C2064: term does not evaluate to a function taking 1 arguments
 
 
 Здесь имеет место циклическая зависимость. Чтобы избавиться от нее, необходимо явно определить тип функции, используя std::function.
+
 std::function<int(int)> lfib = [&lfib](int n) {return n < 2 ? 1 : lfib(n-1) + lfib(n-2);};
 
 
 
-#8 — non-member begin() и end()
+# 8 — non-member begin() и end()
 
 Вы, вероятно, заметили, что в примерах ранее, я использовал функции begin() и end(). Это новое дополнение к стандартной библиотеке. Они работают со всеми контейнерами STL и могут быть расширены для работы с любым типом. 
 
 Давайте возьмем, например, предыдущий пример, где я выводил вектор и затем искал первый нечетный элемент. Если std::vector заменить С-подобным массивом, то код будет выглядеть так:
-int arr[] = {1,2,3};
-std::for_each(&arr[0], &arr[0]+sizeof(arr)/sizeof(arr[0]), [](int n) {std::cout << n << std::endl;});
-
-auto is_odd = [](int n) {return n%2==1;};
-auto begin = &arr[0];
-auto end = &arr[0]+sizeof(arr)/sizeof(arr[0]);
-auto pos = std::find_if(begin, end, is_odd);
-if(pos != end)
-  std::cout << *pos << std::endl;
-
-
-С begin() и end() его можно переписать следующим образом:
-int arr[] = {1,2,3};
-std::for_each(std::begin(arr), std::end(arr), [](int n) {std::cout << n << std::endl;});
-
-auto is_odd = [](int n) {return n%2==1;};
-auto pos = std::find_if(std::begin(arr), std::end(arr), is_odd);
-if(pos != std::end(arr))
-  std::cout << *pos << std::endl;
-
-
-Это почти полностью идентично коду с std::vector. Таким образом, мы можем написать один универсальный метод для всех типов, которые поддерживаются функциями begin() и end(). 
-template <typename Iterator>
-void bar(Iterator begin, Iterator end) 
-{
-   std::for_each(begin, end, [](int n) {std::cout << n << std::endl;});
-
-   auto is_odd = [](int n) {return n%2==1;};
-   auto pos = std::find_if(begin, end, is_odd);
-   if(pos != end)
-      std::cout << *pos << std::endl;
-}
-
-template <typename C>
-void foo(C c)
-{
-   bar(std::begin(c), std::end(c));
-}
-
-template <typename T, size_t N>
-void foo(T(&arr)[N])
-{
-   bar(std::begin(arr), std::end(arr));
-}
-
-int arr[] = {1,2,3};
-foo(arr);
-
-std::vector<int> v;
-v.push_back(1);
-v.push_back(2);
-v.push_back(3);
-foo(v);
+	int arr[] = {1,2,3};
+	std::for_each(&arr[0], &arr[0]+sizeof(arr)/sizeof(arr[0]), [](int n) {std::cout << n << std::endl;});
+	
+	auto is_odd = [](int n) {return n%2==1;};
+	auto begin = &arr[0];
+	auto end = &arr[0]+sizeof(arr)/sizeof(arr[0]);
+	auto pos = std::find_if(begin, end, is_odd);
+	if(pos != end)
+	  std::cout << *pos << std::endl;
+	
+	
+	С begin() и end() его можно переписать следующим образом:
+	int arr[] = {1,2,3};
+	std::for_each(std::begin(arr), std::end(arr), [](int n) {std::cout << n << std::endl;});
+	
+	auto is_odd = [](int n) {return n%2==1;};
+	auto pos = std::find_if(std::begin(arr), std::end(arr), is_odd);
+	if(pos != std::end(arr))
+	  std::cout << *pos << std::endl;
 
 
+Это почти полностью идентично коду с std::vector. Таким образом, мы можем написать один универсальный метод для всех типов, которые поддерживаются функциями begin() и end().
 
-#9 — static_assert и классы свойств
+	template <typename Iterator>
+	void bar(Iterator begin, Iterator end) 
+	{
+	   std::for_each(begin, end, [](int n) {std::cout << n << std::endl;});
+
+	   auto is_odd = [](int n) {return n%2==1;};
+	   auto pos = std::find_if(begin, end, is_odd);
+	   if(pos != end)
+	      std::cout << *pos << std::endl;
+	}
+	
+	template <typename C>
+	void foo(C c)
+	{
+	   bar(std::begin(c), std::end(c));
+	}
+
+	template <typename T, size_t N>
+	void foo(T(&arr)[N])
+	{
+	   bar(std::begin(arr), std::end(arr));
+	}
+	
+	int arr[] = {1,2,3};
+	foo(arr);
+	
+	std::vector<int> v;
+	v.push_back(1);
+	v.push_back(2);
+	v.push_back(3);
+	foo(v);
+
+
+
+# 9 — static_assert и классы свойств
 
 static_assert проверяет утверждение во время компиляции. Если утверждение — истина, то ничего не происходит. Если — ложь, то компилятор выводит указанное сообщение об ошибке.
-template <typename T, size_t Size>
-class Vector
-{
-   static_assert(Size > 3, "Size is too small");
-   T _points[Size];
-};
 
-int main()
-{
-   Vector<int, 16> a1;
-   Vector<double, 2> a2;
-   return 0;
-}
+	template <typename T, size_t Size>
+	class Vector
+	{
+	   static_assert(Size > 3, "Size is too small");
+	   T _points[Size];
+	};
+	
+	int main()
+	{
+	   Vector<int, 16> a1;
+	   Vector<double, 2> a2;
+	   return 0;
+	}
 
 
-error C2338: Size is too small
-see reference to class template instantiation 'Vector<T,Size>' being compiled
-   with
-   [
-      T=double,
-      Size=2
-   ]
+	error C2338: Size is too small
+	see reference to class template instantiation 'Vector<T,Size>' being compiled
+	   with
+	   [
+	      T=double,
+	      Size=2
+	   ]
 
 
 static_assert становится более полезен, когда используется с классами свойств. Это набор классов, которые предоставляют информацию о типах во время компиляции. Они доступны в заголовке <type_traits>. Есть несколько видов классов в этом заголовке: классы-помощники, классы преобразований и непосредственно классы свойств. 
 В следующем примере, функция add, как предполагается, работает только с целочисленными типами.
 template <typename T1, typename T2>
-auto add(T1 t1, T2 t2) -> decltype(t1 + t2)
-{
-   return t1 + t2;
-}
+	auto add(T1 t1, T2 t2) -> decltype(t1 + t2)
+	{
+	   return t1 + t2;
+	}
 
 
 Однако, при компиляции не возникнет ошибки, если написать следующее:
-std::cout << add(1, 3.14) << std::endl;
-std::cout << add("one", 2) << std::endl;
+	std::cout << add(1, 3.14) << std::endl;
+	std::cout << add("one", 2) << std::endl;
 
 
 Программа просто выведет «4.14» и «е». Используя static_assert, эти две строки вызовут ошибку во время компиляции.
-template <typename T1, typename T2>
-auto add(T1 t1, T2 t2) -> decltype(t1 + t2)
-{
-   static_assert(std::is_integral<T1>::value, "Type T1 must be integral");
-   static_assert(std::is_integral<T2>::value, "Type T2 must be integral");
+	template <typename T1, typename T2>
+	auto add(T1 t1, T2 t2) -> decltype(t1 + t2)
+	{
+	   static_assert(std::is_integral<T1>::value, "Type T1 must be integral");
+	   static_assert(std::is_integral<T2>::value, "Type T2 must be integral");
 
-   return t1 + t2;
-}
+	   return t1 + t2;
+	}
 
 
 error C2338: Type T2 must be integral
 see reference to function template instantiation 'T2 add<int,double>(T1,T2)' being compiled
    with
-   [
-      T2=double,
-      T1=int
-   ]
+	   [
+	      T2=double,
+	      T1=int
+	   ]
 error C2338: Type T1 must be integral
 see reference to function template instantiation 'T1 add<const char*,int>(T1,T2)' being compiled
-   with
-   [
-      T1=const char *,
-      T2=int
-   ]
+	   with
+	   [
+	      T1=const char *,
+	      T2=int
+	   ]
 
 
 
-#10 — семантика перемещения
+# 10 — семантика перемещения
 
  Это — еще одна важная тема, затронутая в С++11. На эту тему можно написать несколько статей, а не абзацев, поэтому я не буду сильно углубляться. 
 
@@ -431,103 +445,104 @@ C++11 ввел понятие rvalue ссылок (указанных с &&), ч
 Конструктор перемещения и оператор присваивания перемещения — эти две специальные функции принимают параметр T&&, который является rvalue. Фактически, они могут изменять объект. 
 
 Следующий пример показывает фиктивную реализацию буфера. Буфер идентифицируется именем, имеет указатель (обернутый в std::unique_ptr) на массив элементов типа Т и переменную, содержащую размер массива.
-template <typename T>
-class Buffer 
-{
-   std::string          _name;
-   size_t               _size;
-   std::unique_ptr<T[]> _buffer;
 
-public:
-   // default constructor
-   Buffer():
-      _size(16),
-      _buffer(new T[16])
-   {}
+	template <typename T>
+	class Buffer 
+	{
+	   std::string          _name;
+	   size_t               _size;
+	   std::unique_ptr<T[]> _buffer;
+	
+	public:
+	   // default constructor
+	   Buffer():
+	      _size(16),
+	      _buffer(new T[16])
+	   {}
 
-   // constructor
-   Buffer(const std::string& name, size_t size):
-      _name(name),
-      _size(size),
-      _buffer(new T[size])
-   {}
+	   // constructor
+	   Buffer(const std::string& name, size_t size):
+	      _name(name),
+	      _size(size),
+	      _buffer(new T[size])
+	   {}
+	
+ 	  // copy constructor
+	   Buffer(const Buffer& copy):
+	      _name(copy._name),
+	      _size(copy._size),
+	      _buffer(new T[copy._size])
+	   {
+	      T* source = copy._buffer.get();
+	      T* dest = _buffer.get();
+	      std::copy(source, source + copy._size, dest);
+	   }
 
-   // copy constructor
-   Buffer(const Buffer& copy):
-      _name(copy._name),
-      _size(copy._size),
-      _buffer(new T[copy._size])
-   {
-      T* source = copy._buffer.get();
-      T* dest = _buffer.get();
-      std::copy(source, source + copy._size, dest);
-   }
+	   // copy assignment operator
+	   Buffer& operator=(const Buffer& copy)
+	   {
+	      if(this != &copy)
+	      {
+	         _name = copy._name;
 
-   // copy assignment operator
-   Buffer& operator=(const Buffer& copy)
-   {
-      if(this != &copy)
-      {
-         _name = copy._name;
+	         if(_size != copy._size)
+	         {
+	            _buffer = nullptr;
+ 	           _size = copy._size;
+	            _buffer = (_size > 0)? new T[_size] : nullptr;
+	         }
 
-         if(_size != copy._size)
-         {
-            _buffer = nullptr;
-            _size = copy._size;
-            _buffer = (_size > 0)? new T[_size] : nullptr;
-         }
+	         T* source = copy._buffer.get();
+	         T* dest = _buffer.get();
+	         std::copy(source, source + copy._size, dest);
+ 	     }
 
-         T* source = copy._buffer.get();
-         T* dest = _buffer.get();
-         std::copy(source, source + copy._size, dest);
-      }
+	      return *this;
+	   }
 
-      return *this;
-   }
+	   // move constructor
+	   Buffer(Buffer&& temp):
+	      _name(std::move(temp._name)),
+	      _size(temp._size),
+	      _buffer(std::move(temp._buffer))
+	   {
+	      temp._buffer = nullptr;
+	      temp._size = 0;
+	   }
+	
+	   // move assignment operator
+	   Buffer& operator=(Buffer&& temp)
+	   {
+ 	     assert(this != &temp); // assert if this is not a temporary
+	
+ 	     _buffer = nullptr;
+ 	     _size = temp._size;
+ 	     _buffer = std::move(temp._buffer);
+	
+	      _name = std::move(temp._name);
+	
+	      temp._buffer = nullptr;
+	      temp._size = 0;
+	      
+	      return *this;
+	   }
+	};
 
-   // move constructor
-   Buffer(Buffer&& temp):
-      _name(std::move(temp._name)),
-      _size(temp._size),
-      _buffer(std::move(temp._buffer))
-   {
-      temp._buffer = nullptr;
-      temp._size = 0;
-   }
-
-   // move assignment operator
-   Buffer& operator=(Buffer&& temp)
-   {
-      assert(this != &temp); // assert if this is not a temporary
-
-      _buffer = nullptr;
-      _size = temp._size;
-      _buffer = std::move(temp._buffer);
-
-      _name = std::move(temp._name);
-
-      temp._buffer = nullptr;
-      temp._size = 0;
-      
-      return *this;
-   }
-};
-
-template <typename T>
-Buffer<T> getBuffer(const std::string& name) 
-{
-   Buffer<T> b(name, 128);
-   return b;
-}
-int main()
-{
-   Buffer<int> b1;
-   Buffer<int> b2("buf2", 64);
-   Buffer<int> b3 = b2;
-   Buffer<int> b4 = getBuffer<int>("buf4");
-   b1 = getBuffer<int>("buf5");
-   return 0;
-}
+	template <typename T>
+	Buffer<T> getBuffer(const std::string& name) 
+	{
+	   Buffer<T> b(name, 128);
+	   return b;
+	}
+	int main()
+	{
+	   Buffer<int> b1;
+	   Buffer<int> b2("buf2", 64);
+	   Buffer<int> b3 = b2;
+	   Buffer<int> b4 = getBuffer<int>("buf4");
+	   b1 = getBuffer<int>("buf5");
+	   return 0;
+	}
 
 
 Конструктор копирования по умолчанию и оператор присваивания копии должны быть вам знакомы. Новое в С++11 — это конструктор перемещения и оператор присваивания перемещения, Если вы выполните этот код, то увидите, что когда создается b4 — вызывается конструктор перемещения. Кроме того, когда b1 присваивается значение — вызывается оператор присваивания перемещения. Причина — значение, возвращаемое функцией getBuffer() — rvalue. 
