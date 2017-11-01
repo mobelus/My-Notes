@@ -1,4 +1,171 @@
 
+# INVERT STRING:
+
+	// Функция переворота строки / функция переворачивающая строку / функция для переворачивания строки
+	// Функция разворота строки / функция разворачивающая строку / функция для разворачивания строки
+	//*
+
+	template <typename T >
+	void invert_string(T &a)
+	{
+		T::size_type length = a.size();
+		for (T::size_type i = 0; i < (length / 2); ++i)
+		{
+			std::swap(a[i], a[length - i - 1]);
+		}
+	}
+
+	std::string str = "abcdefg";
+	invert_string(str);
+
+
+	void reverse(string &s)
+	{
+		int j = s.size() - 1;
+
+		for (int i = 0; i < s.size() / 2; i++)
+		{
+			swap(s[i], s[j]);
+			j--;
+		}
+	}
+
+
+
+# bubble_sort
+
+	// 2. Сортировка пузырьком (обменом)
+	// Идея метода: шаг сортировки состоит в проходе снизу вверх по массиву. По пути просматриваются пары соседних элементов. Если элементы некоторой пары находятся в неправильном порядке, то меняем их местами.
+
+
+	//*
+	template< class T >
+	void bubbleSort(T* arr, int size)
+	{
+		T tmp;
+
+		for (int i = 0; i < size - 1; ++i) // i - номер прохода
+		{
+			for (int j = 0; j < size - 1; ++j) // внутренний цикл прохода
+			{
+				if (arr[j + 1] < arr[j])
+				{
+					tmp = arr[j + 1];
+					arr[j + 1] = arr[j];
+					arr[j] = tmp;
+				}
+			}
+		}
+	}
+	//*/
+	//*
+	template <class T>
+	void bubble_sort(T* a, int size)
+	{
+		T tmp;
+		for (int i = 0; i < size - 1; ++i)
+		{
+			for (int j = 0; j < size - 1; ++j)
+			{
+				if (a[j + 1] < a[j])
+				{
+					tmp = a[j];
+					a[j] = a[j + 1];
+					a[j - 1] = tmp;
+				}
+			}
+		}
+	}
+
+	// modified bubble_sort
+	void bubble_sort_mod_1(int* a, int len)
+	{
+		int tmp = 0;
+		bool sorted = true;
+		while (!sorted)
+		{
+			sorted = true;
+			for (int i = 0; i < n - 1; i++)
+			{
+				if (a[i] > a[i + 1])
+				{
+					tmp = a[i];
+					a[i] = a[i + 1];
+					a[i + 1] = tmp;
+					sorted = false;
+				}
+			}
+		}
+	}
+
+
+	// modified bubble_sort
+	void bubble_sort_mod_2(int* a, int len)
+	{
+		int j = 1;
+		int tmp = 0;
+		bool sorted = true;
+		while (!sorted)
+		{
+			sorted = true;
+			for (int i = 0; i < n - j; i++)
+			{
+				if (a[i] > a[i + 1])
+				{
+					tmp = a[i];
+					a[i] = a[i + 1];
+					a[i + 1] = tmp;
+					sorted = false;
+				}
+			}
+			j++;
+		}
+	}
+
+
+
+# Quick_sort
+
+
+	quickSort(массив a, верхняя граница N) {
+		Выбрать опорный элемент p - середину массива
+			Разделить массив по этому элементу
+			Если подмассив слева от p содержит более одного элемента,
+			вызвать quickSort для него.
+			Если подмассив справа от p содержит более одного элемента,
+			вызвать quickSort для него.
+	}
+
+
+
+	template<class T>
+	void quickSortR(T* a, long N) {
+		// На входе - массив a[], a[N] - его последний элемент.
+
+		long i = 0, j = N;      // поставить указатели на исходные места
+		T temp, p;
+
+		p = a[N >> 1];      // центральный элемент
+
+					// процедура разделения
+		do {
+			while (a[i] < p) i++;
+			while (a[j] > p) j--;
+
+			if (i <= j) {
+				temp = a[i]; a[i] = a[j]; a[j] = temp;
+				i++; j--;
+			}
+		} while (i <= j);
+
+		// рекурсивные вызовы, если есть, что сортировать 
+		if (j > 0) quickSortR(a, j);
+		if (N > i) quickSortR(a + i, N - i);
+	}
+
+
+
+
 # IMPORTANT LINKS:
 
 http://job-interview.ru/questions/cpp/
