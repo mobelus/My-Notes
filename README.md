@@ -31,8 +31,10 @@ https://proglib.io/p/15-questions-for-programmers/
 
 https://club.shelek.ru/viewart.php?id=247
 
-- Однако, именно с этой целью этот пример и приведен.
 
+Однако, именно с этой целью этот пример и приведен.
+
+	
 	// SMARRAY2.H - интерфейс интеллектуального массива
 	#ifndef _SMARRAY2_H
 	#define _SMARRAY2_H
@@ -55,8 +57,9 @@ https://club.shelek.ru/viewart.php?id=247
 	#endif
 
 
-- БУКВАЛЬНОЕ КОПИРОВАНИЕ
+БУКВАЛЬНОЕ КОПИРОВАНИЕ
 
+	
 	// SMARRAY2.CPP - реализация интеллектуального массива
 	#include <mem.h>
 	#include [i]
@@ -138,9 +141,11 @@ https://club.shelek.ru/viewart.php?id=247
 			for (unsigned int k = 0; k<10; k++) cout << ouch[k] << endl;
 		}
 	}
+	
 
-- РАЗВЁРНУТОЕ КОПИРОВАНИЕ
+РАЗВЁРНУТОЕ КОПИРОВАНИЕ
 
+	
 	// Конструктор копий с развернутым копированием
 	INT_ARRAY::INT_ARRAY(const INT_ARRAY& rhs)
 	{
