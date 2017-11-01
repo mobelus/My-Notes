@@ -1,22 +1,247 @@
 
+# IMPORTANT LINKS:
+
+http://job-interview.ru/questions/cpp/
+
+https://tproger.ru/articles/problems/
+
+https://rsdn.org/forum/job/2316994.flat
+
+https://habrahabr.ru/post/200190/
+
+http://www.devexp.ru/2010/03/o-kopirovanii-obektov-v-c/
+
+http://www.quizful.net/post/neobhodimost-konstruktora-kopirovaniya-cpp
+
+Алгоритмы
+
+https://ru.stackoverflow.com/questions/307629/%D0%A1%D0%BE%D0%B1%D0%B5%D1%81%D0%B5%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BF%D0%BE-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B0%D0%BC-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%B8%D1%82%D1%8C%D1%81%D1%8F-%D0%BA-%D0%BD%D0%B5%D0%BC%D1%83-%D0%B7%D0%B0-%D0%BE%D0%B4%D0%BD%D1%83-%D0%BD%D0%B5%D0%B4%D0%B5%D0%BB%D1%8E
+
+Алгоритмическая “база” хорошего программиста:
+
+https://ru.stackoverflow.com/questions/262661/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D0%B1%D0%B0%D0%B7%D0%B0-%D1%85%D0%BE%D1%80%D0%BE%D1%88%D0%B5%D0%B3%D0%BE-%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%81%D1%82%D0%B0-%D0%92%D0%BE%D0%BF%D1%80%D0%BE%D1%81-%D0%BF%D0%BE-%D1%81%D0%B0%D0%BC%D0%BE%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D1%82%D0%B8%D1%8E
+
+15 вопросов на собезах по Алгоритмам:
+
+https://proglib.io/p/15-questions-for-programmers/
 
 
-void Func()
-{
-	str s1("FIRST");
-	str* s2 = new str_lower("SECOND");
-	str* s0 = &s1;
-	std::cout << s0->Get() << std::endl;
-	s0 = s2;
-	std::cout << s0->Get() << std::endl;
-	delete s0;
-}
 
-void main()
-{
-	Func();
-	Std::cout << “THIRD.” << std::endl;
-}
+# буквальное (shallow copy) развернутое / глубокое копирование (deep copy)
+
+https://club.shelek.ru/viewart.php?id=247
+
+- Однако, именно с этой целью этот пример и приведен.
+
+	// SMARRAY2.H - интерфейс интеллектуального массива
+	#ifndef _SMARRAY2_H
+	#define _SMARRAY2_H
+	class INT_ARRAY
+	{
+	public:
+		INT_ARRAY(unsigned int sz = 100);
+		~INT_ARRAY();
+		INT_ARRAY(const INT_ARRAY&); // Объявление конструктора копий
+		INT_ARRAY& operator=(const INT_ARRAY&);// Объявление операции присваивания
+											   // Использование беззнаковых целых снимает необходимость
+											   // проверки на отрицательные индексы
+		int& operator[](unsigned int index);
+	
+	private:
+		unsigned int max;
+		unsigned int dummy;
+		int *data;
+	};
+	#endif
+
+
+- БУКВАЛЬНОЕ КОПИРОВАНИЕ
+
+	// SMARRAY2.CPP - реализация интеллектуального массива
+	#include <mem.h>
+	#include [i]
+	#include "smarray2.h"
+
+	// Конструктор - Добавляет единицу к размеру массива для хранения
+	// фиктивного значения на случай использования недопустимого индекса.
+	INT_ARRAY::INT_ARRAY(unsigned int sz)
+	{
+		max = sz;
+		dummy = sz + 1;
+		data = new int[sz + 1];
+		// Если  new возвращает допустимый блок памяти,
+		// тогда data не нуль. Функция memset инициализирует
+		// этот блок памяти значением 0.
+		if (data) memset(data, 0, dummy);
+		else max = -1;
+	}
+
+
+	// деструктор
+	INT_ARRAY::~INT_ARRAY()
+	{
+		delete[] data; // освобождение массива
+		data = 0; // установка указателя в 0 позволяет проверять 
+				  // его недопустимость
+	}
+
+	// - Предупреждение -
+	// Этот класс использует буквальное копирование.
+	// Не пользуйтесь им в реальных программах.
+	// Этот конструктор копий демонстрирует вариант
+	// "буквального" конструктора, генерируемого компилятором.
+	// Здесь не только два указателя ссылаются на один и тот же
+	// блок памяти, но и, кроме того, не освобождается
+	// старый блок.
+
+	//конструктор копий
+	INT_ARRAY::INT_ARRAY(const INT_ARRAY& rhs)
+	{
+		this->max = rhs.max;
+		this->dummy = rhs.dummy;
+		this->data = rhs.data;  // ОШИБКА: буквальное копирование
+	}
+
+	//оператор присваивания
+	// Предупреждение - И здесь та же ошибка
+	INT_ARRAY& INT_ARRAY::operator=(const INT_ARRAY& rhs)
+	{
+		if (this == &rhs) return *this;
+		this->max = rhs.max;
+		this->dummy = rhs.dummy;
+		this->data = rhs.data;
+		return *this;
+	}
+
+	// Очень кратко, но допустимость индекса проверяется.
+	// Этот вид проблем - превосходный кандидат для
+	// обработки исключительных ситуаций.
+	int& INT_ARRAY::operator[](unsigned int index)
+	{
+		return index < max ? data[index] : data[dummy];
+	}
+
+
+	void main(void)
+	{
+		INT_ARRAY ouch;
+
+		// Создается искусственная область видимости,
+		// чтобы деструктор startMeUp был вызван первым
+		{
+			INT_ARRAY StartMeUp(10);
+			for (unsigned int k = 0; k<10; k++)
+				StartMeUp[k] = k;  // здесь работает operator[]
+			ouch = StartMeUp;  // Вызов "ПЛОХОЙ" операции присваивания
+							   // Демострация того факта, что 'ouch' и
+							   // 'startMeUp' указывают на один и тот же блок памяти
+			for (unsigned int k = 0; k<10; k++) cout << ouch[k] << endl;
+		}
+	}
+
+- РАЗВЁРНУТОЕ КОПИРОВАНИЕ
+
+	// Конструктор копий с развернутым копированием
+	INT_ARRAY::INT_ARRAY(const INT_ARRAY& rhs)
+	{
+		delete[] data; //освобождаем память
+		max = rhs.max;
+		dummy = rhs.dummy;
+		data = new int[dummy]; //выделяем новый блок
+		for (unsigned int j = 0; j<duinmy; j++)
+			data[j] = rhs.data[j]; //копируем данные
+	}
+	// Операция присваивания с развернутым копированием
+	INT_ARRAY& INT_ARRAY::operator=(const INT_ARRAY&rhs)
+	{
+		if (this == &rhs) return *this;
+		// Обратите внимание, что код идентичен тому, 
+		// что используется в конструкторе копий
+		delete[] data;
+		max = rhs.max;
+		dummy = rhs.dummy;
+		data = new int[dummy];
+		for (unsigned int j = 0; j<dummy; j++)
+			data[j] = rhs.data[j];
+		return *this;
+	}
+
+
+
+# SAMPLE 
+
+	#include <string>
+	#include <iostream>
+	using namespace std;
+	
+	
+	void Func()
+	{
+		string s1("FIRST");
+		string* s2 = new string("SECOND");
+		string* s0 = &s1;
+		cout << s0 << endl;
+		s0 = s2;
+		cout << s0 << endl;
+		delete s0;
+	}
+	
+	
+	class A
+	{
+	public:
+		A()			 { std::cout << "A" << std::endl;  }
+		virtual ~A() { std::cout << "~A" << std::endl; }
+		virtual void Printer() { std::cout << "A print" << std::endl; }
+	};
+	
+	class B : public A
+	{
+	public:
+		B()  { std::cout << "B" << std::endl;  }
+		~B() { std::cout << "~B" << std::endl; }
+		void Printer()	{ std::cout << "B print" << std::endl;	}
+	};
+	
+	
+	void test_0()
+	{
+		B b;
+		B* bb = &b;
+	}
+	
+	void test_1()
+	{
+		B b;
+		A* ab = &b;
+	}
+	
+	void test_1_del()
+	{
+		B b;
+		A* ab = &b;
+		delete ab;
+	}
+	
+	void test_2()
+	{
+		A s1;
+		A* s2 = new B();
+		A* s0 = &s1;
+		s0 = s2;
+		delete s0;
+	}
+	
+	
+	void main()
+	{
+		test_0();
+		test_1();
+		test_1_del();
+		test_2();
+		cout << "THIRD." << endl;
+	}
+
 
 
 https://habrahabr.ru/post/182920/
