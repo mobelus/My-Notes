@@ -195,16 +195,22 @@ https://club.shelek.ru/viewart.php?id=247
 	class A
 	{
 	public:
-		A()			 { std::cout << "A" << std::endl;  }
-		virtual ~A() { std::cout << "~A" << std::endl; }
+		A()			 {
+			std::cout << "A" << std::endl;  }
+		virtual ~A() {
+			if (!this) return;
+			std::cout << "~A" << std::endl; }
 		virtual void Printer() { std::cout << "A print" << std::endl; }
 	};
 	
 	class B : public A
 	{
 	public:
-		B()  { std::cout << "B" << std::endl;  }
-		~B() { std::cout << "~B" << std::endl; }
+		B()  {
+			std::cout << "B" << std::endl;  }
+		~B() {
+			if (!this) return;
+			std::cout << "~B" << std::endl; }
 		void Printer()	{ std::cout << "B print" << std::endl;	}
 	};
 	
@@ -231,21 +237,27 @@ https://club.shelek.ru/viewart.php?id=247
 	void test_2()
 	{
 		A s1;
-		A* s2 = new B();
+		A* s2 = new A();
 		A* s0 = &s1;
+		A* s3 = &s1;
 		s0 = s2;
 		delete s0;
+		delete s3;
+		// doiuble destructor CALL !!!!
+		// 1-st call - delete s3 that points to s1
+		// 2-nd call - exit from scope {}
 	}
 	
 	
 	void main()
 	{
-		test_0();
-		test_1();
-		test_1_del();
+		//test_0();
+		//test_1();
+		//test_1_del();
 		test_2();
 		cout << "THIRD." << endl;
 	}
+
 
 
 
