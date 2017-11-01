@@ -1,5 +1,24 @@
 
 
+
+void Func()
+{
+	str s1("FIRST");
+	str* s2 = new str_lower("SECOND");
+	str* s0 = &s1;
+	std::cout << s0->Get() << std::endl;
+	s0 = s2;
+	std::cout << s0->Get() << std::endl;
+	delete s0;
+}
+
+void main()
+{
+	Func();
+	Std::cout << “THIRD.” << std::endl;
+}
+
+
 https://habrahabr.ru/post/182920/
 
 
