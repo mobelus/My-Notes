@@ -1099,7 +1099,12 @@ http://vsokovikov.narod.ru/New_MSDN_API/Menage_files/main_fl_map.htm
 
  LARGE_INTEGER union
 
-Рихтер Дж., Назар К. - Windows via C C++. Программирование
+- Скотт Майерс - Эффективное использование C++. 55 верных способов улучшить структуру и код ваших программ
+
+ONLINE - https://www.e-reading.club/book.php?book=1002058
+
+
+- Рихтер Дж., Назар К. - Windows via C C++. Программирование
 
 RUS - https://studfiles.net/preview/397644/
 
