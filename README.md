@@ -12,32 +12,32 @@ bind
 
 # STATIC + CLASSES
 
-int fun()
-{
-	static int var = 0;
-	var++;
-	return var;
-}
-
-class A
-{
-public:
-	int m_q;
-	int m_b;
-	A() : m_b(fun()), m_q(fun())
-	{}
-
-	int getQ() { return m_q; }
-	int getB() { return m_b; }
-};
-
-int main()
-{
-	A a;
-	int r = a.getQ(); // = 1  ИБО инициализация будет в порядке объявления переменных внутри класса, т.е. сначала m_q и потом m_b, а не в порядке следования в списке инициализации в рамках конструктора клсса.
-	r = a.getB();
-	return 0;
-}
+	int fun()
+	{
+		static int var = 0;
+		var++;
+		return var;
+	}
+	
+	class A
+	{
+		public:
+		int m_q;
+		int m_b;
+		A() : m_b(fun()), m_q(fun())
+		{}
+	
+		int getQ() { return m_q; }
+		int getB() { return m_b; }
+	};
+	
+	int main()
+	{
+		A a;
+		int r = a.getQ(); // = 1  ИБО инициализация будет в порядке объявления переменных внутри класса, т.е. сначала m_q и потом m_b, а не в порядке следования в списке инициализации в рамках конструктора клсса.
+		r = a.getB();
+		return 0;
+	}
 
 
 
