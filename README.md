@@ -1,13 +1,98 @@
 # Deadlock
 
+# Race conditions
+
 # Allocator
+https://habrahabr.ru/post/270009/
 
-# BOOST
+http://www.quizful.net/interview/cpp/allocator-in-cpp
 
-aiso
+Аллокатор это шаблонный класс, который отвечает за выделение памяти и создание объектов. По умолчанию все контейнера используют std::allocator<T>. 
+В языке c++ имеется так же возможность написать свой аллокатор. У своего алокатора должно быть такое объявление:
 
-bind
 
+	template <class T>
+	class my_allocator
+	{
+		typedef size_t    size_type;
+		typedef ptrdiff_t difference_type;
+		typedef T*        pointer;
+		typedef const T*  const_pointer;
+		typedef T&        reference;
+		typedef const T&  const_reference;
+		typedef T         value_type;
+	
+		pointer allocate(size_type st, const void* hint = 0);
+		void deallocate(pointer p, size_type st);
+		void construct(pointer p, const_reference val);
+		void destroy(pointer p);
+		template <class U>
+		struct rebind { typedef allocator<U> other; };
+	};
+
+# memory map files
+https://habrahabr.ru/post/55716/
+
+
+Файлы, отображаемые в память
+Программирование
+В этой статье я хотел бы рассказать о такой замечательной штуке, как файлы, отображаемые в память(memory-mapped files, далее — MMF).
+Иногда их использование может дать довольно таки существенный прирост производительности по сравнению с обычной буферизированной работой с файлами.
+
+Это механизм, который позволяет отображать файлы на участок памяти. Таким образом, при чтении данных из неё, производится считывание соответствующих байт из файла. С записью аналогично. 
+«Клёво, конечно, но что это даёт?» — спросите вы. Поясню на примере.
+Допустим, перед нами стоит задача обработки большого файла(несколько десятков или даже сотен мегабайт). Казалось бы, задача тривиальна — открываем файл, поблочно копируем из него в память, обрабатываем. Что при этом происходит. Каждый блок копируется во временный кэш, затем из него в нашу память. И так с каждым блоком. Налицо неоптимальное расходование памяти под кэш + куча операций копирования. Что же делать?
+
+///////////////////////////////////////////////////////
+
+mmap:mmap() (или “memory map”) аналогичен brk(), но является более гибким инструментом. Во-первых, он может разметить память в любом месте адресного пространства, а не только в конце процесса. Во-вторых, он может не просто разметить память (виртуальную) как проекцию к физической или свопу (swap), он может привязать память к конкретным файлам так, что чтение и запись будут оперировать непосредственно с файлом. Антиподом mmap() является munmap().
+
+Как вы можете видеть, простые вызовы brk() или mmap() могут быть использованы для расширения памяти процесса. Дальше по тексту будут использоваться brk() т.к. он является наиболее простым и распространённым инструментом.
+
+# boost::aiso
+
+http://alexott.net/ru/cpp/BoostAsioNotes.html
+
+https://www.google.ru/url?sa=t&rct=j&q=&esrc=s&source=web&cd=10&cad=rja&uact=8&ved=0ahUKEwje09m7ja_XAhUoJJoKHfDUCbsQtwIIbjAJ&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DFotwf6qVXcI&usg=AOvVaw1nvr9NsKW6Fpe_bUouZo0p
+
+# boost::bind
+
+https://habrahabr.ru/post/310270/
+
+https://habrahabr.ru/post/149056/
+
+# std::ref()
+
+Если в функцию необходимо передать параметры по ссылке, они должны быть обернуты в std::ref или std::cref, как в примере:
+
+	void threadFunction(int &a)
+	{ a++; }
+ 	
+	int main()
+	{
+	     int a = 1;
+	     std::thread thr(threadFunction, std::ref(a));
+	     thr.join();
+	     std::cout << a << std::endl; 
+	     return 0;
+	}
+
+Программа напечатает в консоль 2. Если не использовать std::ref, то результатом работы программы будет 1.
+
+# mutable
+
+Ключевое слово - означает что член, объявленный с наличием mutable можно будет менять для константного полного объекта.
+
+	class A{
+	public:
+ 	  mutable int i;
+	};
+	
+	void g()
+	{
+	   const A a;
+	   a.i = 10;  //без mutable ERROR
+	}
 
 
 # STATIC + CLASSES
