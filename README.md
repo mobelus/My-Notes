@@ -1,13 +1,83 @@
 Методология - писать вообще без классов
 
+
+# Threading stuff
+
+https://books.google.ru/books?id=MEZdDgAAQBAJ&pg=PA846&lpg=PA846&dq=std+thread+if+fails+before+join&source=bl&ots=LbhCsUltf3&sig=Sd5LjAg9Fcw8pmH3_oQVyL-gmOQ&hl=ru&sa=X&ved=0ahUKEwjJqNSh2o7XAhUiMZoKHZJ1ASwQ6AEIZzAI#v=onepage&q=std%20thread%20if%20fails%20before%20join&f=false
+
+# What if std::thread fails BEFORE join - program will shutdown
+
+A std::thread is joinable if it contains a thread state that has not been joined or detatched.
+
+A std::thread gains a thread state by being non default constructed, or having one moveed into it from another std::thread. It loses it when moveed from.
+
+There is no delay in gaining the thread state after construction completes. And it does not go away when the threaded function finishes. So there is not that problem.
+
+There is the problem that if code throws above, you will fail to join or detatch, leading to bad news at program shutdown. Always wrap std::thread in a RAII wrapper to avoid that, or just use std::async that returns void and wrap the resulting std::future similarly (because the standard says it blocks in the dtor, but microsofts implementation does not, so you cannot trust if it will or not).
+
+--------------
+- In VC std::futures from std::async don't block in dtor? – inf Nov 25 '13 at 12:14
+- Yup, that's true. Tested it myself. 
+--------------
+
+-- if  JOIN()  Fails
+
+libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: thread::join failed: No such process
+
+
+
+# CreateThread <-> _beginthreadex
+# Createthread разница _beginthreadex
+
+_beginthreadex
+
+RunTime-функция: она запустится - и будет задействоват Thread Local Storage.
+
+Она запустится - выделит память и будет ею пользоваться, а когда процесс будет умирать.
+
+CreateThread  (не создаёт такого окружения для работы с рантаймовскими библами и объектами) не запускается таким образом, чтобы создать рантайм-обхекты и как следствие он не вызывает и деструкторов этих объектов.
+
+А _beginthreadEx - Удалить так же ещё и вспомогательную информацию, что хранится в этих самых объектах рантаймовских (бибоиотечных).
+Если их не удалить, то произойти своеобразная утечка памяти может.
+
+
+
+	Лучше использовать _beginthreadex, чем CreateThread().
+	СУТЬ: 
+	http://forum.vingrad.ru/forum/topic-47554.html
+	
+	CreateThread - чисто Win32Api'шная функция, а вот
+	
+	_beginthread - функция библиотеки CRT, НЕ кроссплатформенна, но приспособленна для работы с С, т.е. она делает дополнительные манипуляции, что бы стандартные библиотеки корректно работатли (+ вызывает CreateThread ) .
+
+В общем если пишешь на С, то лучше пользоваться вторым.
+Рихтер в статье CreateThread vs. _beginthread очень подробно описывает почему _beginthread предпочтительнее. Она создает Thread Local Storage (TLS), где переопределены, в частности, все глобальные константы, к-рые ф-ции CRT-библиотеки юзают. Например, такая как errno. 
+Именно TLS - гарантия, что ф-ции CRT-библиотеки будут работать корректно. 
+
+The C runtime library was delivered in a UNIX context, in which there is no distinction between processes and threads. In the Windows context, many threads can be executing in a single address space. 
+
+Microsoft has provided an alternative function to CreateThread, called _beginthreadex, to be used with the programs that use multiple threads at the same time they use the C runtime library. The problem occurs with any globally accessible variable used by this library ( there are several of them ). The Microsoft solution is to have the C runtime library provide a copy of each of these variables for each thread. Then, when a thread interacts with the runtime library, variables are shared only between the runtime code and the thread, not among all threads. The _beginthreadex function creates the copy for a thread in conjunction with an embedded call to CreateThread.
+
+
+# PATTERNS
 # Шаблоны проектирования:
 
 - Синглтон
+- Фассад
+- Ресивер
 - Обзёрвер
-- Лисенер
+- Листенер
 - Фабрика
-- Фасад
+
 - Док - Вью
+
+
+
+
+# SQL
+
+GroupBy HAVING
+
 
 # Ошибки в программе под ОС Windows
 
@@ -1464,76 +1534,6 @@ http://www.qtcentre.org/threads/38448-QT-related-interview-questions
 platform (Maemo)? (Explain If you need to make any changes or you need to recompile)
 - What are all the platforms/OS currently QT supports?
 
-# Threading stuff
-
-https://books.google.ru/books?id=MEZdDgAAQBAJ&pg=PA846&lpg=PA846&dq=std+thread+if+fails+before+join&source=bl&ots=LbhCsUltf3&sig=Sd5LjAg9Fcw8pmH3_oQVyL-gmOQ&hl=ru&sa=X&ved=0ahUKEwjJqNSh2o7XAhUiMZoKHZJ1ASwQ6AEIZzAI#v=onepage&q=std%20thread%20if%20fails%20before%20join&f=false
-
-# What if std::thread fails BEFORE join - program will shutdown
-
-A std::thread is joinable if it contains a thread state that has not been joined or detatched.
-
-A std::thread gains a thread state by being non default constructed, or having one moveed into it from another std::thread. It loses it when moveed from.
-
-There is no delay in gaining the thread state after construction completes. And it does not go away when the threaded function finishes. So there is not that problem.
-
-There is the problem that if code throws above, you will fail to join or detatch, leading to bad news at program shutdown. Always wrap std::thread in a RAII wrapper to avoid that, or just use std::async that returns void and wrap the resulting std::future similarly (because the standard says it blocks in the dtor, but microsofts implementation does not, so you cannot trust if it will or not).
-
---------------
-- In VC std::futures from std::async don't block in dtor? – inf Nov 25 '13 at 12:14
-- Yup, that's true. Tested it myself. 
---------------
-
--- if  JOIN()  Fails
-
-libc++abi.dylib: terminating with uncaught exception of type std::__1::system_error: thread::join failed: No such process
-
-
-
-# CreateThread <-> _beginthreadex
-# Createthread разница _beginthreadex
-
-_beginthreadex
-
-RunTime-функция: она запустится - и будет задействоват Thread Local Storage.
-
-Она запустится - выделит память и будет ею пользоваться, а когда процесс будет умирать.
-
-CreateThread  (не создаёт такого окружения для работы с рантаймовскими библами и объектами) не запускается таким образом, чтобы создать рантайм-обхекты и как следствие он не вызывает и деструкторов этих объектов.
-
-А _beginthreadEx - Удалить так же ещё и вспомогательную информацию, что хранится в этих самых объектах рантаймовских (бибоиотечных).
-Если их не удалить, то произойти своеобразная утечка памяти может.
-
-
-
-	Лучше использовать _beginthreadex, чем CreateThread().
-	СУТЬ: 
-	http://forum.vingrad.ru/forum/topic-47554.html
-	
-	CreateThread - чисто Win32Api'шная функция, а вот
-	
-	_beginthread - функция библиотеки CRT, НЕ кроссплатформенна, но приспособленна для работы с С, т.е. она делает дополнительные манипуляции, что бы стандартные библиотеки корректно работатли (+ вызывает CreateThread ) .
-
-В общем если пишешь на С, то лучше пользоваться вторым.
-Рихтер в статье CreateThread vs. _beginthread очень подробно описывает почему _beginthread предпочтительнее. Она создает Thread Local Storage (TLS), где переопределены, в частности, все глобальные константы, к-рые ф-ции CRT-библиотеки юзают. Например, такая как errno. 
-Именно TLS - гарантия, что ф-ции CRT-библиотеки будут работать корректно. 
-
-The C runtime library was delivered in a UNIX context, in which there is no distinction between processes and threads. In the Windows context, many threads can be executing in a single address space. 
-
-Microsoft has provided an alternative function to CreateThread, called _beginthreadex, to be used with the programs that use multiple threads at the same time they use the C runtime library. The problem occurs with any globally accessible variable used by this library ( there are several of them ). The Microsoft solution is to have the C runtime library provide a copy of each of these variables for each thread. Then, when a thread interacts with the runtime library, variables are shared only between the runtime code and the thread, not among all threads. The _beginthreadex function creates the copy for a thread in conjunction with an embedded call to CreateThread.
-
-
-# PATTERNS
-
-- Синглтон
-- Фассад
-- Ресивер
-- Листенер
-- Фабрика
-
-
-# SQL
-
-GroupBy HAVING
 
 
 # Вирт.функции в Конструкторах
