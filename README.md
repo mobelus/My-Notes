@@ -2694,7 +2694,266 @@ https://stackoverflow.com/questions/39383936/correctly-overload-assignment-opera
 	*/
 
 
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
+	#include <iostream>
+	
+	#if 0
+	#include <iostream>
+	struct My
+	{
+		My()		{ std::cout << "D"; }
+		My(int i)	{ std::cout << "I"; }
+		My(char c)  { std::cout << "C"; }
+		My(long l)  { std::cout << "L"; }
+		My(float f) { std::cout << "F"; }
+		//My(double dd) { std::cout << "DD"; }
+	};
+	
+	int main()
+	{
+		My m1('a');		// C
+		My m2('a' + 1); // I
+		My m3(1);	 // I
+		My m4(0x01); // I
+		My m5(0x0001L); // L
+		My m6(1.0f);	// F
+		//My m6(2.0f);	// F/DD (???)
+		return 0;
+	}
+	#endif
+	
+	
+	#if 0
+	
+	#include <iostream>
+	struct A {
+		A(int val) : m_val(val) {}
+		int m_val;
+	};
+	
+	struct B : A
+	{
+		B(int val) : A(val) {}
+	};
+	
+	
+	int main()
+	{
+		try
+		{
+			try
+			{
+				throw B(5);
+			}
+			catch (A a)
+			{
+				a.m_val *= 2;
+				throw;
+			}
+			catch (B b)
+			{
+				b.m_val -= 2;
+				throw b;
+			}
+		}
+		catch (A a)
+		{
+			std::cout << a.m_val; // 5
+		}
+	
+		return 0;
+	}
+	#endif
+	
+	
+	#if 0 // answer
+	#include <iostream>
+	struct A {
+		A(int val) : m_val(val)
+		{
+			int z = 0;
+		}
+		A(const A& _obj)
+		{
+			m_val = _obj.m_val;
+		}
+		int m_val;
+	};
+	
+	struct B : A
+	{
+		B(int val) : A(val)
+		{
+			int z = 0;
+		}
+		B(const B& _obj) : A(_obj)
+		{
+			int z = 0;
+		}
+	};
+	
+	
+	int main()
+	{
+		try
+		{
+			try
+			{
+				throw B(5);
+			}
+			//catch (A a) // передаётся копия "исходника"
+			catch (A& a) // передаётся копия "исходника"
+			{
+				a.m_val *= 2; // операцию
+				throw;	//  THROW ГЕНЕРИТ тсключение того типа, что он получил в рамках catch-а
+						// Ссылку A& получил ... ссылку и пробросил далее ....
+			}
+			//catch (B b)
+			catch (B& b)
+			{
+				b.m_val -= 2;
+				throw b;
+			}
+		}
+		catch (A a) // передача копии "исходника"
+		{
+			//std::cout << a.m_val; // БЕЗ СЫЛОК - 5
+			std::cout << a.m_val; // С СЫЛКАМИ - 10
+		}
+	
+		return 0;
+	}
+	#endif
+	
+	#if 0
+	
+	#include <iostream>
+	int main()
+	{
+		try {
+			throw std::string("4");
+		}
+		catch (std::string &s)
+		{
+			try {
+				std::cout << s.c_str();
+				throw 2;
+			}
+			catch (int i)
+			{
+				std::cout << i;
+			}
+			catch (...)
+			{
+				throw;
+			}
+	
+			// БАНАЛЬНАЯ НЕВНИМАТЕЛЬНОСТЬ ПОСЛЕ catch мы ВОЗВРАЩАЕМСЯ И ПРОДОЛЖАЕМ 
+			// выполенние кода после ВСЕХ catch-блоков !!!
+			std::string str = s;
+			std::cout << "s";
+			std::cout << str.c_str();
+		}
+		catch (...)
+		{
+			std::cout << "all";
+		}
+	
+		return 0;
+	}
+	
+	#endif
+	
+	
+	#if 0
+	
+	#include <iostream>
+	int main()
+	{
+		try {
+			throw std::string("4");
+		}
+		catch (std::string &s)
+		{
+			try {
+				std::cout << s.c_str();
+				throw 2;
+			}
+			catch (int i)
+			{
+				std::cout << i;
+			}
+			catch (...)
+			{
+				throw;
+			}
+	
+			// БАНАЛЬНАЯ НЕВНИМАТЕЛЬНОСТЬ ПОСЛЕ catch мы ВОЗВРАЩАЕМСЯ И ПРОДОЛЖАЕМ 
+			// выполенние кода после ВСЕХ catch-блоков !!!
+			std::string str = s;
+			std::cout << "s";
+			std::cout << str.c_str();
+		}
+		catch (...)
+		{
+			std::cout << "all";
+		}
+	
+		return 0;
+	}
+	
+	#endif
+	
+	
+	#if 0
+	
+	#include <iostream>
+	void f()
+	{
+		int n = std::rand() % 3;
+		if (n == 0)
+			throw "0";
+		if (n == 1)
+			throw 1;
+		if (n == 2)
+			throw 2.2;
+	}
+	
+	int main()
+	{
+		try {
+			f();
+		}
+		//catch (...) // ERROR // CATCH_ALL - ДОЛЖЕН БЫТЬ В КОНЦЕ !!! ОШИБКА КОМПИЛЯЦИИ !!!!
+		//{
+		//	int z = 1;
+		//}
+		catch (int k)
+		{
+			int z = 2;
+		}
+		catch (const char* cp)
+		{
+			int z = 2;
+		}
+		catch (...) // 	catch (...) !!!! ВСЕГДА ДОЛЖЕН БЫТЬ ВКОНЦЕ !!!! И НИКОГДА ВЫШЕ КОНЦА !!!! 
+		{
+			int z = 1;
+		}
+	
+		return 0;
+	}
+	
+	#endif
+	
+	
+	#if 0
+	
+	
+	
+	#endif
 
 
 
