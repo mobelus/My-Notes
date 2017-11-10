@@ -1,45 +1,45 @@
 
 
-NO C++ in Vacancy Name but C++
-https://kirov.hh.ru/vacancy/23144646?query=c%2B%2B
+	NO C++ in Vacancy Name but C++
+	https://kirov.hh.ru/vacancy/23144646?query=c%2B%2B
 
-С++
-https://kirov.hh.ru/vacancy/23270054?query=c%2B%2B - Уже вышло на меня по ходу
+	С++
+	https://kirov.hh.ru/vacancy/23270054?query=c%2B%2B - Уже вышло на меня по ходу
 
-https://kirov.hh.ru/vacancy/23181785?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23237800?query=c%2B%2B
-https://kirov.hh.ru/vacancy/21891258?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23236640?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23151665?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22016378?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23417107?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23376142?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23206905?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22599145?query=c%2B%2B
-https://kirov.hh.ru/vacancy/20893162?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23330633?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22812098?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23097871?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22469683?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23100251?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23079292?query=c%2B%2B
-
-TEAM_LEADING
-https://kirov.hh.ru/vacancy/23372477?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23095234?query=c%2B%2B
-
-NOT C++ but includes C++
-https://kirov.hh.ru/vacancy/22677653?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22812104?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22391805?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23091244?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23158654?query=c%2B%2B
-https://kirov.hh.ru/vacancy/22689520?query=c%2B%2B
-https://kirov.hh.ru/vacancy/23355290?query=c%2B%2B
-
-NOT A CODER
-https://kirov.hh.ru/vacancy/23389918?query=c%2B%2B
-
+	https://kirov.hh.ru/vacancy/23181785?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23237800?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/21891258?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23236640?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23151665?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22016378?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23417107?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23376142?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23206905?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22599145?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/20893162?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23330633?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22812098?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23097871?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22469683?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23100251?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23079292?query=c%2B%2B
+	
+	TEAM_LEADING
+	https://kirov.hh.ru/vacancy/23372477?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23095234?query=c%2B%2B
+	
+	NOT C++ but includes C++
+	https://kirov.hh.ru/vacancy/22677653?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22812104?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22391805?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23091244?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23158654?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/22689520?query=c%2B%2B
+	https://kirov.hh.ru/vacancy/23355290?query=c%2B%2B
+	
+	NOT A CODER
+	https://kirov.hh.ru/vacancy/23389918?query=c%2B%2B
+	
 
 
 Методология - писать вообще без классов
