@@ -5,7 +5,7 @@
 
 	С++
 	https://kirov.hh.ru/vacancy/23270054?query=c%2B%2B - Уже вышло на меня по ходу
-
+	Wind:
 	https://kirov.hh.ru/vacancy/23181785?query=c%2B%2B
 	https://kirov.hh.ru/vacancy/23237800?query=c%2B%2B
 	https://kirov.hh.ru/vacancy/21891258?query=c%2B%2B
@@ -14,6 +14,7 @@
 	https://kirov.hh.ru/vacancy/22016378?query=c%2B%2B
 	https://kirov.hh.ru/vacancy/23417107?query=c%2B%2B
 	https://kirov.hh.ru/vacancy/23376142?query=c%2B%2B
+	Linx:
 	https://kirov.hh.ru/vacancy/23206905?query=c%2B%2B
 	https://kirov.hh.ru/vacancy/22599145?query=c%2B%2B
 	https://kirov.hh.ru/vacancy/20893162?query=c%2B%2B
