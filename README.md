@@ -1,5 +1,12 @@
 
 
+# POSIX 7
+
+https://unix.stackexchange.com/questions/11983/what-exactly-is-posix/220877
+
+
+
+
 	NO C++ in Vacancy Name but C++
 	https://kirov.hh.ru/vacancy/23144646?query=c%2B%2B
 
