@@ -120,6 +120,7 @@ Microsoft has provided an alternative function to CreateThread, called _beginthr
 - Обзёрвер
 - Листенер
 - Фабрика
+- Декоратор
 
 - Док - Вью
 
