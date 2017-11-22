@@ -1,5 +1,64 @@
 
 
+# Как правильно завести ostream& operator<< в класс через friend:
+http://www.learncpp.com/cpp-tutorial/915-shallow-vs-deep-copying/
+
+Ответ:
+
+std::ostream& operator<<(std::ostream& out, const Fraction &f1)
+
+Пример:
+
+	#include <cassert>
+	#include <iostream>
+	
+	class Fraction
+	{
+	private:
+		int m_numerator;
+		int m_denominator;
+	
+	public:
+		// Default constructor
+		Fraction(int numerator = 0, int denominator = 1) :
+			m_numerator(numerator), m_denominator(denominator)
+		{
+			assert(denominator != 0);
+		}
+	
+		// Copy constructor
+		Fraction(const Fraction &f) :
+			m_numerator(f.m_numerator), m_denominator(f.m_denominator)
+		{
+		}
+	
+		Fraction& Fraction::operator= (const Fraction &fraction);
+	
+		friend std::ostream& operator<<(std::ostream& out, const Fraction &f1);
+	};
+	
+	std::ostream& operator<<(std::ostream& out, const Fraction &f1)
+	{
+		out << f1.m_numerator << "/" << f1.m_denominator;
+		return out;
+	}
+	
+	// A better implementation of operator=
+	Fraction& Fraction::operator= (const Fraction &fraction)
+	{
+		// self-assignment guard
+		if (this == &fraction)
+			return *this;
+	
+		// do the copy
+		m_numerator = fraction.m_numerator;
+		m_denominator = fraction.m_denominator;
+	
+		// return the existing object so we can chain this operator
+		return *this;
+	}
+
+
 
 # Составить частотный словарь вводимого текста. Распечатать его по алфавиту.
 
