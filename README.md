@@ -1,4 +1,8 @@
 
+# Семантика перемещения:
+
+http://qaru.site/questions/2259/c-unified-assignment-operator-move-semantics
+
 
 # Как правильно завести ostream& operator<< в класс через friend:
 http://www.learncpp.com/cpp-tutorial/915-shallow-vs-deep-copying/
