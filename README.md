@@ -3,7 +3,56 @@
 
 # Составить частотный словарь вводимого текста. Распечатать его по алфавиту.
 
+http://www.cyberforum.ru/cpp-beginners/thread410311.html
+
+	
+	#include <iostream>
+	#include <fstream>
+	#include <string>
+	#include <cctype>
+	#include <iterator>
+	#include <sstream>
+	#include <map>
+	
+	int main()
+	{
+		std::ifstream ifs("1.txt");
+		if (ifs)
+		{
+			std::string s(std::istreambuf_iterator<char>(ifs.rdbuf()), std::istreambuf_iterator<char>());
+			for (std::string::iterator it = s.begin(); it != s.end(); ++it)
+			{
+				if (!isalpha(*it))
+				{
+					*it = ' ';
+				}
+				else if (isupper(*it))
+				{
+					*it = tolower(*it);
+				}
+			}
+			std::map<std::string, std::size_t> map;
+			std::istringstream iss(s);
+			while (iss >> s)
+			{
+				++map[s];
+			}
+			for (std::map<std::string, std::size_t>::const_iterator it = map.begin(); it != map.end(); ++it)
+			{
+				std::cout << it->first << ' ' << it->second << std::endl;
+			}
+		}
+		else
+		{
+			std::cerr << "File not found\n";
+		}
+		ifs.close();
+		return 0;
+	}
+	
+
 http://forum.codenet.ru/q39184/
+
 Липпман.Язык программирвания С++
 
 	#include "stdafx.h"
