@@ -35,7 +35,33 @@
 
 # Семантика перемещения:
 
+https://stackoverflow.com/questions/3106110/what-are-move-semantics
+
+
 http://qaru.site/questions/2259/c-unified-assignment-operator-move-semantics
+
+http://www.cplusplus.com/forum/general/63416/
+
+http://www.geeksforgeeks.org/copy-constructor-in-cpp/
+
+https://codereview.stackexchange.com/questions/103744/deepptr-a-deep-copying-unique-ptr-wrapper-in-c
+
+http://www.cplusplus.com/forum/general/163948/
+
+
+# Семантика перемещения и EXEPTION-Safety:
+
+https://akrzemi1.wordpress.com/2011/08/11/move-constructor/
+
+http://modernescpp.com/index.php/component/jaggyblog/c-core-guidelines-copy-and-move-rules
+
+
+vector& operator=( vector&& other ) noexcept  // since C++17)
+
+
+# о RVALUE и LVALUE:
+
+http://www.bogotobogo.com/cplusplus/C11/5_C11_Move_Semantics_Rvalue_Reference.php
 
 
 # Как правильно завести ostream& operator<< в класс через friend:
