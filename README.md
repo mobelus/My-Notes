@@ -1,6 +1,13 @@
 
 # РАЗВЁРНУТОЕ ГЛУБОКОЕ КОПИРОВАНИЕ
 
+	class A {
+	private:
+	 	unsigned int max;
+	 	unsigned int dummy;
+	 	int *data;
+	};
+	
 	// Конструктор копий с развернутым копированием
 	INT_ARRAY::INT_ARRAY(const INT_ARRAY& rhs)
 	{
