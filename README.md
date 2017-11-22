@@ -1,4 +1,31 @@
 
+# РАЗВЁРНУТОЕ ГЛУБОКОЕ КОПИРОВАНИЕ
+
+	// Конструктор копий с развернутым копированием
+	INT_ARRAY::INT_ARRAY(const INT_ARRAY& rhs)
+	{
+		delete[] data; //освобождаем память
+		max = rhs.max;
+		dummy = rhs.dummy;
+		data = new int[dummy]; //выделяем новый блок
+		for (unsigned int j = 0; j<duinmy; j++)
+			data[j] = rhs.data[j]; //копируем данные
+	}
+	// Операция присваивания с развернутым копированием
+	INT_ARRAY& INT_ARRAY::operator=(const INT_ARRAY&rhs)
+	{
+		if (this == &rhs) return *this;
+		// Обратите внимание, что код идентичен тому, 
+		// что используется в конструкторе копий
+		delete[] data;
+		max = rhs.max;
+		dummy = rhs.dummy;
+		data = new int[dummy];
+		for (unsigned int j = 0; j<dummy; j++)
+			data[j] = rhs.data[j];
+		return *this;
+	}
+
 
 # STATIC
 
