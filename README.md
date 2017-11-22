@@ -1,4 +1,16 @@
 
+http://aristeia.com/TalkNotes/C++_Embedded_Deutsch.pdf
+
+https://www.aristeia.com/
+
+https://stepik.org/course/363/
+
+http://spiskicpp.blogspot.ru/p/blog-page_5191.html
+
+http://abkov.ru/rvsn/pgm/examena-2014-vo1-x10.pdf
+
+http://cppstudio.com/cat/285/
+
 
 # 18.02.2012. Источник: С. Мейерс — Эффективное использование C++.
 Тонкость не совсем олимпиадная, но очень интересная. Рассмотрим следующий код:
