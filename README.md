@@ -1,5 +1,5 @@
 
-# QT - Корректность копирования
+# Корректность копирования
 
 	#include <cstring>
 	#include <algorithm>
