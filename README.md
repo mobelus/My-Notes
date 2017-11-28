@@ -1,6 +1,89 @@
 
+# QT - Корректность копирования
 
-Укажите главное различие между сигналами и событиями.
+	#include <cstring>
+	#include <algorithm>
+	
+	class string
+	{
+		char* data;
+		int size;
+	
+	public:
+	
+		string(const char* p)
+		{
+			size_t size = strlen(p) + 1;
+			data = new char[size];
+			memcpy(data, p, size);
+		}
+	
+		~string()
+		{
+			delete[] data;
+		}
+	
+		string(const string& that)
+		{
+			size_t size = strlen(that.data) + 1;
+			data = new char[size];
+			memcpy(data, that.data, size);
+		}
+	
+	
+		string& operator=(string that)
+		{
+			std::swap(data, that.data);
+			return *this;
+		}
+	
+	
+		string& operator=(const string& other)
+		{
+			name = other.name;
+			return *this;
+		}
+	
+		string(const string& _foo) // Конструктор копий.
+		{
+			this->m_name = _foo.m_name;
+		}
+	
+		string& operator=(const string& _other) // Оператор присваивания.
+		{
+			if (this != &_other)
+			{
+				this->m_name += "_copied_" + _other.m_name;
+			}
+			return *this;
+		}
+	
+		// Семантика перемещения.
+		string(string&& that)   // string&& is an rvalue reference to a string
+		{
+			// 1-st option
+			// this->swap(other);
+	
+			// 2-nd option
+			this->data = that.data;
+			that.data = nullptr; // ???
+		}
+	
+		string& operator=(string&& _that)
+		{
+			if (this != &_that)
+			{
+				this->data = std::move(_that.data);
+			}
+			return *this;
+		}
+	};
+	
+	
+	
+
+
+# QT - РАЗНИЦА между СИГНАЛЫ и СОБЫТИЯ.
 
 События могут обрабатываться лишь одним методом, а сигналы многими слотами
 
