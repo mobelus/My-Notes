@@ -1,4 +1,54 @@
 
+
+	class AA
+	{
+	public:
+		AA() { std::cout << "AA"; }
+		~AA()
+		{
+			std::cout << "~AA";
+			throw 5;
+		}
+	};
+	
+	class BB
+	{
+	public:
+		BB() { std::cout << "BB"; }
+		~BB()
+		{
+			std::cout << "~BB";
+			throw 55;
+		}
+	};
+	
+	class Ok
+	{
+	public:
+		Ok() { std::cout << "Ok"; }
+		~Ok()
+		{
+			std::cout << "~Ok";
+		}
+	};
+	
+	
+	void main()
+	{
+		try
+		{
+			std::cout << "try";
+			BB b;
+			AA a;
+			Ok k;
+			throw 6;
+		}
+		catch (int n)
+		{
+			std::cout << "catch";
+		}
+	}
+
 # Корректность копирования
 
 	#include <cstring>
