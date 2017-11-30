@@ -7,6 +7,7 @@
 
 
 - Ромбовидное наследование:
+...
 
 	class Base{ public: Base(){ std::cout<<"Create!"<<endl; } };
 	class Sub1 : public virtual Base{};
