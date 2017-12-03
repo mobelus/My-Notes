@@ -224,11 +224,13 @@ https://ru.stackoverflow.com/questions/163041/%D0%9D%D0%B5%D0%BE%D0%B4%D0%BD%D0%
 
 - Ромбовидное наследование:
 ...
-
-	class Base{ public: Base(){ std::cout<<"Create!"<<endl; } };
-	class Sub1 : public virtual Base{};
-	class Sub2 : public Base{};
-	class Multi : public Sub1, public Sub2{} ;
+	
+	
+		class Base{ public: Base(){ std::cout<<"Create!"<<endl; } };
+		class Sub1 : public virtual Base{};
+		class Sub2 : public Base{};
+		class Multi : public Sub1, public Sub2{} ;
+	
 
 Далее вызываем конструктор класса Multi:
 
