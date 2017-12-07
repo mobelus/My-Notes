@@ -13,8 +13,9 @@ qml: QtFun.function_name();
 h: Q_INVOCABLE function_name(); 
 
 - Второй Вариант
-dskfjh
-	
+dskfjh...
+qwds
+		
 	class TestClass : public QObject
 	{
 		Q_OBJECT
@@ -39,7 +40,7 @@ dskfjh
 		qDebug() << "I'm setter";
 		someProperty = i;
 	}
-
+	
 
 - emit - используется для высылки SIGNAL-а.
 - SLOT (по умолчанию private) - могут быть объявлены как virtual, public и private
