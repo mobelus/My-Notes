@@ -13,9 +13,11 @@ qml: QtFun.function_name();
 h: Q_INVOCABLE function_name(); 
 
 - Второй Вариант
-dskfjh...
-qwds
-		
+
+...
+
+...
+
 	class TestClass : public QObject
 	{
 		Q_OBJECT
