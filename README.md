@@ -1,6 +1,11 @@
 
 http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
+#  QT:
+
+Наследование класса от QObject-а. Нужно в иерархии рнаследование выставлять его первым.
+
+
 #  QML + CPP:
 https://habrahabr.ru/post/140899/
 
