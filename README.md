@@ -1,6 +1,11 @@
 
 http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
+#  QML + CPP:
+
+https://habrahabr.ru/post/140899/
+
+
 #  RAII - СУТЬ:
 
 Концепция RAII (Запрос ресурса при инициализации) = ресурс запрашивается в конструкторе и освобождается в декструкторе:
