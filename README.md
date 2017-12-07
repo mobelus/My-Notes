@@ -2,8 +2,57 @@
 http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
 #  QML + CPP:
-
 https://habrahabr.ru/post/140899/
+
+- Первый вариант:
+
+cpp: QDeclarativeView -> SetSource(some.QML) -> RootObject -> RootContext()->SetContextProperty("QtFun", this);
+
+qml: QtFun.function_name();
+
+h: Q_INVOCABLE function_name(); 
+
+- Второй Вариант
+dskfjh
+	
+	class TestClass : public QObject
+	{
+		Q_OBJECT
+			Q_PROPERTY(int someProperty READ getSomeProperty WRITE setSomeProperty NOTIFY somePropertyChanged)
+	public:
+		explicit TestClass(QObject *parent = 0);
+		int getSomeProperty()const;
+		void setSomeProperty(const int &);
+	private:
+		int someProperty;
+	signals:
+		void somePropertyChanged();
+		public slots:
+	};
+	int TestClass::getSomeProperty()const
+	{
+		qDebug() << "I'm getter";
+		return someProperty;
+	}
+	void TestClass::setSomeProperty(const int &i)
+	{
+		qDebug() << "I'm setter";
+		someProperty = i;
+	}
+
+
+- emit - используется для высылки SIGNAL-а.
+- SLOT (по умолчанию private) - могут быть объявлены как virtual, public и private
+- Соадинение СИГНАЛА с ВИРТ. Слотом МЕДЛЕННЕ, чем с Невритуальным.
+- События могут обрабатываться лишь одним методом, а сигналы многими слотами
+
+2) Разница между Q_INVOCABLE и SLOT-ом ?
+
+Q_INVOCABLE - привязывается как обычная колбэчная функция, с одним методом, вызываемом при "emite", для данной функции. Функции С++ вызывающиеся в QML.
+
+SLOT - может быть любоче число сигналов, как и на любой сигнал можно повесить любое число слотов.
+
+
 
 
 #  RAII - СУТЬ:
