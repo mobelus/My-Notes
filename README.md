@@ -2,6 +2,79 @@
 http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
 
+# Умный указатель или Smart Pointer своими руками:
+https://tproger.ru/problems/write-a-class-for-smart-pointer/
+
+	/* Класс интеллектуального указателя нуждается в указателях на собственно
+	 * себя и на счетчик ссылок. Оба они должны быть указателями, а не реальным
+	 * объектом или значением счетчика ссылок, так как цель интеллектуального
+	 * указателя - в подсчете количества ссылок через множество интеллектуальных
+	 * указателей н один объект */
+
+	template 
+	class SmartPointer {
+		T * obj;
+		unsigned * ref_count;
+	}
+
+template 
+class SmartPointer {
+public:
+	SmartPointer(T * ptr) {
+		ref = ptr;
+		ref_count = (unsigned*)malloc(sizeof(unsigned));
+		*ref_count = 1;
+	}
+
+	SmartPointer(SmartPointer & sptr) {
+		ref = sptr.ref;
+		ref_count = sptr.ref_count;
+		++(*ref_count);
+	}
+
+	/* Перезаписываем оператор равенства (eqal), поэтому когда вы установите
+	 * один интеллектуальный указатель в другой, количество ссылок старого указателя
+	 * будет уменьшено, а нового - увеличено. 
+	 */
+	SmartPointer & operator=(SmartPointer & sptr) {
+		/* Если уже присвоено объекту, удаляем одну ссылку. */
+		if (*ref_count > 0) {
+			remove();
+		}
+		if (this != &sptr) {
+			ref = sptr.ref;
+			ref_count = sptr.ref_count;
+			++(*ref_count);
+		}
+		return *this;
+	}
+
+	~SmartPointer() {
+		remove(); // удаляем одну ссылку на объект.
+	}
+
+	T operator*() {
+		return *ref;
+		}
+
+		protected:
+		void remove() {
+			--(*ref_count);
+			if (ref_count == 0) {
+				delete ref;
+				free(ref_count);
+				ref = NULL;
+				ref_count = NULL;
+			}
+		}
+
+		T * ref;
+		unsigned * ref_count;
+	}
+
+
+
+
 
 # RValues + LValues + Move Semantic
 
