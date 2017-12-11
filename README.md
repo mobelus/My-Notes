@@ -14,6 +14,17 @@ http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
 
 
+#  C++ 99,03,11,14,17
+http://glebradchenko.susu.ru/courses/bachelor/oop/201..
+
+- Семантика пепемещения
+
+
+#  Лямбды и замыкания
+
+К функциям определения 
+
+Выписать из сидимедии функцию ужатия, по модулю
 
 # Умный указатель или Smart Pointer своими руками:
 https://tproger.ru/problems/write-a-class-for-smart-pointer/
