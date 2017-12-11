@@ -1,6 +1,172 @@
 
 http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
+
+
+
+
+	// RValues + LValues + Move Semantic
+	// https://www.youtube.com/watch?v=ruHw7E71zBw
+	// https://www.youtube.com/watch?v=cO1lb2MiDr8
+	
+	#include <cstring>
+	#include <string>
+	#include <algorithm>
+	
+	class MyString
+	{
+		char* m_data;
+		size_t m_size;
+	
+	public:
+	
+		MyString() : m_data(0), m_size(0)
+		{
+		}
+	
+		~MyString()
+		{
+			delete[] m_data;
+			m_data = 0; // установка указателя в 0 позволяет проверять его недопустимость
+		}
+	
+		// Спец конструктор
+		//MyString("abc"); // how we will use the constructor
+		MyString(const char* other)
+		{
+			m_size = strlen(other) + 1;
+			m_data = new char[m_size];
+	
+			// 1 option
+			memcpy(m_data, other, m_size);
+	
+			// 2 option
+			for (int i = 0; i < m_size; i++)
+			{
+				m_data[i] = other[i];
+			}
+		}
+	
+		// Конструктор копий.
+		//MyString(const MyString& that)
+	
+		// default  copy constructor  // буквальное (shallow copy)
+		MyString(const MyString& that) // Конструктор копий.
+		{
+			m_data = that.m_data;
+			m_size = that.m_size;
+		}
+	
+		// развернутое / глубокое копирование (deep copy)
+		// 1 option = BETTER
+		MyString(const MyString& that)
+			: m_size(that.m_size)
+			, m_data = new char[m_size]
+		{
+			memcpy(m_data, that.m_data, m_size); // memcpy(m_data, that.m_data, sizeof(char) * m_size);
+		}
+	
+			// 2-nd option
+			MyString(const MyString& that)
+		{
+			m_size = that.m_size; //m_size = strlen(that.m_data) + 1;
+			m_data = new char[m_size];
+			memcpy(m_data, that.m_data, size);	// memcpy(m_data, that.m_data, sizeof(char) * m_size);
+		}
+	
+		// Оператор присваивания.
+		//MyString& operator=(const MyString& that)
+	
+		// default  operator=  // буквальное (shallow copy)
+		MyString& operator=(const MyString& that) // нужен ли const ?
+		{
+			m_data = that.m_data;
+			return *this;
+		}
+	
+		// развернутое / глубокое копирование (deep copy)
+		MyString& operator=(const MyString& that) // нужен ли const ?
+		{
+			if (this == &that)
+				return *this;
+	
+			// 1 option
+			m_size = that.m_size; //m_size = strlen(that.m_data) + 1;
+			m_data = new char[m_size];
+			memcpy(m_data, that.m_data, m_size);	// memcpy(m_data, that.m_data, sizeof(char) * m_size);
+	
+			// 2 option
+			//m_size = that.m_size; //m_size = strlen(that.m_data) + 1;
+	
+			// not here						// COPY !!!
+			// not here						// AND
+			//std::swap(m_data, that.m_data); // SWAP !!!	// Если с  (CONST MyString that), то swap ругнётся can not convert!!!  char*, char* const
+	
+			return *this;
+		}
+	
+		// Семантика перемещения.
+	
+		// Перемещающий Конструктор копий.
+		//MyString(const MyString&& that)
+	
+		// default  move copy constructor  // буквальное (shallow copy)
+		//	MyString(const MyString&& that)
+		//	{
+		//		this = that;
+		//	}
+	
+		// развернутое / глубокое копирование (deep copy)
+		MyString( /*const*/ MyString&& that) // НЕ НУЖЕН CONST (!!!) -  MyString&& is an rvalue reference to a MyString
+			: m_data(that.m_data)
+		{
+			// 1-nd option
+			this->m_data = that.m_data;
+			this->m_size = that.m_size;
+	
+			that.m_data = nullptr;
+			that.m_size = 0;
+	
+			// 2-st option
+			std::swap(this->m_size, that.m_size);
+			std::swap(this->m_data, that.m_data);
+			// or
+			std::swap(*this, that); // with c++11
+		}
+	
+		// Перемещающий Оператор присваивания.
+		//MyString& operator=(const MyString&& that)
+	
+		MyString& operator=(MyString&& that)
+		{
+			if (this != &that)
+			{
+				// 1-nd option
+				this->m_data = that.m_data;
+				this->m_size = that.m_size;
+	
+				that.m_data = nullptr;
+				that.m_size = 0;
+	
+				// 2-st option
+				std::swap(this->m_size, that.m_size);
+				std::swap(this->m_data, that.m_data);
+				// or
+				std::swap(*this, that); // with c++11
+			}
+			return *this;
+		}
+	
+	};
+	
+	
+	void main()
+	{
+		int z = 0;
+	}
+
+
+
 #  QT:
 
 Наследование класса от QObject-а. Нужно в иерархии рнаследование выставлять его первым.
