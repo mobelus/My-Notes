@@ -3,9 +3,10 @@ http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
 
 
-
+# RValues + LValues + Move Semantic
 
 	// RValues + LValues + Move Semantic
+
 	// https://www.youtube.com/watch?v=ruHw7E71zBw
 	// https://www.youtube.com/watch?v=cO1lb2MiDr8
 	
