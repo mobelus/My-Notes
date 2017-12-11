@@ -2,6 +2,19 @@
 http://www.cyberforum.ru/cpp-beginners/thread2150113.html#post11914363
 
 
+684 231
+75 000
+
+
+760 282 р
+
+
+331 600
+--- --- ---
+
+
+
+
 # Умный указатель или Smart Pointer своими руками:
 https://tproger.ru/problems/write-a-class-for-smart-pointer/
 
