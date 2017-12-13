@@ -1,4 +1,5 @@
 
+
 #  Высоконагруженные системы (сокет-сервер и 5к~10к клиентов) Решения
 
 - libev
@@ -7,6 +8,17 @@
 - исходные тексты Node.JS. Или просто писать на Node.JS, скорость удивит.
 - Попробуйте посмотреть исходники проекта raknet ( http://www.jenkinssoftware.com/ ). Это опенсорсный движок для сетевых игр. 
 - ERLANG ( https://github.com/goertzenator/nifpp ,  https://github.com/saleyn/eixx)
+
+RSDN
+
+http://rsdn.org/forum/network/4634983.hot
+
+QT-Solution
+
+http://www.prog.org.ru/topic_16415_0.html
+
+https://habrahabr.ru/post/131585/
+
 
 #  Высоконагруженные системы (сокет-сервер и 5к~10к клиентов)
 
