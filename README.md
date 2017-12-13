@@ -56,12 +56,9 @@ collabedit.com/
 
 	Да это НОМРАЛЬНО - и память НЕ утечёр ибо объект ещё не создался, ибо конструктор полностью не отработал
 
-
-
-
-
-
 # GIT - Чем отличается Merge от Rebase ?
+
+	ДОПИСАТЬ
 
 # ПРО ГИТ : About GIT
 
@@ -98,6 +95,73 @@ collabedit.com/
 	  getchar(); 
 	  return 0; 
 	}
+
+
+#  Sample Cycles test for Node in a List
+
+	#include <iostream>
+	#include <set>
+	
+	struct Node
+	{
+		int data;
+		Node* next;
+	};
+	
+	bool hasCycle(Node* head)
+	{
+		Node* entry = head;
+	
+		for (;;)
+		{
+			if (entry->next == head)
+			{
+				return true;
+			} else if (entry->next == nullptr)
+			{
+				break;
+			}
+	
+			entry = entry->next;
+		}
+	
+		return false;
+	}
+	
+	bool hasCycle2(Node* head)
+	{
+		Node* entry = head;
+		std::set<Node*> marked;
+		marked.insert(head);
+	
+		for (; entry != nullptr; entry = entry->next)
+		{
+			if (marked.count(entry->next) != 0)
+			{
+				return true;
+			}
+			
+			marked.insert(entry); 
+		}
+	
+		return false;
+	}
+	
+	int _tmain(int argc, _TCHAR* argv[])
+	{
+		Node nodes[4];
+		nodes[0].next = &nodes[1];
+		nodes[1].next = &nodes[2];
+		nodes[2].next = &nodes[3];
+		//nodes[3].next = nullptr;
+		nodes[3].next = &nodes[1];
+	
+		printf("Has a cicle? - %s\n\n\n", hasCycle2(nodes) ? "yes" : "no");
+	
+		getchar();
+		return 0;
+	}
+
 
 #  Высоконагруженные системы (сокет-сервер и 5к~10к клиентов) Решения
 
