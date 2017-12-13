@@ -1434,7 +1434,7 @@ func(char* ptr) : // read / write
 
     return 0;
 
-#  Оператора сравненя (0) Нужно ли дополнительно определять operator== ?
+# Оператор сравненя (0) Нужно ли дополнительно определять operator== ?
 
 	Равенство не нужно доопределять, оно выводится из "меньше" путём:
 	!(a < b) && !(b < a)
@@ -1470,6 +1470,69 @@ func(char* ptr) : // read / write
 #  Правильное примнение оператора сравненя (2)
 // Что ели нужно "упорядочить" / "отсортировать" SET из уже имеющихся структур Операционной системы:
 
+// Что если мы хотим положить в  std::set  какую-нибудь системную структуру,
+  не созданную нами, но уже готовую и присуствующую в системе, например WNDCLASSEXW:
+
+https://msdn.microsoft.com/en-us/library/windows/desktop/ms633576(v=vs.85).aspx
+
+Решение: переопределить орператор сравнения / оператор меньше
+
+	bool operator <(WNDCLASSEXW const & a, WNDCLASSEXW const & b)
+	{
+	  return a.cbSize < b.cbSize;
+	}
+	
+Описание структуры:
+
+	/*
+	typedef struct tagWNDCLASSEXW
+	{
+		UINT        cbSize;
+		// Win 3.x
+		UINT        style;
+		WNDPROC     lpfnWndProc;
+		int         cbClsExtra;
+		int         cbWndExtra;
+		HINSTANCE   hInstance;
+		HICON       hIcon;
+		HCURSOR     hCursor;
+		HBRUSH      hbrBackground;
+		LPCWSTR     lpszMenuName;
+		LPCWSTR     lpszClassName;
+		// Win 4.0
+		HICON       hIconSm;
+	} WNDCLASSEXW, *PWNDCLASSEXW, NEAR *NPWNDCLASSEXW, FAR *LPWNDCLASSEXW;
+	*/
+	
+	//* ----------------------------------------------------------------------- QUESTION 2
+	#include <windows.h>
+	
+	#include <set>
+	#include <iostream>
+	
+	int main()
+	{
+		//WNDCLASSEX;
+		std::set<WNDCLASSEX> st;
+		WNDCLASSEX w_1;
+		w_1.style = 3;
+		WNDCLASSEX w_2;
+		w_1.style = 2;
+		WNDCLASSEX w_3;
+		w_1.style = 1;
+	
+		st.insert(w_1);
+		st.insert(w_2);
+		st.insert(w_3);
+	
+		for (auto it : st)
+		{
+			std::cout << it.style << std::endl;
+		}
+	
+		return 0;
+	}
+	//*/
 
 # [Q] ЧТО БУДЕТ ?
 // Данный вопрос примерно о том же что и предыдущий
@@ -2266,6 +2329,167 @@ https://ru.stackoverflow.com/questions/262661/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%
 https://proglib.io/p/15-questions-for-programmers/
 
 
+# CORRECT / буквальное (shallow copy) развернутое / глубокое копирование (deep copy) /  RValues + LValues + Move Semantic
+
+	// https://www.youtube.com/watch?v=ruHw7E71zBw
+	// https://www.youtube.com/watch?v=cO1lb2MiDr8
+	
+	#include <cstring>
+	#include <string>
+	#include <algorithm>
+	
+	class MyString
+	{
+		char* m_data;
+		size_t m_size;
+	
+	public:
+	
+		MyString() : m_data(0), m_size(0)
+		{
+		}
+	
+		~MyString()
+		{
+			delete[] m_data;
+			m_data = 0; // установка указателя в 0 позволяет проверять его недопустимость
+		}
+	
+		// Спец конструктор
+		//MyString("abc"); // how we will use the constructor
+		MyString(const char* other)
+		{
+			m_size = strlen(other) + 1;
+			m_data = new char[m_size];
+	
+			// 1 option
+			memcpy(m_data, other, m_size);
+	
+			// 2 option
+			for (int i = 0; i < m_size; i++)
+			{
+				m_data[i] = other[i];
+			}
+		}
+	
+		// Конструктор копий.
+		//MyString(const MyString& that)
+	
+		// default  copy constructor  // буквальное (shallow copy)
+		MyString(const MyString& that) // Конструктор копий.
+		{
+			m_data = that.m_data;
+			m_size = that.m_size;
+		}
+	
+		// развернутое / глубокое копирование (deep copy)
+		// 1 option = BETTER
+		MyString(const MyString& that)
+			: m_size(that.m_size)
+			, m_data(new char[m_size])
+		{
+			memcpy(m_data, that.m_data, m_size); // memcpy(m_data, that.m_data, sizeof(char) * m_size);
+		}
+	
+			// 2-nd option
+			MyString(const MyString& that)
+		{
+			m_size = that.m_size; //m_size = strlen(that.m_data) + 1;
+			m_data = new char[m_size];
+			memcpy(m_data, that.m_data, m_size);	// memcpy(m_data, that.m_data, sizeof(char) * m_size);
+		}
+	
+		// Оператор присваивания.
+		//MyString& operator=(const MyString& that)
+	
+		// default  operator=  // буквальное (shallow copy)
+		MyString& operator=(const MyString& that) // нужен ли const ?
+		{
+			m_data = that.m_data;
+			return *this;
+		}
+	
+		// развернутое / глубокое копирование (deep copy)
+		MyString& operator=(const MyString& that) // нужен ли const ?
+		{
+			if (this == &that)
+				return *this;
+	
+			// 1 option
+			m_size = that.m_size; //m_size = strlen(that.m_data) + 1;
+			m_data = new char[m_size];
+			memcpy(m_data, that.m_data, m_size);	// memcpy(m_data, that.m_data, sizeof(char) * m_size);
+	
+			// 2 option
+			//m_size = that.m_size; //m_size = strlen(that.m_data) + 1;
+	
+			// not here						// COPY !!!
+			// not here						// AND
+			//std::swap(m_data, that.m_data); // SWAP !!!	// Если с  (CONST MyString that), то swap ругнётся can not convert!!!  char*, char* const
+	
+			return *this;
+		}
+	
+		// Семантика перемещения.
+	
+		// Перемещающий Конструктор копий.
+		//MyString(const MyString&& that)
+	
+		// default  move copy constructor  // буквальное (shallow copy)
+		//	MyString(const MyString&& that)
+		//	{
+		//		this = that;
+		//	}
+	
+		// развернутое / глубокое копирование (deep copy)
+		MyString( /*const*/ MyString&& that) // НЕ НУЖЕН CONST (!!!) -  MyString&& is an rvalue reference to a MyString
+			: m_data(that.m_data)
+		{
+			// 1-nd option
+			this->m_data = that.m_data;
+			this->m_size = that.m_size;
+	
+			that.m_data = nullptr;
+			that.m_size = 0;
+	
+			// 2-st option
+			std::swap(this->m_size, that.m_size);
+			std::swap(this->m_data, that.m_data);
+			// or
+			std::swap(*this, that); // with c++11
+		}
+	
+		// Перемещающий Оператор присваивания.
+		//MyString& operator=(const MyString&& that)
+	
+		MyString& operator=(MyString&& that)
+		{
+			if (this != &that)
+			{
+				// 1-nd option
+				this->m_data = that.m_data;
+				this->m_size = that.m_size;
+	
+				that.m_data = nullptr;
+				that.m_size = 0;
+	
+				// 2-st option
+				std::swap(this->m_size, that.m_size);
+				std::swap(this->m_data, that.m_data);
+				// or
+				std::swap(*this, that); // with c++11
+			}
+			return *this;
+		}
+	
+	};
+	
+	
+	void main()
+	{
+		int z = 0;
+	}
+	
 
 # буквальное (shallow copy) развернутое / глубокое копирование (deep copy)
 
