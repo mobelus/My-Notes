@@ -1,4 +1,105 @@
 
+
+	#include <array>
+	#include <vector>
+	#include <string>
+	#include <algorithm>
+	
+	
+	//template <class T>
+	//void remove_(std::vector<T> v, T n)
+	void remove_(std::vector<int>& _v, int _n)
+	{
+		bool found = false;
+		size_t pos = 0;
+		for (size_t i = 0, ilen = _v.size(), iv=0; i<ilen; i++)
+		{
+			iv = _v[i];
+			
+			if (_v[i] == _n && !found)
+			{
+				pos = i;
+				found = true;
+			}
+			else
+			{
+				if(_v[i] != _n)
+				{
+					found = false;
+					_v[i - pos] = _v[i];
+				}
+			}
+		}
+	}
+	
+	void print_v(std::vector<int>& _v)
+	{
+		for (auto i : _v)
+		{
+			std::cout << i;
+		}
+	}
+	
+	void remove_(int _v[], int vsz, int _n)
+	{
+		bool found = false;
+		size_t pos = 0;
+		for (size_t i = 0, ilen = vsz, iv = 0; i<ilen; i++)
+		{
+			iv = _v[i];
+	
+			if (_v[i] == _n && !found)
+			{
+				pos = i;
+				found = true;
+			}
+			else
+			{
+				if (_v[i] != _n)
+				{
+					found = false;
+					_v[i - pos] = _v[i];
+				}
+			}
+		}
+	}
+	
+	void main()
+	{
+		const int n  = 3;
+		const int sz = 6;
+		const int sz2 = 20;
+	
+		/*
+		std::array<int, 3> a = { 1,2,3 };
+		//std::vector<int> v = { 1,2,n,n,4,5,n,6,7,8,n,n,n,9,10,n,n,n,n,n };
+		//std::vector<int> v = { 1,2,3,3,4,5,3,6,7,8,3,3,3,9,10,3,3,3,3,3 };
+	
+		std::vector<int> v;
+		v.push_back(0);
+		v.push_back(1);
+		v.push_back(2);
+		v.push_back(3);
+	
+		//remove_<int>(v, n);
+		remove_(v, n);
+	
+		print_v(v);
+	
+		*/
+	
+		//int m[sz] = { 1,2,3,3,4,5 };
+		int m[sz2] = { 1,2,n,n,4,5,n,6,7,8,n,n,n,9,10,n,n,n,n,n };
+	
+		remove_(m, sz2, n);
+	
+	}
+
+
+
+
+
+
 #  Совместное написание кода / Коллективное редактирование кода
 collabedit.com/
 
