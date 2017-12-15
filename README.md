@@ -1,3 +1,9 @@
+# Socket Programming TCP
+https://www.youtube.com/watch?v=eVYsIolL2gE&list=PL0JmC-T2nhdgJ2Lw5YdufR8MffaQdAvEf
+
+# Socket Programming UDP
+https://www.youtube.com/watch?v=xfRdYrQUQeQ&list=PL0JmC-T2nhdgJ2Lw5YdufR8MffaQdAvEf&index=2
+
 # https://www.youtube.com/watch?v=PNRju6_yn3o
 
 
