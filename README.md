@@ -4,6 +4,7 @@ https://www.youtube.com/watch?v=eVYsIolL2gE&list=PL0JmC-T2nhdgJ2Lw5YdufR8MffaQdA
 # Socket Programming UDP
 https://www.youtube.com/watch?v=xfRdYrQUQeQ&list=PL0JmC-T2nhdgJ2Lw5YdufR8MffaQdAvEf&index=2
 
+Nicolai Josuttis “The Nightmare of Move Semantics for Trivial Classes”
 # https://www.youtube.com/watch?v=PNRju6_yn3o
 
 
