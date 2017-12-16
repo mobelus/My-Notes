@@ -1,3 +1,211 @@
+
+# COPY and SWAP Ideom (Deep Copy)
+
+Если в классе имеется Указатель, то ПРАВИЛО трёх диктует нам, что
+нам стоит переопределить оператор равно, копирующий конструктор и дестуркутор
+для корректной реализации менеджмента динамически выделяемой памяти
+
+- Основная Гарантия - ПАМЯТЬ НЕ УТЕЧЁТ !
+
+operator= и контр_копии  отработают через std::copy Успешно
+
+ПРОБЛЕМА:  new char; - дошли сюда и NEW бросило исключение:
+
+Хоть утечки памяти и не произойдёт, НО this которое было на входе
+в оператор присваивания и то, что стало на момент исключения изменено
+(Есть способ просто  new (nothrow) char, НО он не сильно поможет)  
+
+
+	class DynArray
+	{
+	public:
+	  DynArray(int size = 0)
+	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
+	  {}
+	  
+	  DynArray(const DynArray& that)
+	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
+	  {
+	    std::copy(that.m_data, that.m_data + m_size, m_data);
+	  }
+
+	  DynArray& operator=(const DynArray& that)
+	  {
+	    if(this != &that)
+	    {
+	      delete[] m_data;
+	      m_data = 0;
+	      
+	      m_size = that.m_size;
+	      m_data = m_size ? new char[m_size] : 0;
+	      std::copy(that.m_data, that.m_data + m_size, m_data);
+	    }
+	    
+	    return *this;
+	  }
+	   
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+	private:
+	  int m_size;
+	  char* m_data;
+	}
+
+ОДНАКО, ИДЕОМА  COPY and SWAP предлагает более Лучшее решение
+с точки зрения Exception-Safety. 
+
+- Строгая Гарантия - Exception-Safety
+
+СУТЬ: Мы создаём временные отдельные объекты size и data, в которые перемещаем
+всё из this, чтобы работать с его копией, и не менять состояние this напрямую,
+как делалось в примере выше. В итоге, если произойдёт исключение, всё, что
+внутри this останется и НЕТРОНУТЫМ (exeption-safe) и не утечёт (leak-safe)
+
+Мелочи: //if(this != &that) Можно так же убрать из кода проверку на копирование
+самого себя, ибо, эта проверка в реальной жизни будет почти никогда не нужна, 
+ибо в реальности оператор само собой будет работать по своему основному назначению,
+так что оставлять или нет эту проверку остаётся на усмотрение прораммисту.
+
+	class DynArray
+	{
+	public:
+	  DynArray(int size = 0)
+	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
+	  {}
+	  
+	  DynArray(const DynArray& that)
+	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
+	  {
+	    std::copy(that.m_data, that.m_data + m_size, m_data);
+	  }
+
+	  DynArray& operator=(const DynArray& that)
+	  {
+	    //if(this != &that)
+	    //{
+	      int size = that.m_size;
+	      char* data = size ? new char[size] : 0;
+	      std::copy(that.m_data, that.m_data + size, data);
+	      
+	      delete[] m_data;
+	      m_size = size;
+	      m_data = data;
+	    //}
+	    
+	    return *this;
+	  }
+	   
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+	private:
+	  int m_size;
+	  char* m_data;
+	}
+
+
+# ИДЕОМА COPY and SWAP решение БЕЗ Move-семантики:
+
+	class DynArray
+	{
+	public:
+	  DynArray(int size = 0)
+	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
+	  {}
+	  
+	  DynArray(const DynArray& that)
+	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
+	  {
+	    std::copy(that.m_data, that.m_data + m_size, m_data);
+	  }
+
+	  friend void swap(DynArray& a, DynArray& b)
+	  {
+	    using std::swap;
+	    swap(a.m_size, b.m_size);
+	    swap(a.m_data, b.m_data);
+	  }
+	  
+	  // 1-ый вариант хороший
+	  //DynArray& operator=(const DynArray& that)
+	  //{
+	  //  DynArray copy(that);
+	  //  swap(*this, copy);
+	  //  return *this;
+	  //}
+	
+	  // 2-ой вариант ИДЕАЛЬНЫЙ
+	  DynArray& operator=(DynArray copy)
+	  {
+	    swap(*this, copy);
+	    return *this;
+	  }
+	   
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+	private:
+	  int m_size;
+	  char* m_data;
+	}
+
+
+# COPY and SWAP Ideom + MOVE Semantiks
+
+	class DynArray
+	{
+	public:
+	  DynArray(int size = 0)
+	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
+	  {}
+	  
+	  DynArray(const DynArray& that)
+	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
+	  {
+	    std::copy(that.m_data, that.m_data + m_size, m_data);
+	  }
+
+	  friend void swap(DynArray& a, DynArray& b)
+	  {
+	    using std::swap;
+	    swap(a.m_size, b.m_size);
+	    swap(a.m_data, b.m_data);
+	  }
+	  
+	  // 1-ый вариант хороший
+	  //DynArray& operator=(const DynArray& that)
+	  //{
+	  //  DynArray copy(that);
+	  //  swap(*this, copy);
+	  //  return *this;
+	  //}
+	
+	  // 2-ой вариант ИДЕАЛЬНЫЙ
+	  DynArray& operator=(DynArray copy)
+	  {
+	    swap(*this, copy);
+	    return *this;
+	  }
+	   
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+	private:
+	  int m_size;
+	  char* m_data;
+	}
+
+
+
 # Socket Programming TCP
 https://www.youtube.com/watch?v=eVYsIolL2gE&list=PL0JmC-T2nhdgJ2Lw5YdufR8MffaQdAvEf
 
