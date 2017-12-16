@@ -18,10 +18,20 @@ operator= и контр_копии  отработают через std::copy У
 
 	class DynArray
 	{
+	private:
+	  int m_size;
+	  char* m_data;
+	  
 	public:
 	  DynArray(int size = 0)
 	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
 	  {}
+
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
 	  
 	  DynArray(const DynArray& that)
 	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
@@ -43,15 +53,6 @@ operator= и контр_копии  отработают через std::copy У
 	    
 	    return *this;
 	  }
-	   
-	  ~DynArray()
-	  {
-	    delete [] m_data;
-	    m_data = 0;
-	  }
-	private:
-	  int m_size;
-	  char* m_data;
 	}
 
 ОДНАКО, ИДЕОМА  COPY and SWAP предлагает более Лучшее решение
@@ -71,11 +72,21 @@ operator= и контр_копии  отработают через std::copy У
 
 	class DynArray
 	{
+	private:
+	  int m_size;
+	  char* m_data;
+
 	public:
 	  DynArray(int size = 0)
 	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
 	  {}
-	  
+
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+
 	  DynArray(const DynArray& that)
 	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
 	  {
@@ -96,16 +107,7 @@ operator= и контр_копии  отработают через std::copy У
 	    //}
 	    
 	    return *this;
-	  }
-	   
-	  ~DynArray()
-	  {
-	    delete [] m_data;
-	    m_data = 0;
-	  }
-	private:
-	  int m_size;
-	  char* m_data;
+	  }	   
 	}
 
 
@@ -113,11 +115,21 @@ operator= и контр_копии  отработают через std::copy У
 
 	class DynArray
 	{
+	private:
+	  int m_size;
+	  char* m_data;
+
 	public:
 	  DynArray(int size = 0)
 	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
 	  {}
-	  
+
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+
 	  DynArray(const DynArray& that)
 	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
 	  {
@@ -146,14 +158,6 @@ operator= и контр_копии  отработают через std::copy У
 	    return *this;
 	  }
 	   
-	  ~DynArray()
-	  {
-	    delete [] m_data;
-	    m_data = 0;
-	  }
-	private:
-	  int m_size;
-	  char* m_data;
 	}
 
 
@@ -161,11 +165,38 @@ operator= и контр_копии  отработают через std::copy У
 
 	class DynArray
 	{
+	private:
+	  int m_size;
+	  char* m_data;
+	  
 	public:
 	  DynArray(int size = 0)
 	  : m_size(size), m_data(m_size ? new char[m_size]() : 0)
 	  {}
-	  
+
+	  ~DynArray()
+	  {
+	    delete [] m_data;
+	    m_data = 0;
+	  }
+
+	  // Спец конструктор
+	  //DynArray("abc"); // how we will use the constructor
+	  DynArray(const char* that)
+	  {
+	    m_size = strlen(that) + 1;
+	    m_data = new char[m_size];
+
+	    // 1 option
+	    memcpy(m_data, that, m_size);
+
+	    // 2 option
+	    for (int i = 0; i < m_size; i++)
+	    {
+	      m_data[i] = that[i];
+	    }
+	  }
+
 	  DynArray(const DynArray& that)
 	  : m_size(that.m_size), m_data(m_size ? new char[m_size]() : 0)
 	  {
@@ -194,14 +225,42 @@ operator= и контр_копии  отработают через std::copy У
 	    return *this;
 	  }
 	   
-	  ~DynArray()
+	  DynArray( /*const*/ DynArray&& that) // НЕ НУЖЕН CONST (!!!) -  MyString&& is an rvalue reference to a MyString
+	  : m_data(that.m_data)
 	  {
-	    delete [] m_data;
-	    m_data = 0;
+	    // 1-nd option
+	    this->m_data = that.m_data;
+	    this->m_size = that.m_size;
+
+	    that.m_data = nullptr;
+	    that.m_size = 0;
+
+	    // 2-st option
+	    std::swap(this->m_size, that.m_size);
+	    std::swap(this->m_data, that.m_data);
+	    // or
+	    std::swap(*this, that); // with c++11
 	  }
-	private:
-	  int m_size;
-	  char* m_data;
+	  
+	  DynArray& operator=(DynArray&& that)
+	  {
+	    if (this != &that)
+	    {
+	      // 1-nd option
+	      this->m_data = that.m_data;
+	      this->m_size = that.m_size;
+        
+	      that.m_data = nullptr;
+	      that.m_size = 0;
+        
+	      // 2-st option
+	      std::swap(this->m_size, that.m_size);
+	      std::swap(this->m_data, that.m_data);
+	      // or
+	      std::swap(*this, that); // with c++11
+	    }
+	    return *this;
+	  }
 	}
 
 
