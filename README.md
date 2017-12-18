@@ -1286,6 +1286,239 @@ moc работает как препроцессор который преобр
 
 
 
+Клиент тсерверное приложение
+- контроль целостности файлов / папок / ключей реестра
+- Политики пользователей
+- 
+
+Qt сначала писалось на Виджетах
+
+Осовременить графически:
+Если нужен более интересный дизайн интерфейса, то идём в QML
+Много динамики: Опасити менялось, что-то пропадало, на его месте что-то появлялось.
+изменение цвета с одного на другой, вылетающие, двигающиеся элементы, почти анимация присуствовала.
+Мы смотрели на решения от конкурентов думали как повотрить то или инове поведение, что 
+хочется перенять из интерфейса того
+
+Вёрстка на QML
+
+Прямое соответсвие Виджетов и MFC-шных классов
+
+
+# MFC
+https://www.go4expert.com/forums/mfc-interview-questions-t724/
+
+
+# Назовите 10 MFC-классов ?
+
+# Назовите 10 QML-классов ?
+CheckBox
+DialogBox
+ Slider
+ Rectangle
+ Column 
+ Button 
+ Text
+ 
+ MouseArea
+ Component
+
+ListView
+GridView
+ 
+# Qt / QML:
+
+
+# Как передавали данные в QML из C++ ?
+
+# Чем отличается механизм Q_INVOCABLE и SLOT ?
+
+Механизмы абсолютно разные !
+
+# Зачем нужен макрос Q_OBJECT ?
+
+
+Внутри Q_OBJECT:
+- QMetaObject
+- qt_metacall
+- META_MACROS
+- Q_MOC_RUN
+- signals, slots, Q_PROPERTY, и прочее
+
+
+	#define Q_OBJECT \
+	public: \
+		Q_OBJECT_CHECK \ QT_WARNING_PUSH \ Q_OBJECT_NO_OVERRIDE_WARNING \
+		static const QMetaObject staticMetaObject; \
+		virtual void *qt_metacast(const char *); \
+		virtual int qt_metacall(QMetaObject::Call, int, void **); \
+		QT_TR_FUNCTIONS \
+	private: \
+		Q_DECL_HIDDEN_STATIC_METACALL static void qt_static_metacall(QObject *, QMetaObject::Call, int, void **); \
+		struct QPrivateSignal {}; \
+		QT_ANNOTATE_CLASS(qt_qobject, "")
+		
+	#ifndef QT_NO_META_MACROS
+	
+	#else // Q_MOC_RUN
+	#define slots slots
+	#define signals signals
+	#define Q_SLOTS Q_SLOTS
+	#define Q_SIGNALS Q_SIGNALS
+	#define Q_CLASSINFO(name, value) Q_CLASSINFO(name, value)
+	#define Q_INTERFACES(x) Q_INTERFACES(x)
+	#define Q_PROPERTY(text) Q_PROPERTY(text)
+	#define Q_PRIVATE_PROPERTY(d, text) Q_PRIVATE_PROPERTY(d, text)
+	#define Q_REVISION(v) Q_REVISION(v)
+	#define Q_OVERRIDE(text) Q_OVERRIDE(text)
+	#define Q_ENUMS(x) Q_ENUMS(x)
+
+
+# Как работает класс QObject / Макрос Q_OBJECT ?
+
+На первом шаге запускается  MOC-компилятор. Meta Object Compiler, он у всех классов берёт и смотрит ПЕРВЫЙ класс среди базовых это  QObject или НЕ_QObject и далее действует, и внутри класса уже он же смотрит чтобы в "шапке" класса стоял Q_OBJECT, иначе он не отработает и пойдут ошибки компиляции.
+
+# Возможно ли МНОЖЕСТВЕННОЕ НАСЛЕДОВАНИЕ от класса QObject ?
+
+Нельзя и никаким образом. MOC просто не понимает классов, наследованных дважды от QObject при любой глубине дерева наследования 
+
+# Важен ли порядок при наследовании от QObject ?
+https://www.linux.org.ru/forum/development/814529
+
+Должен стоять ПЕРВЫМ наследником, среди списка наследников:
+
+moc просто не понимает классов, в которых QObject стоит не на первом месте (в качестве базового класса)
+
+	class classA : public QObject, classV, classC
+	{
+	  Q_OBJECT
+
+	  classA();
+	  ...
+	};
+
+
+
+# Какой 5-тый параметр у функции Connect(Object, SIGNAL, Object, SLOT, SynhroniousAsync) ? (по умолчанию стоит Auto Connection)
+# После соединения SIGNAL-a и SLOT-а, Как будет вызвана SLOT(func) функция, которая вызовется через emit СИНХРОННО или АСИНХронно ?
+
+- Зависит всё от следующего: Работает ли всё в одном потоке или нескольких.
+
+А именно: Auto Connection - выставлен по умолчанию => в ОДНОМ потоке будет СИНХронный вызов.
+
+
+# Два раза вызвали Connect с одинаковыми параметрами - Что будет после emit SIGNAL ?
+
+Двойной вызов функции Слота. ПО УМОЛЧАНИЮ !!! 	А так этот момент и задаётся в функции Connect 5-тым параметром.
+
+
+Direct / Queued
+
+https://stackoverflow.com/questions/38376840/qt-signals-and-slots-direct-connection-behaviour-in-application-with-a-single-th
+Let´s get this out of the way before diving into the basics.
+
+- If it is a direct connection, your code is ALWAYS executed on a single thread, regardless as to whether or not the slot is running on a different thread. (In most cases a VERY BAD idea)
+- If the connection is queued and the slot is running inside the same thread, it acts exactly like a direct connection. If the slot is running on a different thread, the slot will execute within its proper thread context that it is running in, so making the code execution multi-threaded.
+- If the connection is auto which is the default, for a good reason, then it will chose the appropriate connection type.
+
+- Now there is a way to force your code execution to jump into a slot in another thread, that is by invoking a method:
+
+QMetaObject::invokeMethod( pointerToObject*, "functionName", Qt::QueuedConnection);
+
+https://stackoverflow.com/questions/41299480/qt-4-8-connection-behavior-between-two-signals-and-one-slot-from-different-thr
+
+- If the type is Qt::DirectConnection, the second signal is always emitted from the thread that emitted the first signal.
+- if the type is Qt::QueuedConnection, the second signal is always queued to be invoked when control returns to the event loop of the receiver object's thread.
+- If the type is Qt::AutoConnection, the connection type is resolved when the signal is emitted and the thread of the sending object is ignored.
+-- If the receiver object lives in the same thread where the first signal is emitted, this will be the same as using Qt::DirectConnection.
+-- Otherwise, this will be the same as using Qt::QueuedConnection.
+
+http://www.doc.crossplatform.ru/qt/4.6.x/threads-qobject.html
+
+Соединение сигналов и слотов между потоками
+
+Qt поддерживает следующие типы соединений сигнал-слот:
+
+- Автоматическое соединение (Auto Connection) (по умолчанию) Поведение такое же, как и при прямом соединении, если источник и получатель находятся в одном и том же потоке. Поведение такое же, как и при соединении через очередь, если источник и получатель находятся в разных потоках.
+- Прямое соединение (Direct Connection) Слот вызывается немедленно при отправке сигнала. Слот выполняется в потоке отправителя, который не обязательно является потоком-получателем.
+- Соединение через очередь (Queued Connection) Слот вызывается, когда управление возвращается в цикл обработки событий в потоке получателя. Слот выполняется в потоке получателя.
+- Блокирующее соединение через очередь (Blocking Queued Connection) Слот вызывается так же, как и при соединении через очередь, за исключением того, что текущий поток блокируется до тех пор, пока слот не возвратит управление. Замечание: Использование этого типа подключения объектов в одном потоке приведет к взаимной блокировке.
+- Уникальное соединение (Unique Connection) Поведение такое же, что и при автоматическом соединении, но соединение устанавливается только если оно не дублирует уже существующее соединение. т.е., если тот же сигнал уже соединён с тем же самым слотом для той же пары объектов, то соединение не будет установлено и connect() вернет false.
+
+Это можно изменить, передав дополнительный аргумент в connect(). Помните, что использование прямых соединений, когда отправитель и получатель "живут" в разных потоках, опасно в случае, если цикл обработки событий выполняется в потоке, где "живет" приемник, по той же самой причине, по которой небезопасен вызов функций объекта, принадлежащего другому потоку.
+
+QObject::connect() сама по себе потокобезопасна.
+
+
+# OpenGL
+
+# РЕГУЛЯРНЫЕ ВЫРАЖЕНИЯ <regex>
+
+# XSLT - трансформация XML
+
+# XSD
+
+# INNER JOIN / OUTER JOIN
+
+
+# MEMORY MAPPED FILES Cуть:
+
+Это механизм, который позволяет отображать файлы на участок памяти. Таким образом, при чтении данных из неё, производится считывание соответствующих байт из файла. С записью аналогично. 
+
+Допустим, перед нами стоит задача обработки большого файла(несколько десятков или даже сотен мегабайт). Казалось бы, задача тривиальна — открываем файл, поблочно копируем из него в память, обрабатываем. Что при этом происходит. Каждый блок копируется во временный кэш, затем из него в нашу память. И так с каждым блоком. Налицо неоптимальное расходование памяти под кэш + куча операций копирования. Что же делать?
+
+Тут-то нам на помощь и приходит механизм MMF. Когда мы обращаемся к памяти, в которую отображен файл, данные загружаются с диска в кэш(если их там ещё нет), затем делается отображение кэша в адресное пространство нашей программы. Если эти данные удаляются — отображение отменяется. Таким образом, мы избавляемся от операции копирования из кэша в буфер. Кроме того, нам не нужно париться по поводу оптимизации работы с диском — всю грязную работу берёт на себя ядро ОС.
+
+С отображением далее можно работать как и с обычным файлом:
+- Писать / WRITE
+- Читать / READ
+- Шарить отображение / делать Нешаренным / MAP_SHARED
+- Применять результат того, что мы сделали с отображением, Не применять изменения в отображении.
+
+
+# Преимущества Хэш таблицы перед Деревом ? Преимущество unordnered_map перед просто map ?
+
+- MAP сложнорсть операций O(log(n)), UNORDNERED_MAP сложнорсть, если рассматривать амортизированное O-большое = O(1). Амртизированность заключается в том, что мы предполагаем, что у нас будет мало или почти не будет коллизий. И тогда Хэш-таблица получается выйгрышней, производительней, быстрее.
+
+# Имеется массив из 10 Гигабайт миллиона элементов, и его нужно отсортировать, при этом вам дано очень много процессоров (несколько Google-Кластеров) ?
+https://ru.wikipedia.org/wiki/MapReduce
+
+МЬЮТЕКСЫ: Если использовать мьютексы, то решение будет слишком медленным и неэффективным.
+
+ВЕРНЫЙ ОТВЕТ: Использовать подход MAPREDUCE, то есть:
+1) На первом MAP шаге смотрим сколько у нас процессоров допустим 28. Делим массив на 28 блоков, каждый блок отдаём на сортировку каждому процессору
+2) На втором REDUCE шаге происходит свёртка предварительно обработанных данных. Мы производим слияние отсортированных массивов.
+
+О MapReduce — модель распределённых вычислений, представленная компанией Google, используемая для параллельных вычислений над очень большими, вплоть до нескольких петабайт, наборами данных в компьютерных кластерах.
+
+Канонический пример приложения, написанного с помощью MapReduce, — это процесс, подсчитывающий, сколько раз различные слова встречаются в наборе документов:
+
+	// Функция, используемая рабочими нодами на Map-шаге
+	// для обработки пар ключ-значение из входного потока
+	void map(String name, String document):
+      // Входные данные:
+      //   name - название документа
+      //   document - содержимое документа
+      for each word w in document:
+          EmitIntermediate(w, "1");
+ 
+	// Функция, используемая рабочими нодами на Reduce-шаге
+	// для обработки пар ключ-значение, полученных на Map-шаге
+	void reduce(String word, Iterator partialCounts):
+      // Входные данные:
+      //   word - слово
+      //   partialCounts - список группированных промежуточных результатов. Количество записей в partialCounts и есть 
+      //     требуемое значение
+      int result = 0;
+      for each v in partialCounts:
+          result += parseInt(v);
+      Emit(AsString(result));
+
+
+	  
+В качестве домашнего задания можете попробовать модифицировать код так, чтобы через отображение файл можно было не только читать, но и писать в него.
+	  
+
 
 #  RAII - СУТЬ:
 
