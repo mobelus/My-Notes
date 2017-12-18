@@ -285,34 +285,34 @@ Nicolai Josuttis “The Nightmare of Move Semantics for Trivial Classes”
 	//void remove_(std::vector<T> v, T n)
 	void remove_(std::vector<int>& _v, int _n)
 	{
-		bool found = false;
-		size_t pos = 0;
-		for (size_t i = 0, ilen = _v.size(), iv=0; i<ilen; i++)
-		{
-			iv = _v[i];
+	  bool found = false;
+	  size_t pos = 0;
+	  for (size_t i = 0, ilen = _v.size(), iv=0; i<ilen; i++)
+	  {
+	    iv = _v[i];
 			
-			if (_v[i] == _n && !found)
-			{
-				pos = i;
-				found = true;
-			}
-			else
-			{
-				if(_v[i] != _n)
-				{
-					found = false;
-					_v[i - pos] = _v[i];
-				}
-			}
-		}
+	    if (_v[i] == _n && !found)
+	    {
+	      pos = i;
+	      found = true;
+	    }
+	    else
+	    {
+	      if(_v[i] != _n)
+	      {
+	        found = false;
+	        _v[i - pos] = _v[i];
+	      }
+	    }
+	  }
 	}
 	
 	void print_v(std::vector<int>& _v)
 	{
-		for (auto i : _v)
-		{
-			std::cout << i;
-		}
+	  for (auto i : _v)
+	  {
+	    std::cout << i;
+	  }
 	}
 	
 	void remove_(int _v[], int vsz, int _n)
@@ -749,6 +749,10 @@ std::hash_set и std::hash_map давно были нестандартным р
 - Ссылки на временные объекты и семантика переноса (Rvalue Reference / Move semantics)
 
 В C++11 появился новый тип ссылки — rvalue-ссылка (англ. rvalue reference). Его объявление следующее: type &&. Новые правила разрешения 
+
+- auto новое ключевое слово 
+
+C++11 появилась ДИНАМИЧЕСКАЯ ТИПИЗАЦИЯ, при условии что ранее была только Строгая типизация, это привнесло в язык больше гибкости и удобств. 
 
 - Обобщённые константные выражения 
 
