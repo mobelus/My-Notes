@@ -1,4 +1,8 @@
 
+# UML Design Patterns
+
+https://www.researchgate.net/profile/William_Frakes/publication/235625572/figure/fig5/AS:299891864686597@1448511200888/Figure-5-A-UML-class-diagram-of-the-code-produced-by-the-ad-hoc-method.png
+
 # COPY and SWAP Ideom (Deep Copy)
 
 Если в классе имеется Указатель, то ПРАВИЛО трёх диктует нам, что
