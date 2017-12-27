@@ -1,3 +1,6 @@
+
+https://i.snag.gy/nTPI3R.jpg
+
 http://www.cyberforum.ru/cpp-beginners/thread2166498.html#post11986843
 
 
