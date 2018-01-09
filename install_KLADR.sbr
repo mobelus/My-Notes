@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="WINDOWS-1251" standalone="no"?>
+<ROOT XML_Gen_Date="04.08.2009 17:15:04" Internal_version="0.0.0.9">
+         <Items Count="0"/>
+         <Add_files Count="0"/>
+         <Global_Variables Count="0"/>
+         <Global_SQL Count="0"/>
+         <After_Self_Update_BAT></After_Self_Update_BAT>
+         <Global_disc Count="1">
+                  <Dic_1 Name="КЛАДР" DB_Name="KLADR">
+                           <Tables Count="5">
+                                    <Table_1 TableName="kladr_ALTNAMES"/>
+                                    <Table_2 TableName="kladr_DOMA"/>
+                                    <Table_3 TableName="kladr_KLADR"/>
+                                    <Table_4 TableName="kladr_SOCRBASE"/>
+                                    <Table_5 TableName="kladr_STREET"/>
+                           </Tables>
+                  </Dic_1>
+         </Global_disc>
+</ROOT>
