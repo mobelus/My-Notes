@@ -1,4 +1,16 @@
 
+	st = st.IsEmpty() ? "0" : st; // error
+	st = st.IsEmpty() ? AnsiString("0") : st; // no_error
+
+	int a
+	if()
+		for(int i = 0; ; i++)
+			i = i + 1;
+	else
+		for(int i = 0; ; i--)
+			i = i + 2;
+	
+
 	#ifndef __FUNCTION_NAME__
 	    #ifdef WIN32   //WINDOWS
 	        #ifdef __BORLANDC__
