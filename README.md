@@ -1,3 +1,21 @@
+#ifndef __FUNCTION_NAME__
+    #ifdef WIN32   //WINDOWS
+        #ifdef __BORLANDC__
+            #define __FUNCTION_NAME__   __FUNC__ // CPPBulder version
+        #endif
+        #ifdef _MSC_FULL_VER
+            #define __FUNCTION_NAME__   __FUNCTION__ // MSVS version
+        #endif
+    #else          //*NIX
+        #define __FUNCTION_NAME__   __func__
+    #endif
+#endif
+
+#define cb_get(cb)  (cb->ItemIndex != -1) ? (int)cb->Items->Objects[cb->ItemIndex] : -1
+#define cb_save(cb) (cb->ItemIndex != -1) ? (int)cb->Items->Objects[cb->ItemIndex] : -1
+#define cb_load(cb,idx) cb->ItemIndex = cb->Items->IndexOfObject((TObject*)idx)
+
+
 
 https://i.snag.gy/nTPI3R.jpg
 
