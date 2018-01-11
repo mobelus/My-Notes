@@ -2,13 +2,13 @@
 	st = st.IsEmpty() ? "0" : st; // error
 	st = st.IsEmpty() ? AnsiString("0") : st; // no_error
 
-	int a
-	if()
-		for(int i = 0; ; i++)
-			i = i + 1;
+	int count = sl->Count;
+	if (count > 100)
+		for (int i = count - 1; i >= 0; i--)
+			Name = Name + " " + sl->Strings[i] + Separator;
 	else
-		for(int i = 0; ; i--)
-			i = i + 2;
+		for (int i = 0; i <= count - 1; i++)
+			Name = Name + " " + sl->Strings[i] + Separator;
 	
 
 	#ifndef __FUNCTION_NAME__
