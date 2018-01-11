@@ -1,4 +1,13 @@
 
+	sommer_type.is_light = summer.type_id == 1;
+
+	err = "";
+	if (ser == "")
+	  err += "Ошибка_1\n";
+	if (num == "")
+	  err += "Ошибка_2\n";
+
+
 	st = st.IsEmpty() ? "0" : st; // error
 	st = st.IsEmpty() ? AnsiString("0") : st; // no_error
 
