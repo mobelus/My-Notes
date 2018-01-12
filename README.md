@@ -27,6 +27,14 @@
 
 
 
+	AnsiString UserCode = "24365";
+	AnsiString sqlSelect =
+		"select  USER_CODE, FIO"
+		" from   USERS_INFORMATION"
+		" where  USER_CODE = '" + UserCode + "'";
+	TADOQuery *qw = BranchApi->dbGetCursor(res, sqlSelect);
+
+
 
 	sommer_type.is_light = summer.type_id == 1;
 
