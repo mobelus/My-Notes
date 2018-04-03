@@ -1,4 +1,7 @@
 
+ENGLISH IN IT-WEB-DEVELOPMENT-APPS-GRAFICAL-INTERFACE:
+
+http://wordexpert.ru/forum/viewtopic.php?id=1526
 
 
 	bool isRequestWithNewDogInfoCorrect = sendReqWith_New_DogovorInfoToService();
