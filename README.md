@@ -25,6 +25,259 @@ why ? [уай] - полчему
 how ? [хау] - как
 whom ? [хум] - кому
 about [эбаут] - о (чём-то / ком-то)
+
+
+tab [тэб] - вкладка
+home [хоум] - дом
+insert [] - вставить
+push [] - нажать, давить
+page [] - страница
+reference [] - ссылка
+mail [] - почта
+view [] - вид, представление
+review [] - обзор
+title [] - надпись
+point [] - точка
+help [] - 
+button [] -  
+box [] - 
+scroll [] - 
+scroll box [] - Ползунок (линейки) прокрутки
+select [] - выбирать
+zoom [] - прибилжать
+send [] - отправлять
+recieve [] - получать
+layout [] - 
+label [] - надпись
+save [] - сохранить
+save as [] - сохранить как
+open [] - открыть
+close [] - закрыть
+info [] - сведения
+recent [] - последние
+new [] - создать
+print [] - печать
+options [] - параметры
+exit [] - Выход
+
+
+and [энд] - 
+bool [бул] - 
+break [брэйк] - 
+case [кейс] - 
+catch [кеч] - 
+char [чарактэр] - 
+cast [каст] - 
+continue [континью] - 
+default [дефолт] - 
+delete [делит] - 
+do [ду] - 
+double [дабл] - 
+dynamic [дайнэмик] - 
+else [элс] - 
+export [экспорт] - 
+extern [экстерн] - 
+false [фолс] - 
+float [флоат] - 
+for [фор] - 
+go to [гоу ту] - 
+if [иф] - 
+int [интеджер] - 
+name [нейм] - 
+space [спейс] - 
+new [нью] - 
+ptr [поинтер] - 
+private [прайвет] - 
+protected [протектед] - 
+public [паблик] - 
+return [ретёрн] - 
+short [шорт] - 
+signed [сайнт] - 
+sizeof [сайзоф] - 
+struct [страчер] - 
+switch [свич] - 
+template [темплейт] - 
+this [Зис] - 
+thread [тред] - 
+local [локал] - 
+throw [фроу] - 
+true [тру] - 
+try [трай] - 
+type [тайп] - 
+union [юнион] - 
+unsigned [ансайнт] - 
+using [юз] - 
+using [юзинг] - 
+while [уайл] - 
+
+function [фанкшн] - 
+jump [джамп] - 
+big [биг] - 
+small [смол] - 
+little [литл] - 
+edit [эдит] - 
+deny
+deprecated
+call
+add
+sub
+multiply
+erase
+
+complete
+incomplete
+different
+difference
+algorythm
+compare
+read
+write
+access
+word
+last
+first
+begin
+end
+create
+destroy
+total
+location 
+recent 
+print
+all
+both
+side
+letter
+preview
+attach вложение
+share
+Save 
+load
+change 
+support 
+tool Инструмент 
+Check 
+Paste - Вставить
+Cut - Вырезать
+Font - Шрифт
+Color - Цвет 
+Show 
+Increase 
+Decrease 
+Change 
+Find 
+Replace 
+Select 
+Shape
+Blank - Пустая 
+Link - Ссылки
+Header - заголовок
+Equation 
+
+Margins - Поля
+  Page - Страница
+Line  - строка
+Column - столбец
+  Column - Колонка
+  Even Page - Четная страница
+  Odd Page - Нечетная страница
+Left - Слева
+Right - Справа
+Before - До
+After - После 
+Position - Положение
+Bring Forward - Переместить вперед
+Send Backward - Переместить назад 
+Pane - Область
+Align - Выровнять
+Rotate - Повернуть
+угол
+Mark Entry - Пометить элемент
+Notes - Показать сноски
+Style - Стиль
+List 
+Rules - Правила
+Field -  поле
+Merge - объединить
+Split  Разделить 
+
+
+Window - окно
+Comments Group - Группа Примечания (данную группу по-русски в учебной литературе и в заданиях часто называют также Комментарии)
+Changes 
+Accept 
+Protect 
+Block 
+Restrict 
+Record 
+Security 
+Drop 
+Pick
+Frame  - рамку 
+Shad - Затенение 
+Reset
+Image 
+Mode - Режим 
+Group  - Группи
+Schema - Схема
+Templates - Шаблоны
+Borders - Границы
+Pen Style - Стиль пера
+Pen Weight - Толщина пера
+Height Высота 
+Widht Ширина 
+Draw Table - Нарисовать таблицуэ
+Eraser - Ластик
+Table Styles Group - Группа Стили таблиц
+AutoFit  Автоподбор
+Align  Выровнять 
+Repeat Повторить 
+Convert Преобразовать 
+Adjust 
+Background 
+Reset 
+Compress 
+Wrap 
+Arrange 
+
+Layout Макет 
+Crop Обрезка
+
+Forward 
+Backward 
+Fill 
+Outline 
+Direction 
+Shapes - Фигуры
+Picture - Рисунок
+Axes - Оси
+Wall - Стенка
+Area - Область
+Background Group  - Группа Фон
+Up
+Down 
+under
+over
+Error
+exception
+
+point
+line
+polyline
+ellipse
+circle
+rectangle
+square
+triangle
+angle
+side
+polygon
+
+select [селект] - 
+insert [инсерт] - 
+update [апдейт] - 
+delete [делит] - 
+
 ```
 
 
