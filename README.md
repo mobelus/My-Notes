@@ -1,3 +1,37 @@
+new [нью] - новый
+old [олд] - старый
+size [сайз] - размер
+next [некст] - следующий / Далее
+back [бэк] - назад / спина
+previous [вривэос] - предыдущий
+data [дэйта] - данные
+add [эд] - добавить
+delete [делит] - удалить
+step [стэп] - шаг
+open [оупэн] - открыть
+close [клоуз] - закрыть
+save [сейв] - сохранить
+load [лоад] - загрузить
+option [опшн] - настройка, опция, вариант
+propertie [проперти] - свойство
+download [даунлоад] - скачать
+upload [аплоад] - загрузить
+
+who ? - кто
+what ? - что
+when ? - когда
+why ? - полчему
+how ? - как
+whom ? - кому
+about - о
+
+
+
+
+FREE ICONS
+
+https://www.1001freedownloads.com/free-clipart/icon-set-player
+
 
 ENGLISH IN IT-WEB-DEVELOPMENT-APPS-GRAFICAL-INTERFACE:
 
