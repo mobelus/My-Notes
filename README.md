@@ -26,257 +26,296 @@ how ? [хау] - как
 whom ? [хум] - кому
 about [эбаут] - о (чём-то / ком-то)
 
+and [энд] - и
+bool [бул] - булева
+break [брэйк] - разбить
+case [кейс] - случай
+catch [кеч] - поймать / ловить
+character [чарактэр] - символ, персонаж
+cast [каст] - перевести (выполнить перевод из одного сосот. в другое)
+continue [континью] - продолжить
+default [дефолт] - стандартный / по умолчанию
+delete [делит] - удалить
+do [ду] - делать
+double [дабл] - двойной / удвоенный
+dynamic [дайнэмик] - динамический
+else [элс] - иначе
+export [экспорт] - экспортировать
+extern [экстерн] - внешний
+false [фолс] - ЛОЖЬ
+float [флоат] - 
+for [фор] - для
+go to [гоу ту] - идити в
+if [иф] - если
+integer [интеджер] - целое (всмысле не дробное, про число)
+name [нейм] - имя
+space [спейс] - пробел, пространство
+new [нью] - новый
+pointer [поинтер] - указатель
+private [прайвет] - приватный
+protected [протектед] - защищённый
+public [паблик] - публичный
+return [ретёрн] - вернуть
+short [шорт] - короткий
+sign [сайн] - знак
+signed [сайнт] - знаковый
+size of [сайз оф] - размер (чего-то)
+structure [страчер] - структура
+switch [свич] - переключиться
+template [темплейт] - шаблон
+this [Зис] - это
+thread [тред] - поток
+local [локал] - локал
+throw [фроу] - бросать
+true [тру] - ИСТИНА
+try [трай] - попытаться
+type [тайп] - тип
+union [юнион] - объединение
+unsigned [ансайнт] - беззнаковый
+use [юз] - использовать
+using [юзинг] - используя
+while [уайл] - во то время как
 
+function [фанкшн] - функция
+jump [джамп] - прыгать
+big [биг] - большой
+small [смол] - маленький
+little [литл] - маленький
+edit [эдит] - менять
+deny [денай] - отменить
+enable [энейбл] - задействовать
+deprecated [деприкэйтед] - 
+call [кол] - вызвать, вызов
+substract [сабстракт] - 
+multiply [мультиплай] - 
+erase [ирэйз] - 
+
+add [эд] - 
+insert [инсерт] - вставить
+select [селект] - выбирать
+new [нью] - создать
+
+complete [комплит] - 
+incomplete [инкомплит] - 
+different [дифферент] - 
+difference [дифференс] - 
+algorythm [элгоритм] - 
+compare [кмпэар] - 
+read [рид] - 
+write [райт] - 
+access [эксэс] - 
+word [ворд] - 
+last [лэст] - 
+first [фёрст] - 
+begin [бегин] - 
+end [энд] - 
+create [криэйт] - 
+destroy [дестрой] - 
+total [тотал] - 
+location [локэйшн] - 
+recent[рисэнт] - 
+print [принт] - 
+all [ол] - 
+both [боуф] - 
+side [сайд] - 
+letter [лэттэр] - 
+preview [привью] - 
+attach [эттач] - вложение
+share [шэр] - 
+Save [сэйв] - 
+load [лоад] - 
+change [чейндж] - 
+support [сапорт] - 
+tool [тул] Инструмент - 
+Check [чек] - 
+Paste [пэйст] - Вставить
+Cut [кат] - Вырезать
+Font [фонт] - Шрифт
+Color [колор] - Цвет 
+Show [шоу] - 
+Increase [инкриз] - 
+Decrease [дериз] - 
+Change [чейндж] - 
+Find [файнд] - 
+Replace [реплэйс] - 
+Select [селект] - 
+Shape [шэйп] - 
+Blank [блэнк] - Пустая 
+Link [линк] - Ссылки
+Header [хэдэр] - заголовок
+Equation [экуэйжн] - 
+
+Margin [маргин] - Поле
+Page [пэйдж] - Страница
+Line [лайн] - строка
+Column [колам] - столбец
+Column [колам] - Колонка
+Even [ивэн] - Четная
+Odd [од] - Нечетная
+Left [лэфт] - Слева
+Right [рфйт] - Справа
+Before [бефор] - До
+After [афтэр] - После 
+Position [позишн] - Положение
+Bring [бринг] - принести
+Forward [форворд] - вперед
+Backward [бэкворд] - назад 
+Send [сэнд] - отправить 
+Pane [пээн] - Область
+Align [элайн] - Выровнять
+Rotate [ротэйт] - Повернуть
+angle [энгл] - угол
+Mark [марк] - Пометить
+Entry [энтри] - элемент
+Note [ноут] - Показать сноски
+Style [стайл] - Стиль
+List [лист] - 
+Rule [рул] - Правила
+Field [фиилд] -  поле
+Merge [мёрдж] - объединить
+Split [сплит] - Разделить 
+
+help [хэлп] - помогите, помогать, помощь
 tab [тэб] - вкладка
 home [хоум] - дом
-insert [] - вставить
-push [] - нажать, давить
-page [] - страница
-reference [] - ссылка
-mail [] - почта
-view [] - вид, представление
-review [] - обзор
-title [] - надпись
-point [] - точка
-help [] - 
-button [] -  
-box [] - 
-scroll [] - 
-scroll box [] - Ползунок (линейки) прокрутки
-select [] - выбирать
-zoom [] - прибилжать
-send [] - отправлять
-recieve [] - получать
-layout [] - 
-label [] - надпись
-save [] - сохранить
-save as [] - сохранить как
-open [] - открыть
-close [] - закрыть
-info [] - сведения
-recent [] - последние
-new [] - создать
-print [] - печать
-options [] - параметры
-exit [] - Выход
+push [пуш] - нажать, давить
+page [пэйдж] - страница
+reference [референс] - ссылка
+mail [мэйл] - почта
+view [вью] - вид, представление
+review [ревью] - обзор
+title [тайтл] - надпись
+point [поинт] - точка
+button [баттон] - кнопка
+box [бокс] - 
+scroll [скрол] - Ползунок
+scroll box [скрол бокс] - Ползунок прокрутки
+zoom [зум] - прибилжать
+send [сэнд] - отправлять
+recieve [ресив] - получать
+layout [лэйаут] - 
+label [лэйбл] - надпись
+save [сэйв] - сохранить
+save as [сэйв эз] - сохранить как
+open [оупен] - открыть
+close [клоуз] - закрыть
+info [инфо] - сведения
+recent [рисэнт] - последние
+print [принт] - печать
+options [опшн] - параметры
+exit [экзит] - Выход
 
+Window [уиндоу] - окно
+Comment [коммент] - Примечание, Комментарии
+Change [чейндж] - 
+Accept [эксэпт] - 
+Protect [протэкт] - 
+Block [блок] - 
+Restrict [рестрикт] - 
+Record [рекорд] - 
+Security [секьюрити] - 
+Drop [дроп] - 
+Pick [пик] - 
+Frame [фрэйм] - рамку 
+Reset [рисэт] - 
+Image [имэйдж] - 
+Mode [моуд] - Режим 
+Group [груп] - Группи
+Schema [шэма] - Схема
+Template [тэмплейт] - Шаблоны
+Border [бордэр] - Границы
+Pen [пэн] - перо
+Style [стайл] - Стиль 
+Weight [вэйт] - Толщина 
+Height [хэйт] - Высота 
+Widht [уидт] - Ширина 
+Draw [дроу] - 
+Table [тэйбл] - Нарисовать таблицуэ
+Eraser [эрэйзр] - Ластик
+Fit [фит] - Автоподбор
+Align [элайн] - Выровнять 
+Repeat [рипит] - Повторить 
+Convert [ковёрт] - Преобразовать 
+Adjust [эджаст] - 
+Background [бэкграунд] - 
+Reset [рисэт] - 
+Compress [компрэс] - 
+Wrap [урэп] - 
+Arrange [эррэйндж] - 
 
-and [энд] - 
-bool [бул] - 
-break [брэйк] - 
-case [кейс] - 
-catch [кеч] - 
-char [чарактэр] - 
-cast [каст] - 
-continue [континью] - 
-default [дефолт] - 
-delete [делит] - 
-do [ду] - 
-double [дабл] - 
-dynamic [дайнэмик] - 
-else [элс] - 
-export [экспорт] - 
-extern [экстерн] - 
-false [фолс] - 
-float [флоат] - 
-for [фор] - 
-go to [гоу ту] - 
-if [иф] - 
-int [интеджер] - 
-name [нейм] - 
-space [спейс] - 
-new [нью] - 
-ptr [поинтер] - 
-private [прайвет] - 
-protected [протектед] - 
-public [паблик] - 
-return [ретёрн] - 
-short [шорт] - 
-signed [сайнт] - 
-sizeof [сайзоф] - 
-struct [страчер] - 
-switch [свич] - 
-template [темплейт] - 
-this [Зис] - 
-thread [тред] - 
-local [локал] - 
-throw [фроу] - 
-true [тру] - 
-try [трай] - 
-type [тайп] - 
-union [юнион] - 
-unsigned [ансайнт] - 
-using [юз] - 
-using [юзинг] - 
-while [уайл] - 
+Layout [лэйаут] -  Макет 
+Crop [кроп] - Обрезка
 
-function [фанкшн] - 
-jump [джамп] - 
-big [биг] - 
-small [смол] - 
-little [литл] - 
-edit [эдит] - 
-deny
-deprecated
-call
-add
-sub
-multiply
-erase
+Forward [форвуард] - 
+Backward [бэквуард] - 
+Fill [фил] - 
+Outline [аутлайн] - 
+Direction [дайрекшн] - 
+Shape [шэйп] - Фигуры
+Picture [пикчэр] - Рисунок
+Axe [экс] - Оси
+Wall [уол] - Стенка
+Area [эриа] - Область
+Background [бэкграунд] - Фон
+Up [ап] - 
+Down [даун] - 
+under [андэр] - 
+over [оувэр] - 
+Error [эррор] - 
+exception [эксэпшн] - 
 
-complete
-incomplete
-different
-difference
-algorythm
-compare
-read
-write
-access
-word
-last
-first
-begin
-end
-create
-destroy
-total
-location 
-recent 
-print
-all
-both
-side
-letter
-preview
-attach вложение
-share
-Save 
-load
-change 
-support 
-tool Инструмент 
-Check 
-Paste - Вставить
-Cut - Вырезать
-Font - Шрифт
-Color - Цвет 
-Show 
-Increase 
-Decrease 
-Change 
-Find 
-Replace 
-Select 
-Shape
-Blank - Пустая 
-Link - Ссылки
-Header - заголовок
-Equation 
-
-Margins - Поля
-  Page - Страница
-Line  - строка
-Column - столбец
-  Column - Колонка
-  Even Page - Четная страница
-  Odd Page - Нечетная страница
-Left - Слева
-Right - Справа
-Before - До
-After - После 
-Position - Положение
-Bring Forward - Переместить вперед
-Send Backward - Переместить назад 
-Pane - Область
-Align - Выровнять
-Rotate - Повернуть
-угол
-Mark Entry - Пометить элемент
-Notes - Показать сноски
-Style - Стиль
-List 
-Rules - Правила
-Field -  поле
-Merge - объединить
-Split  Разделить 
-
-
-Window - окно
-Comments Group - Группа Примечания (данную группу по-русски в учебной литературе и в заданиях часто называют также Комментарии)
-Changes 
-Accept 
-Protect 
-Block 
-Restrict 
-Record 
-Security 
-Drop 
-Pick
-Frame  - рамку 
-Shad - Затенение 
-Reset
-Image 
-Mode - Режим 
-Group  - Группи
-Schema - Схема
-Templates - Шаблоны
-Borders - Границы
-Pen Style - Стиль пера
-Pen Weight - Толщина пера
-Height Высота 
-Widht Ширина 
-Draw Table - Нарисовать таблицуэ
-Eraser - Ластик
-Table Styles Group - Группа Стили таблиц
-AutoFit  Автоподбор
-Align  Выровнять 
-Repeat Повторить 
-Convert Преобразовать 
-Adjust 
-Background 
-Reset 
-Compress 
-Wrap 
-Arrange 
-
-Layout Макет 
-Crop Обрезка
-
-Forward 
-Backward 
-Fill 
-Outline 
-Direction 
-Shapes - Фигуры
-Picture - Рисунок
-Axes - Оси
-Wall - Стенка
-Area - Область
-Background Group  - Группа Фон
-Up
-Down 
-under
-over
-Error
-exception
-
-point
-line
-polyline
-ellipse
-circle
-rectangle
-square
-triangle
-angle
-side
-polygon
+point [поинт] - 
+line [лайн] - 
+polyline [полилайн] - 
+ellipse [эллипс] - 
+circle [сиркл] - 
+rectangle [рэктэнгл] - 
+square [скуэар] - 
+triangle [трайэнгл] - 
+angle [энгл] - 
+side [сайд] - 
+polygon [полигон] - 
 
 select [селект] - 
 insert [инсерт] - 
 update [апдейт] - 
 delete [делит] - 
+
+include [инклуд] - 
+import [импорт] - 
+return [ретёрн] - 
+
+memory [мэмори] - 
+drie [драйв] - 
+sound [саунд] -
+unique [юник] - 
+description [дескрипшн] - 
+display [дисплэй] - 
+launch [лаунч] - 
+crash [скэр] - 
+fall [фол] - 
+settings [сэттингз] - 
+amount [эмаунт] - 
+must [маст] - 
+disable [дисэйбл] - 
+prefear [прифэар] - 
+count [каунт] - 
+engine [энджин] - 
+core [кор]
+current [каррэнт]
+device [девайс]
+brows [брауз]
+advanced [эдвансд] - дополнительно
+direct [дайрект]
+custom [кастом] - определённая
+сompatibillity [компатибилити] - 
+show [шоу] - 
+with [уизтх] -
+specify [специфити] - 
+present [презент]
+allow [эллау]
+any [эни]
+
 
 ```
 
