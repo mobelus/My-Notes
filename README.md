@@ -24,6 +24,11 @@ https://habr.com/post/307816/
 ###### Q_PROPERTY
 ###### Q_INVOKABLE - Как плохая, но всё же альтернатива сигналам и слотам
 
+
+### SIGNALS AND SLOTS
+
+http://blog.kislenko.net/show.php?id=1308
+
 https://www.youtube.com/watch?v=sA2PX_79NkQ
 
 # Особенности работы механизма сигналов и слотов следующие:
