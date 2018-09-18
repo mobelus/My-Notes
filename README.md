@@ -1,3 +1,330 @@
+#  QT:
+
+## 20 Qt Questions
+https://www.wisdomjobs.com/e-university/qt-qml-interview-questions.html01
+
+
+### QMAKE
+утилита (Qt-шный аналог CMAKE) для генерации Make-файлов, которые нужны для описания процесса построения сполняемых программ из исходных кодов
+
+### MOC
+утилита, переводящая код, написанный на Qt, в код на чистом C++
+
+### QML
+Это Qt Meta Language или Qt Modelling Language язык для описания интерфейсов, с использованием toolkit-а QtQuick is a toolkit for QML, который и позвляет писать графические интерфейсы дя Qt на QML
+
+# Особенности работы механизма сигналов и слотов следующие:
+- сигналы и слоты не являются частью языка C++, поэтому требуется запуск дополнительного препроцессора перед компиляцией программы;
+- отправка сигналов происходит медленнее, чем обычный вызов функции, который производится при использовании механизма функций обратного вызова;
+- существует необходимость в наследовании класса QObject;
+- в процессе компиляции не производится никаких проверок: имеется ли сигнал или слот в соответствующих классах или нет; совместимы ли сигнал и слот друг с другом и могут ли они быть соединены вместе. Об ошибке можно будет узнать лишь тогда, когда приложение будет запущено. Вся эта информация выводится на консоль, поэтому, для того чтобы увидеть ее в Windows, в проектном файле необходимо в секции CONFIG добавить опцию console.
+
+#  Что такое Сигнал:
+http://blog.kislenko.net/show.php?id=1308&s=0
+
+Сигналы (signals)
+- это методы, которые в состоянии осуществлять пересылку сообщений.
+- Сигналы определяются в классе, как обычные методы, но без реализации.
+- Выслать сигнал можно при помощи ключевого слова emit. 
+- emit – пустой макрос. Он даже не парсится MOC. Другими словами, emit опционален и ничего не значит (подсказка для разработчика).
+
+#  Что такое Слот:
+http://blog.kislenko.net/show.php?id=1308&s=0
+
+Слоты (slots) 
+- это методы, которые присоединяются к сигналам. По сути, они являются обычными методами. 
+- Основное их отличие состоит в возможности принимать сигналы. Они определяются в классе как private slots:, protected slots: или public slots:
+- В слотах нельзя использовать параметры по умолчанию, например slotMethod (int n = 8)
+- и нельзя определять слоты как static.
+
+# Важно
+в этом случае код после ключевого слова emit продолжает выполнение немедленно, а слоты будут выполнены позже.
+Если несколько слотов подключены к одному сигналу, слоты будут выполнены один за другим в произвольном порядке после выработки сигнала.
+
+Connect (Метод соединения объектов)
+Соединение объектов осуществляется при помощи статического метода connect(), который определен в классе QObject.
+
+В общем виде, вызов метода connect() выглядит следующим образом:
+```
+QObject::connect(const QObject* sender, 
+const char* signal,
+const QObject* receiver,
+const char* slot,
+Qt::ConnectionType type = Qt::AutoConnection
+);
+```
+
+Ему передаются пять следующих параметров:
+- sender — указатель на объект, отправляющий сигнал;
+- signal — это сигнал, с которым осуществляется соединение. Прототип (имя и аргументы) метода сигнала должен быть заключен в специальный макрос SIGNAL(method());
+- receiver — указатель на объект, который имеет слот для обработки сигнала;
+- slot — слот, который вызывается при получении сигнала. Прототип слота должен быть заключен в специальном макросе SLOT(method());
+- type — управляет режимом обработки. Имеется три возможных значения:
+
+### ConnectionType type, 3 возможных значения:
+
+
+| Connections          | Description                                                             |
+| -------------------- |:-----------------------------------------------------------------------:|
+| Qt::DirectConnection | сигнал обрабатывается сразу вызовом соответствующего метода слота       |
+| Qt::QueuedConnection | сигнал преобразуется в событие и ставится в общую очередь для обработки |
+| Qt::AutoConnection   | это автоматический режим, который действует следующим образом           |
+
+
+- если отсылающий сигнал объект находится в одном потоке с принимающим его объектом, то устанавливается режим Qt::DirectConnection - CИНХРОННЫЙ Вариант,
+- в противном случае — режим Qt::QueuedConnection - АСИНХРОННЫЙ. Этот режим (Qt::AutoConnection) определен в методе connection() по умолчанию.
+
+
+######  Наследование класса от QObject-а.
+Нужно в иерархии наследования выставлять его первым.
+
+
+#  QML + CPP:
+https://habrahabr.ru/post/140899/
+
+- Первый вариант:
+
+cpp: QDeclarativeView -> SetSource(some.QML) -> RootObject -> RootContext()->SetContextProperty("QtFun", this);
+
+qml: QtFun.function_name();
+
+h: Q_INVOCABLE function_name(); 
+
+- Второй Вариант
+
+...
+
+...
+
+	class TestClass : public QObject
+	{
+		Q_OBJECT
+			Q_PROPERTY(int someProperty READ getSomeProperty WRITE setSomeProperty NOTIFY somePropertyChanged)
+	public:
+		explicit TestClass(QObject *parent = 0);
+		int getSomeProperty()const;
+		void setSomeProperty(const int &);
+	private:
+		int someProperty;
+	signals:
+		void somePropertyChanged();
+		public slots:
+	};
+	int TestClass::getSomeProperty()const
+	{
+		qDebug() << "I'm getter";
+		return someProperty;
+	}
+	void TestClass::setSomeProperty(const int &i)
+	{
+		qDebug() << "I'm setter";
+		someProperty = i;
+	}
+	
+
+- emit - используется для высылки SIGNAL-а.
+###### - SLOT (по умолчанию private)
+могут быть объявлены как virtual, public и private
+###### Соадинение СИГНАЛА с ВИРТ. Слотом МЕДЛЕННЕ, чем с Невритуальным.
+- События могут обрабатываться лишь одним методом, а сигналы многими слотами
+
+###### 2) Разница между Q_INVOCABLE и SLOT-ом ?
+
+Механизмы работают соершенно по разному !!!
+
+Q_INVOCABLE - привязывается как обычная колбэчная функция, с одним методом, вызываемом при "emite", для данной функции. Функции С++ вызывающиеся в QML.
+
+SLOT - может быть любоче число сигналов, как и на любой сигнал можно повесить любое число слотов.
+
+
+###### 3) QObject это базовый класс для всех Qt классов. 
+
+###### 4) Для чего нужен макрос Q_OBJECT
+
+Q_OBJECT макрос используется для включения мета объектных функций в классах и на этапе компиляции
+
+
+###### 5) Что такое MOC
+
+Мета-объектный компилятор, moc, - программа, которая обрабатывает расширения C++ от Qt.
+moc работает как препроцессор который преобразует применения макроса Q_OBJECT в исходный код C++
+
+Инструмент moc читает заголовочный файл C++. Если он находит одно или более объявлений классов, которые содержат макрос Q_OBJECT, то он порождает файл исходного кода C++, содержащий мета-объектный код для этих классов. Кроме всего прочего, мета-объектный код требуется механизму сигналов и слотов, информации о типе времени выполнения и системы динамических свойств.
+
+Файл исходного кода C++, сгенерированный moc, должен компилироваться и компоноваться с помощью реализации класса.
+
+Если вы используете qmake для создания своих make-файлов, в правила сборки будет включен вызов moc когда это необходимо, поэтому вам не нужно использовать moc непосредственно. Дополнительную информацию по moc смотрите в статье Почему Qt не использует шаблон для сигналов и слотов?
+
+
+
+Клиент тсерверное приложение
+- контроль целостности файлов / папок / ключей реестра
+- Политики пользователей
+- 
+
+Qt сначала писалось на Виджетах
+
+Осовременить графически:
+Если нужен более интересный дизайн интерфейса, то идём в QML
+Много динамики: Опасити менялось, что-то пропадало, на его месте что-то появлялось.
+изменение цвета с одного на другой, вылетающие, двигающиеся элементы, почти анимация присуствовала.
+Мы смотрели на решения от конкурентов думали как повотрить то или инове поведение, что 
+хочется перенять из интерфейса того
+
+Вёрстка на QML
+
+Прямое соответсвие Виджетов и MFC-шных классов
+
+
+# MFC
+https://www.go4expert.com/forums/mfc-interview-questions-t724/
+
+
+# Назовите 10 MFC-классов ?
+
+# Назовите 10 QML-классов ?
+CheckBox
+DialogBox
+ Slider
+ Rectangle
+ Column 
+ Button 
+ Text
+ 
+ MouseArea
+ Component
+
+ListView
+GridView
+ 
+# Qt / QML:
+
+
+# Как передавали данные в QML из C++ ?
+
+# Чем отличается механизм Q_INVOCABLE и SLOT ?
+
+Механизмы абсолютно разные !
+
+# Зачем нужен макрос Q_OBJECT ?
+
+
+Внутри Q_OBJECT:
+- QMetaObject
+- qt_metacall
+- META_MACROS
+- Q_MOC_RUN
+- signals, slots, Q_PROPERTY, и прочее
+
+
+	#define Q_OBJECT \
+	public: \
+		Q_OBJECT_CHECK \ QT_WARNING_PUSH \ Q_OBJECT_NO_OVERRIDE_WARNING \
+		static const QMetaObject staticMetaObject; \
+		virtual void *qt_metacast(const char *); \
+		virtual int qt_metacall(QMetaObject::Call, int, void **); \
+		QT_TR_FUNCTIONS \
+	private: \
+		Q_DECL_HIDDEN_STATIC_METACALL static void qt_static_metacall(QObject *, QMetaObject::Call, int, void **); \
+		struct QPrivateSignal {}; \
+		QT_ANNOTATE_CLASS(qt_qobject, "")
+		
+	#ifndef QT_NO_META_MACROS
+	
+	#else // Q_MOC_RUN
+	#define slots slots
+	#define signals signals
+	#define Q_SLOTS Q_SLOTS
+	#define Q_SIGNALS Q_SIGNALS
+	#define Q_CLASSINFO(name, value) Q_CLASSINFO(name, value)
+	#define Q_INTERFACES(x) Q_INTERFACES(x)
+	#define Q_PROPERTY(text) Q_PROPERTY(text)
+	#define Q_PRIVATE_PROPERTY(d, text) Q_PRIVATE_PROPERTY(d, text)
+	#define Q_REVISION(v) Q_REVISION(v)
+	#define Q_OVERRIDE(text) Q_OVERRIDE(text)
+	#define Q_ENUMS(x) Q_ENUMS(x)
+
+
+# Как работает класс QObject / Макрос Q_OBJECT ?
+
+На первом шаге запускается  MOC-компилятор. Meta Object Compiler, он у всех классов берёт и смотрит ПЕРВЫЙ класс среди базовых это  QObject или НЕ_QObject и далее действует, и внутри класса уже он же смотрит чтобы в "шапке" класса стоял Q_OBJECT, иначе он не отработает и пойдут ошибки компиляции.
+
+# Возможно ли МНОЖЕСТВЕННОЕ НАСЛЕДОВАНИЕ от класса QObject ?
+
+Нельзя и никаким образом. MOC просто не понимает классов, наследованных дважды от QObject при любой глубине дерева наследования 
+
+# Важен ли порядок при наследовании от QObject ?
+https://www.linux.org.ru/forum/development/814529
+
+Должен стоять ПЕРВЫМ наследником, среди списка наследников:
+
+moc просто не понимает классов, в которых QObject стоит не на первом месте (в качестве базового класса)
+
+	class classA : public QObject, classV, classC
+	{
+	  Q_OBJECT
+
+	  classA();
+	  ...
+	};
+
+
+
+# Какой 5-тый параметр у функции Connect(Object, SIGNAL, Object, SLOT, SynhroniousAsync) ? (по умолчанию стоит Auto Connection)
+# После соединения SIGNAL-a и SLOT-а, Как будет вызвана SLOT(func) функция, которая вызовется через emit СИНХРОННО или АСИНХронно ?
+
+- Зависит всё от следующего: Работает ли всё в одном потоке или нескольких.
+
+А именно: Auto Connection - выставлен по умолчанию => в ОДНОМ потоке будет СИНХронный вызов.
+
+
+# Два раза вызвали Connect с одинаковыми параметрами - Что будет после emit SIGNAL ?
+
+Двойной вызов функции Слота. ПО УМОЛЧАНИЮ !!! 	А так этот момент и задаётся в функции Connect 5-тым параметром.
+
+
+Direct / Queued
+
+https://stackoverflow.com/questions/38376840/qt-signals-and-slots-direct-connection-behaviour-in-application-with-a-single-th
+
+Let´s get this out of the way before diving into the basics.
+
+- If it is a direct connection, your code is ALWAYS executed on a single thread, regardless as to whether or not the slot is running on a different thread. (In most cases a VERY BAD idea)
+- If the connection is queued and the slot is running inside the same thread, it acts exactly like a direct connection. If the slot is running on a different thread, the slot will execute within its proper thread context that it is running in, so making the code execution multi-threaded.
+- If the connection is auto which is the default, for a good reason, then it will chose the appropriate connection type.
+
+- Now there is a way to force your code execution to jump into a slot in another thread, that is by invoking a method:
+
+QMetaObject::invokeMethod( pointerToObject*, "functionName", Qt::QueuedConnection);
+
+https://stackoverflow.com/questions/41299480/qt-4-8-connection-behavior-between-two-signals-and-one-slot-from-different-thr
+
+- If the type is Qt::DirectConnection, the second signal is always emitted from the thread that emitted the first signal.
+- if the type is Qt::QueuedConnection, the second signal is always queued to be invoked when control returns to the event loop of the receiver object's thread.
+- If the type is Qt::AutoConnection, the connection type is resolved when the signal is emitted and the thread of the sending object is ignored.
+
+###### If the receiver object lives in the same thread where the first signal is emitted, this will be the same as using Qt::DirectConnection.
+###### Otherwise, this will be the same as using Qt::QueuedConnection.
+
+http://www.doc.crossplatform.ru/qt/4.6.x/threads-qobject.html
+
+Соединение сигналов и слотов между потоками
+
+Qt поддерживает следующие типы соединений сигнал-слот:
+
+- Автоматическое соединение (Auto Connection) (по умолчанию) Поведение такое же, как и при прямом соединении, если источник и получатель находятся в одном и том же потоке. Поведение такое же, как и при соединении через очередь, если источник и получатель находятся в разных потоках.
+- Прямое соединение (Direct Connection) Слот вызывается немедленно при отправке сигнала. Слот выполняется в потоке отправителя, который не обязательно является потоком-получателем.
+- Соединение через очередь (Queued Connection) Слот вызывается, когда управление возвращается в цикл обработки событий в потоке получателя. Слот выполняется в потоке получателя.
+- Блокирующее соединение через очередь (Blocking Queued Connection) Слот вызывается так же, как и при соединении через очередь, за исключением того, что текущий поток блокируется до тех пор, пока слот не возвратит управление. Замечание: Использование этого типа подключения объектов в одном потоке приведет к взаимной блокировке.
+- Уникальное соединение (Unique Connection) Поведение такое же, что и при автоматическом соединении, но соединение устанавливается только если оно не дублирует уже существующее соединение. т.е., если тот же сигнал уже соединён с тем же самым слотом для той же пары объектов, то соединение не будет установлено и connect() вернет false.
+
+Это можно изменить, передав дополнительный аргумент в connect(). Помните, что использование прямых соединений, когда отправитель и получатель "живут" в разных потоках, опасно в случае, если цикл обработки событий выполняется в потоке, где "живет" приемник, по той же самой причине, по которой небезопасен вызов функций объекта, принадлежащего другому потоку.
+
+QObject::connect() сама по себе потокобезопасна.
+
+
+
+
 ```
 new [нью] - новый
 old [олд] - старый
@@ -1630,315 +1957,6 @@ https://tproger.ru/problems/write-a-class-for-smart-pointer/
 	}
 
 
-
-#  QT:
-
-# Особенности работы механизма сигналов и слотов следующие:
-- сигналы и слоты не являются частью языка C++, поэтому требуется запуск дополнительного препроцессора перед компиляцией программы;
-- отправка сигналов происходит медленнее, чем обычный вызов функции, который производится при использовании механизма функций обратного вызова;
-- существует необходимость в наследовании класса QObject;
-- в процессе компиляции не производится никаких проверок: имеется ли сигнал или слот в соответствующих классах или нет; совместимы ли сигнал и слот друг с другом и могут ли они быть соединены вместе. Об ошибке можно будет узнать лишь тогда, когда приложение будет запущено. Вся эта информация выводится на консоль, поэтому, для того чтобы увидеть ее в Windows, в проектном файле необходимо в секции CONFIG добавить опцию console.
-
-#  Что такое Сигнал:
-http://blog.kislenko.net/show.php?id=1308&s=0
-
-Сигналы (signals)
-- это методы, которые в состоянии осуществлять пересылку сообщений.
-- Сигналы определяются в классе, как обычные методы, но без реализации.
-- Выслать сигнал можно при помощи ключевого слова emit. 
-- emit – пустой макрос. Он даже не парсится MOC. Другими словами, emit опционален и ничего не значит (подсказка для разработчика).
-
-#  Что такое Слот:
-http://blog.kislenko.net/show.php?id=1308&s=0
-
-Слоты (slots) 
-- это методы, которые присоединяются к сигналам. По сути, они являются обычными методами. 
-- Основное их отличие состоит в возможности принимать сигналы. Они определяются в классе как private slots:, protected slots: или public slots:
-- В слотах нельзя использовать параметры по умолчанию, например slotMethod (int n = 8)
-- и нельзя определять слоты как static.
-
-# Важно
-в этом случае код после ключевого слова emit продолжает выполнение немедленно, а слоты будут выполнены позже.
-Если несколько слотов подключены к одному сигналу, слоты будут выполнены один за другим в произвольном порядке после выработки сигнала.
-
-Connect (Метод соединения объектов)
-Соединение объектов осуществляется при помощи статического метода connect(), который определен в классе QObject.
-
-В общем виде, вызов метода connect() выглядит следующим образом:
-```
-QObject::connect(const QObject* sender, 
-const char* signal,
-const QObject* receiver,
-const char* slot,
-Qt::ConnectionType type = Qt::AutoConnection
-);
-```
-
-Ему передаются пять следующих параметров:
-- sender — указатель на объект, отправляющий сигнал;
-- signal — это сигнал, с которым осуществляется соединение. Прототип (имя и аргументы) метода сигнала должен быть заключен в специальный макрос SIGNAL(method());
-- receiver — указатель на объект, который имеет слот для обработки сигнала;
-- slot — слот, который вызывается при получении сигнала. Прототип слота должен быть заключен в специальном макросе SLOT(method());
-- type — управляет режимом обработки. Имеется три возможных значения:
-
-### ConnectionType type, 3 возможных значения:
-
-
-| Connections          | Description                                                             |
-| -------------------- |:-----------------------------------------------------------------------:|
-| Qt::DirectConnection | сигнал обрабатывается сразу вызовом соответствующего метода слота       |
-| Qt::QueuedConnection | сигнал преобразуется в событие и ставится в общую очередь для обработки |
-| Qt::AutoConnection   | это автоматический режим, который действует следующим образом           |
-
-
-- если отсылающий сигнал объект находится в одном потоке с принимающим его объектом, то устанавливается режим Qt::DirectConnection - CИНХРОННЫЙ Вариант,
-- в противном случае — режим Qt::QueuedConnection - АСИНХРОННЫЙ. Этот режим (Qt::AutoConnection) определен в методе connection() по умолчанию.
-
-
-######  Наследование класса от QObject-а.
-Нужно в иерархии наследования выставлять его первым.
-
-
-#  QML + CPP:
-https://habrahabr.ru/post/140899/
-
-- Первый вариант:
-
-cpp: QDeclarativeView -> SetSource(some.QML) -> RootObject -> RootContext()->SetContextProperty("QtFun", this);
-
-qml: QtFun.function_name();
-
-h: Q_INVOCABLE function_name(); 
-
-- Второй Вариант
-
-...
-
-...
-
-	class TestClass : public QObject
-	{
-		Q_OBJECT
-			Q_PROPERTY(int someProperty READ getSomeProperty WRITE setSomeProperty NOTIFY somePropertyChanged)
-	public:
-		explicit TestClass(QObject *parent = 0);
-		int getSomeProperty()const;
-		void setSomeProperty(const int &);
-	private:
-		int someProperty;
-	signals:
-		void somePropertyChanged();
-		public slots:
-	};
-	int TestClass::getSomeProperty()const
-	{
-		qDebug() << "I'm getter";
-		return someProperty;
-	}
-	void TestClass::setSomeProperty(const int &i)
-	{
-		qDebug() << "I'm setter";
-		someProperty = i;
-	}
-	
-
-- emit - используется для высылки SIGNAL-а.
-###### - SLOT (по умолчанию private)
-могут быть объявлены как virtual, public и private
-###### Соадинение СИГНАЛА с ВИРТ. Слотом МЕДЛЕННЕ, чем с Невритуальным.
-- События могут обрабатываться лишь одним методом, а сигналы многими слотами
-
-###### 2) Разница между Q_INVOCABLE и SLOT-ом ?
-
-Механизмы работают соершенно по разному !!!
-
-Q_INVOCABLE - привязывается как обычная колбэчная функция, с одним методом, вызываемом при "emite", для данной функции. Функции С++ вызывающиеся в QML.
-
-SLOT - может быть любоче число сигналов, как и на любой сигнал можно повесить любое число слотов.
-
-
-###### 3) QObject это базовый класс для всех Qt классов. 
-
-###### 4) Для чего нужен макрос Q_OBJECT
-
-Q_OBJECT макрос используется для включения мета объектных функций в классах и на этапе компиляции
-
-
-###### 5) Что такое MOC
-
-Мета-объектный компилятор, moc, - программа, которая обрабатывает расширения C++ от Qt.
-moc работает как препроцессор который преобразует применения макроса Q_OBJECT в исходный код C++
-
-Инструмент moc читает заголовочный файл C++. Если он находит одно или более объявлений классов, которые содержат макрос Q_OBJECT, то он порождает файл исходного кода C++, содержащий мета-объектный код для этих классов. Кроме всего прочего, мета-объектный код требуется механизму сигналов и слотов, информации о типе времени выполнения и системы динамических свойств.
-
-Файл исходного кода C++, сгенерированный moc, должен компилироваться и компоноваться с помощью реализации класса.
-
-Если вы используете qmake для создания своих make-файлов, в правила сборки будет включен вызов moc когда это необходимо, поэтому вам не нужно использовать moc непосредственно. Дополнительную информацию по moc смотрите в статье Почему Qt не использует шаблон для сигналов и слотов?
-
-
-
-Клиент тсерверное приложение
-- контроль целостности файлов / папок / ключей реестра
-- Политики пользователей
-- 
-
-Qt сначала писалось на Виджетах
-
-Осовременить графически:
-Если нужен более интересный дизайн интерфейса, то идём в QML
-Много динамики: Опасити менялось, что-то пропадало, на его месте что-то появлялось.
-изменение цвета с одного на другой, вылетающие, двигающиеся элементы, почти анимация присуствовала.
-Мы смотрели на решения от конкурентов думали как повотрить то или инове поведение, что 
-хочется перенять из интерфейса того
-
-Вёрстка на QML
-
-Прямое соответсвие Виджетов и MFC-шных классов
-
-
-# MFC
-https://www.go4expert.com/forums/mfc-interview-questions-t724/
-
-
-# Назовите 10 MFC-классов ?
-
-# Назовите 10 QML-классов ?
-CheckBox
-DialogBox
- Slider
- Rectangle
- Column 
- Button 
- Text
- 
- MouseArea
- Component
-
-ListView
-GridView
- 
-# Qt / QML:
-
-
-# Как передавали данные в QML из C++ ?
-
-# Чем отличается механизм Q_INVOCABLE и SLOT ?
-
-Механизмы абсолютно разные !
-
-# Зачем нужен макрос Q_OBJECT ?
-
-
-Внутри Q_OBJECT:
-- QMetaObject
-- qt_metacall
-- META_MACROS
-- Q_MOC_RUN
-- signals, slots, Q_PROPERTY, и прочее
-
-
-	#define Q_OBJECT \
-	public: \
-		Q_OBJECT_CHECK \ QT_WARNING_PUSH \ Q_OBJECT_NO_OVERRIDE_WARNING \
-		static const QMetaObject staticMetaObject; \
-		virtual void *qt_metacast(const char *); \
-		virtual int qt_metacall(QMetaObject::Call, int, void **); \
-		QT_TR_FUNCTIONS \
-	private: \
-		Q_DECL_HIDDEN_STATIC_METACALL static void qt_static_metacall(QObject *, QMetaObject::Call, int, void **); \
-		struct QPrivateSignal {}; \
-		QT_ANNOTATE_CLASS(qt_qobject, "")
-		
-	#ifndef QT_NO_META_MACROS
-	
-	#else // Q_MOC_RUN
-	#define slots slots
-	#define signals signals
-	#define Q_SLOTS Q_SLOTS
-	#define Q_SIGNALS Q_SIGNALS
-	#define Q_CLASSINFO(name, value) Q_CLASSINFO(name, value)
-	#define Q_INTERFACES(x) Q_INTERFACES(x)
-	#define Q_PROPERTY(text) Q_PROPERTY(text)
-	#define Q_PRIVATE_PROPERTY(d, text) Q_PRIVATE_PROPERTY(d, text)
-	#define Q_REVISION(v) Q_REVISION(v)
-	#define Q_OVERRIDE(text) Q_OVERRIDE(text)
-	#define Q_ENUMS(x) Q_ENUMS(x)
-
-
-# Как работает класс QObject / Макрос Q_OBJECT ?
-
-На первом шаге запускается  MOC-компилятор. Meta Object Compiler, он у всех классов берёт и смотрит ПЕРВЫЙ класс среди базовых это  QObject или НЕ_QObject и далее действует, и внутри класса уже он же смотрит чтобы в "шапке" класса стоял Q_OBJECT, иначе он не отработает и пойдут ошибки компиляции.
-
-# Возможно ли МНОЖЕСТВЕННОЕ НАСЛЕДОВАНИЕ от класса QObject ?
-
-Нельзя и никаким образом. MOC просто не понимает классов, наследованных дважды от QObject при любой глубине дерева наследования 
-
-# Важен ли порядок при наследовании от QObject ?
-https://www.linux.org.ru/forum/development/814529
-
-Должен стоять ПЕРВЫМ наследником, среди списка наследников:
-
-moc просто не понимает классов, в которых QObject стоит не на первом месте (в качестве базового класса)
-
-	class classA : public QObject, classV, classC
-	{
-	  Q_OBJECT
-
-	  classA();
-	  ...
-	};
-
-
-
-# Какой 5-тый параметр у функции Connect(Object, SIGNAL, Object, SLOT, SynhroniousAsync) ? (по умолчанию стоит Auto Connection)
-# После соединения SIGNAL-a и SLOT-а, Как будет вызвана SLOT(func) функция, которая вызовется через emit СИНХРОННО или АСИНХронно ?
-
-- Зависит всё от следующего: Работает ли всё в одном потоке или нескольких.
-
-А именно: Auto Connection - выставлен по умолчанию => в ОДНОМ потоке будет СИНХронный вызов.
-
-
-# Два раза вызвали Connect с одинаковыми параметрами - Что будет после emit SIGNAL ?
-
-Двойной вызов функции Слота. ПО УМОЛЧАНИЮ !!! 	А так этот момент и задаётся в функции Connect 5-тым параметром.
-
-
-Direct / Queued
-
-https://stackoverflow.com/questions/38376840/qt-signals-and-slots-direct-connection-behaviour-in-application-with-a-single-th
-Let´s get this out of the way before diving into the basics.
-
-- If it is a direct connection, your code is ALWAYS executed on a single thread, regardless as to whether or not the slot is running on a different thread. (In most cases a VERY BAD idea)
-- If the connection is queued and the slot is running inside the same thread, it acts exactly like a direct connection. If the slot is running on a different thread, the slot will execute within its proper thread context that it is running in, so making the code execution multi-threaded.
-- If the connection is auto which is the default, for a good reason, then it will chose the appropriate connection type.
-
-- Now there is a way to force your code execution to jump into a slot in another thread, that is by invoking a method:
-
-QMetaObject::invokeMethod( pointerToObject*, "functionName", Qt::QueuedConnection);
-
-https://stackoverflow.com/questions/41299480/qt-4-8-connection-behavior-between-two-signals-and-one-slot-from-different-thr
-
-- If the type is Qt::DirectConnection, the second signal is always emitted from the thread that emitted the first signal.
-- if the type is Qt::QueuedConnection, the second signal is always queued to be invoked when control returns to the event loop of the receiver object's thread.
-- If the type is Qt::AutoConnection, the connection type is resolved when the signal is emitted and the thread of the sending object is ignored.
--- If the receiver object lives in the same thread where the first signal is emitted, this will be the same as using Qt::DirectConnection.
--- Otherwise, this will be the same as using Qt::QueuedConnection.
-
-http://www.doc.crossplatform.ru/qt/4.6.x/threads-qobject.html
-
-Соединение сигналов и слотов между потоками
-
-Qt поддерживает следующие типы соединений сигнал-слот:
-
-- Автоматическое соединение (Auto Connection) (по умолчанию) Поведение такое же, как и при прямом соединении, если источник и получатель находятся в одном и том же потоке. Поведение такое же, как и при соединении через очередь, если источник и получатель находятся в разных потоках.
-- Прямое соединение (Direct Connection) Слот вызывается немедленно при отправке сигнала. Слот выполняется в потоке отправителя, который не обязательно является потоком-получателем.
-- Соединение через очередь (Queued Connection) Слот вызывается, когда управление возвращается в цикл обработки событий в потоке получателя. Слот выполняется в потоке получателя.
-- Блокирующее соединение через очередь (Blocking Queued Connection) Слот вызывается так же, как и при соединении через очередь, за исключением того, что текущий поток блокируется до тех пор, пока слот не возвратит управление. Замечание: Использование этого типа подключения объектов в одном потоке приведет к взаимной блокировке.
-- Уникальное соединение (Unique Connection) Поведение такое же, что и при автоматическом соединении, но соединение устанавливается только если оно не дублирует уже существующее соединение. т.е., если тот же сигнал уже соединён с тем же самым слотом для той же пары объектов, то соединение не будет установлено и connect() вернет false.
-
-Это можно изменить, передав дополнительный аргумент в connect(). Помните, что использование прямых соединений, когда отправитель и получатель "живут" в разных потоках, опасно в случае, если цикл обработки событий выполняется в потоке, где "живет" приемник, по той же самой причине, по которой небезопасен вызов функций объекта, принадлежащего другому потоку.
-
-QObject::connect() сама по себе потокобезопасна.
 
 
 # OpenGL
