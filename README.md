@@ -1,3 +1,62 @@
+```
+Найти Во всём проекте
+Ctrl + Shift + F
+Ctrl + H   заменить много где во всём файле
+Alt - Горизонтальное выделение квадратом и редактирование Квадратом
+Ctrl + Shift + Left / Ctrl + Shift + Right
+
+Alt + Tab
+Alt + F4
+
+Ctrl + F
+Crtl + L - Перейти к адресной строке проводника или Internet Explorer.
+F5 - Обновить окно проводника или Internet 
+Backspace -	Перейти на уровень вверх в окне проводника или Internet Explorer.
+
+
+F2 - переименовать файл / папку
+Выдекление  / Перетаскивания с Shif / Ctrl
+
+Insert !!!
+Перехлж нра цифровую клаиватуру Num Lock !!!
+
+Ctrl + A
+Ctrl + C
+Ctrl + V
+Shift + Insert
+Ctrl + X
+Ctrl + S
+Ctrl + Z
+
+
+Ctrl + Shift + Del
+Ctrl + Shift + Escape
+
+
+Alt + Tab
+Ctrl + N
+Ctrl + Shift + N
+
+Win + E
+Win + Pause
+Win + L
+
+
+Win + R
+cmd
+notepad
+mspaint
+calc
+services.msc
+regedit
+
+
+Switch between CPP and H
+MSVS:	Ctrl + K + O 
+Qt:		F4
+```
+
+
 #  QT:
 
 ## 20 Qt Questions
