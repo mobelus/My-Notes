@@ -1,3 +1,18 @@
+
+```
+//QRegularExpression regexCapcha("^[09]*$");
+//QRegularExpression regexCapcha("\\d+");
+//QValidator *validatorCapcha = new QRegularExpressionValidator(regexCapcha, this);
+//_ui->captchaLE->setValidator(validatorCapcha);
+
+//_ui->captchaLE->setValidator(new QIntValidator(this));->setInputMask("9999"); //
+//QIntValidator *validatorCapcha = new QIntValidator(0, 9999, this);
+//_ui->captchaLE->setValidator(validatorCapcha);
+_ui->captchaLE->setValidator(new QIntValidator(0, 9999));  //->setInputMask("9999");
+```
+
+
+
 ```
 Найти Во всём проекте
 Ctrl + Shift + F
