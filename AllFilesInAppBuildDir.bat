@@ -1,0 +1,1 @@
+AllFilesInDirSearcher.exe -app "C:/Users/Павел Обросов/source/repos/AllFilesInDirSearcher/debug" -del "C:/Users/Павел Обросов/source/repos/AllFilesInDirSearcher" -add "../DataGuardDemo";
