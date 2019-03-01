@@ -1,3 +1,49 @@
+# Undefined Behaviare
+
+Неопределенное поведение (undefined behavior)– поведение, которое может возникать в результате использования ошибочных программных конструкций или некорректных данных, на которые Международный Стандарт не налагает никаких требований. Неопределенное поведение также может возникать в ситуациях, не описанных в Стандарте явно.
+
+# Undefined Behaviare Пример
+
+```
+int x = 5, y = 6;
+int z = x++ + y++; // не уточнено, будет вычислен первым x++ или y++ 
+
+bool myfun() { return; }
+int main()
+{
+	bool ret = myfun();
+}
+
+int Hello() { return printf("Hello"); }
+int World() { return printf("World !"); }
+int main()
+{
+  int a = Hello() + World(); /**может вывести «Hello World!» или «World! Hello»
+                  ^
+                  | 
+   Функции могут быть вызваны в любом порядке **/
+   return 0;
+} 
+```
+
+
+# Как скопировать объект по конкретному адресу
+
+Использовать MEMCPY ( Адрес_Куда, Адрес_Откуда, Размер_Скок_Скопировать )
+
+memcpy( &dst[dstIdx], &src[srcIdx], numElementsToCopy * sizeof( Element ) );
+
+http://qaru.site/questions/212885/memcpy-with-startindex
+
+
+# make_shared, как работает и чем он удобнее простого создания
+
+# move(), как работыет
+
+# move(), как работыет
+
+
+
 
 ```
 //QRegularExpression regexCapcha("^[09]*$");
