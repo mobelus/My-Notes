@@ -845,88 +845,60 @@ ENGLISH IN IT-WEB-DEVELOPMENT-APPS-GRAFICAL-INTERFACE:
 
 http://wordexpert.ru/forum/viewtopic.php?id=1526
 
-
+```
 	bool isRequestWithNewDogInfoCorrect = sendReqWith_New_DogovorInfoToService();
-	
-
-2.3. Исполнитель направляет Заказчику по два экземпляра Акта в срок до 5 (Пяти) рабочих дней, следующих за днем окончания оказания
-услуг. К Акту прилагаются Отчет об оказанных услугах и счет на оплату. До предоставления указанных документов Заказчик вправе не производить окончательный расчет с Исполнителем.
-
-ВОПРОС: КАК ЭТО РЕШАЕТСЯ НА ПРАКТИКЕ. ЧЕЛОВЕК РАБОТАЕТ ПО ТЕКУЧКЕ. 
-НЕ ВСЕГДА РЕШАЕТСЯ ТО, ЧТО СДЕЛАНО, И Т.Д. КАК СОСТАВЛЯЮТСЯ АКТЫ ПРИЁМКИ ?
+```
 
 
-перечнем объема и срока необходимых доработок. Устранение недостатков результатов оказанных услуг осуществляется силами Исполнителя и за его счет.
-
-НА СКОЛЬКО НА ЭТО МОЖНО ОРИЕНТИРОВАТЬСЯ В СЛУЧАЕ РАБОТЫ РЕАЛЬНОГО РАЮОТКНИКА
-ИЛИ ЭТО УКАЗАНО В ДОГОВОРЕ ЧИСТО ДЛЯ ФОРМЫ ?
-
-3.2. Стоимость каждого вида Услуг по настоящему Договору указывается Сторонами в соответствующей спецификации к настоящему Договору. Стоимость Услуг является твердой и
-
-КОГДА БУДЕТ СПЕЦИФИКАЦИЯ ? ПРЕДЛОЖЕНИЕ ?
-
-
-3.4. Оплата производится в порядке, указанном в соответствующей спецификации к настоящему Договору.
-
-СПЕЦИФИКАЦИЯ КАК ВЫГЛЯДИТ ?
-
-4
-− Назначает Менеджера проекта, который является ответственным представителем Исполнителя по вопросам, связанным с оказанием Услуг по настоящему Договору.
-
-ИСПОЛНИТЕЛЬ ЭТО МЫ , ПОЧЕМУ МЫ КОГОТО НАЗНАЧАЕМ ?
+```
+AnsiString UserCode = "24365";
+AnsiString sqlSelect =
+	"select  USER_CODE, FIO"
+	" from   USERS_INFORMATION"
+	" where  USER_CODE = '" + UserCode + "'";
+TADOQuery *qw = BranchApi->dbGetCursor(res, sqlSelect);
 
 
 
-	AnsiString UserCode = "24365";
-	AnsiString sqlSelect =
-		"select  USER_CODE, FIO"
-		" from   USERS_INFORMATION"
-		" where  USER_CODE = '" + UserCode + "'";
-	TADOQuery *qw = BranchApi->dbGetCursor(res, sqlSelect);
+sommer_type.is_light = summer.type_id == 1;
+
+err = "";
+if (ser == "")
+  err += "Ошибка_1\n";
+if (num == "")
+  err += "Ошибка_2\n";
 
 
+st = st.IsEmpty() ? "0" : st; // error
+st = st.IsEmpty() ? AnsiString("0") : st; // no_error
 
-	sommer_type.is_light = summer.type_id == 1;
+int count = sl->Count;
+if (count > 100)
+	for (int i = count - 1; i >= 0; i--)
+		Name = Name + " " + sl->Strings[i] + Separator;
+else
+for (int i = 0; i <= count - 1; i++)
+	Name = Name + " " + sl->Strings[i] + Separator;
+#ifndef __FUNCTION_NAME__
+    #ifdef WIN32   //WINDOWS
+        #ifdef __BORLANDC__
+            #define __FUNCTION_NAME__   __FUNC__ // CPPBulder version
+        #endif
+        #ifdef _MSC_FULL_VER
+            #define __FUNCTION_NAME__   __FUNCTION__ // MSVS version
+        #endif
+    #else          //*NIX
+        #define __FUNCTION_NAME__   __func__
+    #endif
+#endif
+#define cb_get(cb)  (cb->ItemIndex != -1) ? (int)cb->Items->Objects[cb->ItemIndex] : -1
+#define cb_save(cb) (cb->ItemIndex != -1) ? (int)cb->Items->Objects[cb->ItemIndex] : -1
+#define cb_load(cb,idx) cb->ItemIndex = cb->Items->IndexOfObject((TObject*)idx)
 
-	err = "";
-	if (ser == "")
-	  err += "Ошибка_1\n";
-	if (num == "")
-	  err += "Ошибка_2\n";
-
-
-	st = st.IsEmpty() ? "0" : st; // error
-	st = st.IsEmpty() ? AnsiString("0") : st; // no_error
-
-	int count = sl->Count;
-	if (count > 100)
-		for (int i = count - 1; i >= 0; i--)
-			Name = Name + " " + sl->Strings[i] + Separator;
-	else
-		for (int i = 0; i <= count - 1; i++)
-			Name = Name + " " + sl->Strings[i] + Separator;
-	
-
-	#ifndef __FUNCTION_NAME__
-	    #ifdef WIN32   //WINDOWS
-	        #ifdef __BORLANDC__
-	            #define __FUNCTION_NAME__   __FUNC__ // CPPBulder version
-	        #endif
-	        #ifdef _MSC_FULL_VER
-	            #define __FUNCTION_NAME__   __FUNCTION__ // MSVS version
-	        #endif
-	    #else          //*NIX
-	        #define __FUNCTION_NAME__   __func__
-	    #endif
-	#endif
-
-	#define cb_get(cb)  (cb->ItemIndex != -1) ? (int)cb->Items->Objects[cb->ItemIndex] : -1
-	#define cb_save(cb) (cb->ItemIndex != -1) ? (int)cb->Items->Objects[cb->ItemIndex] : -1
-	#define cb_load(cb,idx) cb->ItemIndex = cb->Items->IndexOfObject((TObject*)idx)
-
-
+```
 
 https://i.snag.gy/nTPI3R.jpg
+
 
 http://www.cyberforum.ru/cpp-beginners/thread2166498.html#post11986843
 
@@ -11278,7 +11250,7 @@ void main()
     delete b;
 }
 
-
+```
 // [Q] Перечислите все проблемы, которые вы видите в данном коде :
 
 ///////// пример ответа
@@ -11368,7 +11340,7 @@ int main()
 	delete b;
 	return 0;
 }
-
+```
 
 
 
