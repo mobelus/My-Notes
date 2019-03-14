@@ -1,5 +1,43 @@
 # MFC
 
+
+Виртуальное наследование - зачем нужно:
+1. поле или метод из класса D
+2. Решение проблемы ромбовидного наследования
+Двойное двоеточие - "оператор разрешения области видимости" 
+Число Классов Д в случае с виртуальным, и в случае отсуствия виртуального наследования
+
+Виртуальное наследование необходимо в такой ситуации.
+
+class A { int a; };
+class B: public A {};
+class C: public A {};
+class D: public B, public C {};  
+В классе D, в таком случае, будут два поля с именем a и они оба будут принадлежать классу A. Проблема состоит в определении к какой переменной идет обращение. Для исключения подобной ситуации используют виртуальное наследование. Правильный вид объявления в данном примере будет
+
+class A { int a; };
+class B: public virtual A {};
+class C: public virtual A {};
+class D: public B, public C {};  
+
+mutex - базовый мьютекс - mutex.lock() | mutex.unlock()
+timed_mutex - мьютекс с тайм-аутом 
+recursive_mutex - мьютекс, который может быть заблокирован рекурсивно из того же потока 
+recursive_timed_mutex - мьютекс с таймаутом, который может быть заблокирован рекурсивно из того же потока 
+shared_mutex - provides shared mutual exclusion facility 
+shared_timed_mutex - provides shared mutual exclusion facility 
+lock_guard - реализует обёртку владения мьютексом строго в области видимости 
+unique_lock - реализует подвижного мьютекс собственности обертку 
+
+defer_lock_t  -  try_to_lock_t  -  adopt_lock_t 
+
+Критическая секция - аналог крит. секции в стандартной библиотеке ... я бы сказал что это std::lock_guard<std::recursive_mutex> locker(m);
+http://www.cyberforum.ru/cpp-beginners/thread921902.html
+События - 
+Мьютекс -
+Семафор -
+
+
 https://books.google.ru/books?id=E9KUAgAAQBAJ&pg=PA371&lpg=PA371&dq=DDX+ddv+%D0%BA%D0%B0%D0%BA+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82&source=bl&ots=4yTc1Pq_uI&sig=ACfU3U0chwrAX8IWLQ061qZB9RlawJ5R1g&hl=ru&sa=X&ved=2ahUKEwiok7P6yoLhAhUxzqYKHZ52BZEQ6AEwAnoECAcQAQ#v=onepage&q=DDX%20ddv%20%D0%BA%D0%B0%D0%BA%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82&f=false
 
 # ПЕРЕЧИТАТЬ
