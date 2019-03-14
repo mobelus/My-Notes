@@ -9,6 +9,7 @@
 
 Виртуальное наследование необходимо в такой ситуации.
 
+```
 class A { int a; };
 class B: public A {};
 class C: public A {};
@@ -19,7 +20,9 @@ class A { int a; };
 class B: public virtual A {};
 class C: public virtual A {};
 class D: public B, public C {};  
+```
 
+```
 mutex - базовый мьютекс - mutex.lock() | mutex.unlock()
 timed_mutex - мьютекс с тайм-аутом 
 recursive_mutex - мьютекс, который может быть заблокирован рекурсивно из того же потока 
@@ -36,7 +39,7 @@ http://www.cyberforum.ru/cpp-beginners/thread921902.html
 События - 
 Мьютекс -
 Семафор -
-
+```
 
 https://books.google.ru/books?id=E9KUAgAAQBAJ&pg=PA371&lpg=PA371&dq=DDX+ddv+%D0%BA%D0%B0%D0%BA+%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82&source=bl&ots=4yTc1Pq_uI&sig=ACfU3U0chwrAX8IWLQ061qZB9RlawJ5R1g&hl=ru&sa=X&ved=2ahUKEwiok7P6yoLhAhUxzqYKHZ52BZEQ6AEwAnoECAcQAQ#v=onepage&q=DDX%20ddv%20%D0%BA%D0%B0%D0%BA%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82&f=false
 
