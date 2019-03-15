@@ -49,7 +49,28 @@ DLLs that statically link to MFC or in extension DLLs.
 
 - WAIT_OBJECT_0 - Контролируемый объект ядра перешёл в несигнальное состояние (свободное)
 - WAIT_TIMEOUT - Истёк таймаут, а объект ядра до сих пор ещё в сигнальном состоянии (занятом)
-- WAIT_FAILED - функция вернула ошибку и её получаем через GetLastError
+- WAIT_FAILED - функция вернула ошибку и её получаем через GetLastError()
+
+```
+HANDLE hp[3];
+hp[0] = hProcess0; hp[1] = hProcess1; hp[3] = hProcess3;  
+
+DWORD dw = WaitForMultipleObjects(3, hp, FALSE, 4000):
+	case WAIT_OBJECT_0 + 0:
+	// Завершился процесс с дескриптором hp[0]
+	break;
+	case WAIT_OBJECT_0 + 1:
+	// Завершился процесс с дескриптором hp[1]
+	break;
+	..--..
+	case WAIT_TIMEOUT:
+	// Ни один из объектов не освободился в течение 4000 мс
+	break;
+	case WAIT_FAILED:
+	// Функция завершилась с ошибкой
+	break;
+```
+
 
 # Виртуальное наследование - зачем нужно:
 1. поле или метод из класса D
