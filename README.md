@@ -457,14 +457,14 @@ http://qaru.site/questions/212885/memcpy-with-startindex
 
 
 
-# std::move(), как работыет
+# std::move(), как работает
 
 https://tproger.ru/articles/move-semantics-and-rvalue/
 
 std::move() — это стандартная библиотечная функция, которая конвертирует передаваемый аргумент в r-value. Мы можем передать l-value в std::move(), и std::move() вернёт нам ссылку r-value. Для работы с std::move() нужно подключить заголовочный файл utility.
 
 
-# std::forward(), как работыет
+# std::forward(), как работает
 
 # make_shared(), как работает и чем он удобнее простого создания
 
