@@ -3946,7 +3946,9 @@ Microsoft has provided an alternative function to CreateThread, called _beginthr
 
 # SQL
 
-GroupBy HAVING
+GroupBy 
+
+HAVING
 
 
 # Ошибки в программе под ОС Windows
@@ -3990,7 +3992,7 @@ Process Explorer может выдать нам выдать про процес
 
 ProcessMonitor - профилировщик удалённый, который аттачится к процессу.
 
-МИНУС: Нудны права на установку этого софта.
+МИНУС: Нужны права на установку этого софта.
 
 ------------------------------------------------------------------
 222]  ПАДЕНИЯ
@@ -4129,46 +4131,151 @@ https://rsdn.org/article/vcpp/leaks.xml
 
 
 
+# Race conditions / Состояние гонки / Гонки потоков / data race / гонки данных
+
+Проблема: Состояние гонки возникает тогда, когда несколько потоков многопоточного приложения пытаются одновременно получить доступ к данным, причем хотя бы один поток выполняет запись.
+
+Решение: Для предотвращения состояния гонки используются приемы синхронизации, позволяющие правильно упорядочить операции, выполняемые разными потоками.
+
+1. Пример: Пусть, один поток выполняет над общей переменной x операцию x = x + 3, а второй поток - операцию x = x + 5. Данные операции для каждого потока фактически разбиваются на три отдельных подоперации: считать x из памяти, увеличить x, записать x в память. В зависимости от взаимного порядка выполнения потоками подопераций финальное значение переменной x может быть больше исходного на 3, 5 или 8.
+
+2. Пример: В двух потоках будем в цикле печатать на экран строки:
+
+```
+в первом потоке в цикле вызвать
+while(true) { std::cout << "Первый поток" std::endl; }
+
+во втором потоке в цикле вызвать
+while(true) { std::cout << "Второй поток" std::endl; }
+```
+
+Порядок появления соотвествующих строк будет непредсказуем, ибо неизвестно в какой момент времени какой из потоков будет иметь доступ раньше или позже к функции стандратного вывда в консоль std::cout.
+
+
+
+
 # Deadlock / Дедлок / Взаимная блокировка 
-```
+
 Простейший пример взаимной блокировки
-Шаг	Процесс 1	Процесс 2
-0	Хочет захватить A и B, начинает с A	Хочет захватить A и B, начинает с B
-1	Захватывает ресурс A           |Захватывает ресурс B
-2	Ожидает освобождения ресурса B |	Ожидает освобождения ресурса A
-3	Взаимная блокировка
-```
-# Race conditions / Гонки потоков
+
+Дано:
+
+Процесс 1 и Процесс 2
+
+Объект А и Объект В (например 2 Мьютекса)
+		
+
+| Шаг  | Процесс 1                           | Процесс 2                                 |
+| -----|:-----------------------------------:|:-----------------------------------------:|
+| 0    | Хочет захватить A и B, начинает с A | Хочет захватить A и B, начинает с B       |
+| 1    | Захватывает ресурс A                | Захватывает ресурс B                      |
+| 2    | Ожидает освобождения ресурса B      | Ожидает освобождения ресурса A            |
+| 3    | *********Взаимная блокировка******* | ************ Взаимная блокировка ********.|
 
 
+# Allocator / АЛЛОКАТОР
 
-# Allocator
-https://habrahabr.ru/post/270009/
+http://www.enseignement.polytechnique.fr/informatique/INF478/docs/Cpp/en/cpp/language/member_template.html
+
+Аллокатор умеет выделять и освобождать память в требуемых количествах определённым образом. std::allocator -- пример реализации аллокатора из стандартной библиотеки, просто использует new и delete, которые обычно обращаются к системным вызовам malloc и free.
+
+Более сложный пример -- pool allocator. Раз системные вызовы дороги, почему бы на них не сэкономить? Выделим сразу 1 гигабайт памяти (к примеру), а дальше в аллокаторе будем выдавать память из этого пула и увеличивать указатель head (опять же, упрощенно). Реальное выделение памяти только одно, системных вызовов почти нет, ура-ура, программа ускорилась.
+
+Собственно, для этого и нужны аллокаторы, чтобы вставлять свое, крутое, нестандартное, выделение памяти в любое место. Большинство стандартных контейнеров их принимают.
 
 http://www.quizful.net/interview/cpp/allocator-in-cpp
 
 Аллокатор это шаблонный класс, который отвечает за выделение памяти и создание объектов. По умолчанию все контейнера используют std::allocator<T>. 
 В языке c++ имеется так же возможность написать свой аллокатор. У своего алокатора должно быть такое объявление:
 
+```
+template <class T>
+class my_allocator
+{
+	typedef size_t    size_type;
+	typedef ptrdiff_t difference_type;
+	typedef T*        pointer;
+	typedef const T*  const_pointer;
+	typedef T&        reference;
+	typedef const T&  const_reference;
+	typedef T         value_type;
 
-	template <class T>
-	class my_allocator
-	{
-		typedef size_t    size_type;
-		typedef ptrdiff_t difference_type;
-		typedef T*        pointer;
-		typedef const T*  const_pointer;
-		typedef T&        reference;
-		typedef const T&  const_reference;
-		typedef T         value_type;
-	
-		pointer allocate(size_type st, const void* hint = 0);
-		void deallocate(pointer p, size_type st);
-		void construct(pointer p, const_reference val);
-		void destroy(pointer p);
-		template <class U>
-		struct rebind { typedef allocator<U> other; };
-	};
+	pointer allocate(size_type st, const void* hint = 0);
+	void deallocate(pointer p, size_type st);
+	void construct(pointer p, const_reference val);
+	void destroy(pointer p);
+	template <class U>
+	struct rebind { typedef allocator<U> other; };
+};
+```
+
+https://habrahabr.ru/post/270009/
+
+# Custom Allocator / Свой, самописный, АЛЛОКАТОР своими руками
+
+https://habr.com/ru/post/274827/
+
+https://stackoverflow.com/questions/826569/compelling-examples-of-custom-c-allocators
+
+So far I have the skeleton of a custom allocator (which derives from std::allocator), I think it is a good starting point to write own allocators. Feel free to use this piece of code in whatever way you want:
+
+```
+#include <memory>
+#include <stdio.h>
+
+namespace mmap_allocator_namespace
+{
+// See StackOverflow replies to this answer for important commentary 
+// about inheriting from std::allocator before replicating this code.
+
+template <typename T>
+class mmap_allocator: public std::allocator<T>
+{
+public:
+  typedef size_t size_type;
+  typedef T* pointer;
+  typedef const T* const_pointer;
+
+  template<typename _Tp1>
+  struct rebind
+  { 
+    typedef mmap_allocator<_Tp1> other;
+  };
+
+  pointer allocate(size_type n, const void *hint=0)
+  {
+    fprintf(stderr, "Alloc %d bytes.\n", n*sizeof(T));
+    return std::allocator<T>::allocate(n, hint);
+  }
+
+  void deallocate(pointer p, size_type n)
+  {
+    fprintf(stderr, "Dealloc %d bytes (%p).\n", n*sizeof(T), p);
+    return std::allocator<T>::deallocate(p, n);
+  }
+
+  mmap_allocator() throw(): std::allocator<T>() { fprintf(stderr, "Hello allocator!\n"); }
+  mmap_allocator(const mmap_allocator &a) throw(): std::allocator<T>(a) { }
+  template <class U>                    
+  mmap_allocator(const mmap_allocator<U> &a) throw(): std::allocator<T>(a) { }
+  ~mmap_allocator() throw() { }
+};
+  
+} // namespace mmap_allocator_namespace
+```
+
+To use this, declare an STL container as follows:
+```
+using namespace std;
+using namespace mmap_allocator_namespace;
+
+vector<int, mmap_allocator<int> > int_vec(1024, 0, mmap_allocator<int>());
+```
+
+It can be used for example to log whenever memory is allocated. What is neccessary is the rebind struct, else the vector container uses the superclasses allocate/deallocate methods.
+
+Update: The memory mapping allocator is now available at https://github.com/johannesthoma/mmap_allocator and is LGPL. Feel free to use it for your projects.
+
 
 # memory map files (mmap - Linux-version, CreateFileMapping and MapViewOfFile - WindowsVersion)
 https://habrahabr.ru/post/55716/
