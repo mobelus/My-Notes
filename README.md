@@ -3812,9 +3812,8 @@ https://msdn.microsoft.com/en-us/library/windows/desktop/ms633576(v=vs.85).aspx
 
 
 
-1) переслушать про reserve и resize
+# переслушать про reserve и resize
 
-2)
 
 
 # POSIX 7
@@ -3895,7 +3894,6 @@ libc++abi.dylib: terminating with uncaught exception of type std::__1::system_er
 
 
 
-# CreateThread <-> _beginthreadex
 # Createthread разница _beginthreadex
 
 _beginthreadex
@@ -3932,6 +3930,8 @@ Microsoft has provided an alternative function to CreateThread, called _beginthr
 # Шаблоны проектирования:
 
 - Синглтон
+- Стратегия
+- Фабричный метод
 - Фассад
 - Ресивер
 - Обзёрвер
@@ -4129,9 +4129,18 @@ https://rsdn.org/article/vcpp/leaks.xml
 
 
 
-# Deadlock
+# Deadlock / Дедлок / Взаимная блокировка 
+```
+Простейший пример взаимной блокировки
+Шаг	Процесс 1	Процесс 2
+0	Хочет захватить A и B, начинает с A	Хочет захватить A и B, начинает с B
+1	Захватывает ресурс A           |Захватывает ресурс B
+2	Ожидает освобождения ресурса B |	Ожидает освобождения ресурса A
+3	Взаимная блокировка
+```
+# Race conditions / Гонки потоков
 
-# Race conditions
+
 
 # Allocator
 https://habrahabr.ru/post/270009/
