@@ -8563,12 +8563,16 @@ void main(void)
 ### Разница между operator new и new-expression / оператор new и new выражением
 https://habr.com/ru/post/185662/
 
-```Стандарт 5.3.4```
-The new-expression attempts to create an object of the type-id (8.1) or new-type-id to which it is applied. /*дальше нам не интересно*/
-```Стандарт 18.6.1```
+``` Стандарт 5.3.4
+The new-expression attempts to create an object of the type-id (8.1) 
+or new-type-id to which it is applied. /*дальше нам не интересно*/
+```
+``` Стандарт 18.6.1
 void* operator new(std::size_t size) throw(std::bad_alloc);
-Effects: The allocation function called by a new-expression (5.3.4) to allocate size bytes of
-storage suitably aligned to represent any object of that size /*дальше нам не интересно*/
+Effects: The allocation function called by a new-expression (5.3.4) 
+to allocate size bytes of storage suitably aligned to represent any 
+object of that size /*дальше нам не интересно*/
+```
 
 Тут мы уже видим, что в первом случае new именуется как **new expression**, а во втором он объявлен как **operator new**. И это действительно 2 разные сущности!
 Попробуем разобраться почему так, для этого нам понадобятся ассемблерные листинги, полученные после компиляции кода, использующего new. Ну, а теперь обо все по порядку.
@@ -8590,10 +8594,14 @@ malloc() – метод, Возвращает указатель на выдел
 ``` static void* operator new(size_t s); ```
 ``` static void operator delete(void* p); ```
 new — оператор языка программирования C++, обеспечивающий выделение динамической памяти в куче.
+
+# Какие типы оператора new / виды оператора new / разновидности оператора new вам известны:
 Виды оператора new / Разновидности оператора new / Типы оператора new:
 - new
-- Placement new
-- ???
+- placement new
+- new[] (для массивов)
+- new со спецификацией (std::nothrow)
+- new любой, который может быть переопределён в классе
 
 **Placement new** 
 Данный оператор не выделяет память, а получает своим аргументом адрес на уже выделенную каким-либо образом память (например, на стеке или через malloc())
