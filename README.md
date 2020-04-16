@@ -1,3 +1,46 @@
+# General questions
+
+- OOP concepts - encapsulation, data abstraction, inheritance, polymorphism
+- Data Types, Variables - const, static, readonly
+- access specifier - private, protected, public
+- Abstract class
+- interface
+- collection - hast table, map, vector, binary tree
+- Multi threading
+- Memory Management
+- Pointers - void, far, near, wild
+- virtual functions
+- Marshaling
+-  SDI, MDI
+- TCP / IP client server connection
+-  Message passing, delegation, IPC
+-  File handling
+-  Memory management
+- Error handling, exception handling
+
+# C++ general
+
+- Classes and Objects
+- Constructors and Destructors
+- Template
+- References and pointer
+- STL
+- RTTI
+
+# SQL questions
+
+- RDBMS
+- Normalization - Different Normalization Forms(1NF, 2NF, 3NF, BCNF)
+- SQL Stament(DML, DDL, DCL, TCL)
+- Stored Procedure, Trigger and View
+- Join - Different Types of Join(Cross Join, Inner Join, Outer Join, Self Join)
+- Index - Clustered Index, Non Clustered Index
+- Linked Server
+- Cursor
+- Collation
+- Sub - query
+
+
 # C++ / CPP / Основы / Теория
 --------------------------------
 ### Объясните, что такое OOП?
@@ -4777,76 +4820,6 @@ C++11 ввел понятие rvalue ссылок (указанных с &&), ч
 Вместо заключения
 
  Есть много вещей в С++11, о которых можно и нужно рассказывать; эта статья была лишь одним из многих возможных начал. Эта статья представила серию функций языка и стандартной библиотеки, которую должен знать каждый разработчик С++. Однако, для более глубокого понимания всего сказанного, этой статьи недостаточно, поэтому тут не обойтись без дополнительной литературы.
- 
- 
-
-
-# General questions
-
-- OOP concepts - encapsulation, data abstraction, inheritance, polymorphism
-- Data Types, Variables - const, static, readonly
-- access specifier - private, protected, public
-- Abstract class
-- interface
-- collection - hast table, map, vector, binary tree
-- Multi threading
-- Memory Management
-- Pointers - void, far, near, wild
-- virtual functions
-- Marshaling
--  SDI, MDI
-- TCP / IP client server connection
--  Message passing, delegation, IPC
--  File handling
--  Memory management
-- Error handling, exception handling
-
-# C++ general
-
-- Classes and Objects
-- Constructors and Destructors
-- Template
-- References and pointer
-- STL
-- RTTI
-
-# SQL questions
-
-- RDBMS
-- Normalization - Different Normalization Forms(1NF, 2NF, 3NF, BCNF)
-- SQL Stament(DML, DDL, DCL, TCL)
-- Stored Procedure, Trigger and View
-- Join - Different Types of Join(Cross Join, Inner Join, Outer Join, Self Join)
-- Index - Clustered Index, Non Clustered Index
-- Linked Server
-- Cursor
-- Collation
-- Sub - query
-
-# QT related interview questions
-
-http://www.qtcentre.org/threads/38448-QT-related-interview-questions
-
-- How qt differs from other mobile development platforms like android?
-- If worked with GTK what is the difference between QT and GTK?
-- What are the striking futures of QT?
-- What is Qpointer?
-- What is dpointer?
-- What is MVC architecture? How it is organized?
-- What is a signal? And how will it differ from event?
-- What is a slot? And how it differs with callback Method?
-- What is the difference between signal and slot mechanism and Callback mechanism of GTK?
-- How many signals at maximum you can connect to a single slot? If more than one how you can do that?
-- How many slots can you connect to a signal? If more than one how those slots will be executed? 
-(The order of execution)
-- What is QCast and how will it differ compared to c++’s dynamic cast?
-- What is the use of Q_OBJECT macro?
-- What is MOC and UIC? Explain how they will work for compilation in QT?
-- What is qmake? (Explain the usage of it)
-- How a QT Program/Application written for one platform (Symbian) can be ported/executed in another 
-platform (Maemo)? (Explain If you need to make any changes or you need to recompile)
-- What are all the platforms/OS currently QT supports?
-
 
 
 # Вирт.функции в Конструкторах
