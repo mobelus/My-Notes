@@ -1,5 +1,16 @@
 # My-Notes
 
+- PHP HTML CSS ООП PATTERNS JAVASCRIPS SQL JQUERY HTTP GET POST AJAX JSON XML API
+https://www.kobzarev.com/wp-content/uploads/books/php/PHPbook.pdf
+
+- JAVA / java
+https://github.com/enhorse/java-interview
+
+- C#
+- https://github.com/quangnd/OOP-And-CSharp
+- https://github.com/kansiris/C-Sharp-c-interview-question
+
+
 - Алан Пол - ОБЪЕКТНО-ОРИЕНТИРОВАННОЕ ПРОГРАММИРОВАНИЕ НА C++ 
 http://fis.tntu.edu.ua/data/elibrary/3/oop_cpp.pdf
 
