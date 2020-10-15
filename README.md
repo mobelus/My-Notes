@@ -7,9 +7,11 @@ https://www.kobzarev.com/wp-content/uploads/books/php/PHPbook.pdf
 https://github.com/enhorse/java-interview
 
 - C#
-- https://github.com/quangnd/OOP-And-CSharp
+https://github.com/quangnd/OOP-And-CSharp
 - https://github.com/kansiris/C-Sharp-c-interview-question
 
+- PATTERNS EXAMPLES
+https://refactoring.guru/ru/design-patterns/state/csharp/example
 
 - Алан Пол - ОБЪЕКТНО-ОРИЕНТИРОВАННОЕ ПРОГРАММИРОВАНИЕ НА C++ 
 http://fis.tntu.edu.ua/data/elibrary/3/oop_cpp.pdf
