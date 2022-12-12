@@ -8972,22 +8972,23 @@ int z = y;
 ```
 
 ### [Q]  Разница между оператором присваивания и копирующим конструктором +их реализации ? 
-```
+
 1) Копирующий конструктор a(b); 
 - инициализирует ранее неинициализированный (не существующий) объект 
 из данных другого объекта (в момент создания объекта он сразу же инициализирует память.)
-
+```
 // A copy constructor is used to initialize a previously uninitialized object 
 from some other object's data.
 
 Реализация:
 A(const A& rhs) : data_(rhs.data_) {}
+```
 
 2) Оператор присваивания a = b;  
 - заменяет данные в ранее проинициализированном (созданном) объекте,
 данными из другого объекта. (сначала создаёт объект, и потом 
 перезатирает то, что он проинициализировал новым значением)
-
+```
 // An assignment operator is used to replace the data 
 of a previously initialized object with some other object's data.
 
@@ -9008,22 +9009,38 @@ obj2 = obj1; //calls assignment operator (ИБО оба объекта уже б
 ```
 
 ### [Q]   Как защитить объект от копирования?
-Ответ: Сделать private конструктор копирования и оператор присваивания "="
+РАНЬШЕ - Ответ: Сделать private конструктор копирования и оператор присваивания "="
 
 ```
-Пример:
-class NonCopyable
+struct NonCopyable
 {
-// какой-то код
-private:
-    NonCopyable(NonCopyable&)
-    void operator=(const NonCopyable&)
+  NonCopyable() { }
+  private:
+  NonCopyable(const NonCopyable&)
+  NonCopyable& operator=(const NonCopyable&)
 };
-
-NonCopyable a; 
-NonCopyable b = a; // error C2248: 'NonCopyable::NonCopyable' : cannot access private member
-a = b; // error C2248: 'NonCopyable::operator =' : cannot access private member
+void main() {
+ NonCopyable a; 
+ NonCopyable b = a; // error C2248: 'NonCopyable::NonCopyable' : cannot access private member
+ a = b; // error C2248: 'NonCopyable::operator =' : cannot access private member
+}
 ```
+
+ТЕПЕРЬ C++11:
+```
+struct NonCopyable
+{
+  NonCopyable() = default; // конструктор по умолчанию
+  NonCopyable(const NonCopyable&) = delete; // удалит метод из класса
+  NonCopyable& operator=(const NonCopyable&) = delete; // удалит метод из класса
+};
+void main() {
+ NonCopyable a; 
+ NonCopyable b = a; // error C2248: function N(c N&) cannot be referenced -- it is a deleted function
+ a = b; // error C2248: 'NonCopyable::operator =' cannot be referenced -- it is a deleted function
+}
+``` 
+
 подробнее тут - https://habrahabr.ru/company/abbyy/blog/142595/
 
 
