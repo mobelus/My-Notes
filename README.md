@@ -1,27 +1,90 @@
 # Каждый собес
 
+# 1 VIRTUAL FUNTIONS
+
 ```
-class Parent { public: 
-  void  print() { print "print P"; } 
-  void  show()  { print "show  P";  } 
+#include <iostream>
+class Parent { public:
+    void  print() { std::cout << "print P"; }
+    void  show()  { std::cout << "show  P"; }
 };
 class Child: public Parent
 { public:
-  void  print() { print "print C"; } 
-  void  show()  { print "show  C";  } 
+    void  print() { std::cout << "print C"; }
+    void  show()  { std::cout << "show  C"; }
 };
- 
-int main() {
-  Parent p;
-  Child* c =  p;
-  p->print(); -> "print P"
-  p->show();  -> "show  P"
-// NO VIRTUAL FUNCTIONS
-// NO VTBL inside classes
-// => only base class methods will be called
+
+int main(int argc, char *argv[])
+{
+    Parent* p;
+    Child c;
+    p = &c;
+    p->print(); //-> "print P"
+    p->show();  //-> "show  P"
+    // NO VIRTUAL FUNCTIONS
+    // NO VTBL inside classes
+    // => only base class methods will be called
 }
 ```
 
+# 2 VIRTUAL FUNTIONS
+
+```
+class Parent { public:
+    const char* getName() { return "Parent"; }
+}; 
+class Child: public Parent { public:
+    const char* getName() { return "Child"; }
+};
+int main()
+{
+    Child child;
+    Parent &rParent = child;
+    std::cout << "rParent is a " <<
+    rParent.getName() << '\n';
+}
+
+//Результат: rParent is a Parent
+```
+
+# 3 VIRTUAL FUNTIONS
+
+```
+#include <iostream> 
+class Parent { public:
+  virtual const char* getName() { return "Parent"; } // добавили ключевое слово virtual
+}; 
+class Child: public Parent { public:
+  virtual const char* getName() { return "Child"; }
+}; 
+int main()
+{
+  Child child;
+  Parent &rParent = child;
+  std::cout << "rParent is a " << rParent.getName() << '\n';
+  return 0;
+}
+
+// Результат: rParent is a Child
+```
+
+# 4 VIRTUAL FUNTIONS VIRTUAL DESTRUCTOR
+
+```
+Виртуальный деструктор - A базовый, B - наследник от А
+
+class A
+class B : public A
+B b;         // A() // B() // ~B() // ~A()
+A* a = new B; 
+delete a;    // A() // B() //         ~A()
+=>
+virtual ~A()
+delete a;    // A() // B() // ~B() // ~A()
+
+```
+
+# 5 Anagramm
 
 
 # My-Notes
