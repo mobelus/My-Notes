@@ -1,3 +1,29 @@
+# Каждый собес
+
+```
+class Parent { public: 
+  void  print() { print "print P"; } 
+  void  show()  { print "show  P";  } 
+};
+class Child: public Parent
+{ public:
+  void  print() { print "print C"; } 
+  void  show()  { print "show  C";  } 
+};
+ 
+int main() {
+  Parent p;
+  Child* c =  p;
+  p->print(); -> "print P"
+  p->show();  -> "show  P"
+// NO VIRTUAL FUNCTIONS
+// NO VTBL inside classes
+// => only base class methods will be called
+}
+```
+
+
+
 # My-Notes
 
 - PHP HTML CSS ООП PATTERNS JAVASCRIPS SQL JQUERY HTTP GET POST AJAX JSON XML API
